@@ -28,6 +28,9 @@
     <Filter Include="Headerdateien\GameObject\Scaling">
       <UniqueIdentifier>{0e003abe-0309-4ad9-bbc9-ff0ad71c3737}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\Global\Vector">
+      <UniqueIdentifier>{cb79e45f-2431-4dc6-a7a4-ed4d850a814b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Global.h">
@@ -36,15 +39,30 @@
     <ClInclude Include="GlobalPosition.h">
       <Filter>Headerdateien\GameObject\Position</Filter>
     </ClInclude>
-    <ClInclude Include="Position.h">
-      <Filter>Headerdateien\GameObject\Position</Filter>
-    </ClInclude>
     <ClInclude Include="LocalPosition.h">
       <Filter>Headerdateien\GameObject\Position</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionManager.h">
+      <Filter>Headerdateien\GameObject\Position</Filter>
+    </ClInclude>
+    <ClInclude Include="RotationManager.h">
+      <Filter>Headerdateien\GameObject\Rotation</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Headerdateien\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleManager.h">
+      <Filter>Headerdateien\GameObject\Scaling</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

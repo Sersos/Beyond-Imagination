@@ -1,9 +1,9 @@
 #ifndef GLOBALPOSITION_H
 #define GLOBALPOSITION_H
 
-#include "Position.h"
+#include "PositionManager.h"
 
-struct GlobalPosition : public Position
+struct GlobalPosition : public PositionManager
 {
 		
 };

@@ -1,9 +1,9 @@
 #ifndef LOCALPOSITION_H
 #define LOCALPOSITION_H
 
-#include "Position.h"
+#include "PositionManager.h"
 
-struct LocalPosition : public Position
+struct LocalPosition : public PositionManager
 {
 
 };
