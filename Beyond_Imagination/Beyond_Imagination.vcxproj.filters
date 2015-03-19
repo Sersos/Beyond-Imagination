@@ -13,5 +13,39 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Headerdateien\Global">
+      <UniqueIdentifier>{3a58b44c-22bc-445a-871b-5f7900595438}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\GameObject">
+      <UniqueIdentifier>{b04884aa-d756-4b16-a443-9c3cad441a33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\GameObject\Position">
+      <UniqueIdentifier>{647f9f6d-570d-4692-bba0-615e6c258ecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\GameObject\Rotation">
+      <UniqueIdentifier>{d40454b0-b69f-4158-b40b-411e11533c60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\GameObject\Scaling">
+      <UniqueIdentifier>{0e003abe-0309-4ad9-bbc9-ff0ad71c3737}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Global\Global.h">
+      <Filter>Headerdateien\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalPosition.h">
+      <Filter>Headerdateien\GameObject\Position</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Headerdateien\GameObject\Position</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalPosition.h">
+      <Filter>Headerdateien\GameObject\Position</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
