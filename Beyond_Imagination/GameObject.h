@@ -1,3 +1,5 @@
+#ifndef GAMEOBJECT_H
+#define GAMEOBJECT_H
 
 #include "Vector3.h"
 
@@ -16,4 +18,6 @@ private:
 	GlobalScale* scale;
 	
 };
+
+#endif
 

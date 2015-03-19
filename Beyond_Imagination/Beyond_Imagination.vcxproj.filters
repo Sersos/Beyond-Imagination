@@ -34,6 +34,9 @@
     <Filter Include="Quelldateien\Vector">
       <UniqueIdentifier>{dd2b65b9-c2b9-438b-af43-9ff78bafde74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quelldateien\GameObject">
+      <UniqueIdentifier>{87d0bb99-834c-4def-ba62-996f9017a46b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global\Global.h">
