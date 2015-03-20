@@ -37,38 +37,53 @@
     <Filter Include="Quelldateien\GameObject">
       <UniqueIdentifier>{87d0bb99-834c-4def-ba62-996f9017a46b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\Application">
+      <UniqueIdentifier>{d7055a5c-8e15-4826-b065-1f5621b2694e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Application">
+      <UniqueIdentifier>{8101c9c1-fa0c-47f8-83ee-76d0e0f6aa22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>Headerdateien\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Rotation\RotationManager.h">
+      <Filter>Headerdateien\GameObject\Rotation</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject\Scaling\ScaleManager.h">
+      <Filter>Headerdateien\GameObject\Scaling</Filter>
+    </ClInclude>
+    <ClInclude Include="Global\Vector\Vector3.h">
+      <Filter>Headerdateien\Global\Vector</Filter>
+    </ClInclude>
     <ClInclude Include="Global\Global.h">
       <Filter>Headerdateien\Global</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalPosition.h">
-      <Filter>Headerdateien\GameObject\Position</Filter>
-    </ClInclude>
-    <ClInclude Include="LocalPosition.h">
-      <Filter>Headerdateien\GameObject\Position</Filter>
-    </ClInclude>
-    <ClInclude Include="PositionManager.h">
-      <Filter>Headerdateien\GameObject\Position</Filter>
-    </ClInclude>
-    <ClInclude Include="RotationManager.h">
-      <Filter>Headerdateien\GameObject\Rotation</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
+    <ClInclude Include="GameObject\GameObject.h">
       <Filter>Headerdateien\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="ScaleManager.h">
-      <Filter>Headerdateien\GameObject\Scaling</Filter>
+    <ClInclude Include="GameObject\Position\LocalPosition.h">
+      <Filter>Headerdateien\GameObject\Position</Filter>
     </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>Headerdateien\Global\Vector</Filter>
+    <ClInclude Include="GameObject\Position\PositionManager.h">
+      <Filter>Headerdateien\GameObject\Position</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Vector3.cpp">
+    <ClCompile Include="Application.cpp">
+      <Filter>Quelldateien\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Global\Vector\Vector3.cpp">
       <Filter>Quelldateien\Vector</Filter>
     </ClCompile>
   </ItemGroup>

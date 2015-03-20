@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$Global\;Global\;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$Global\;Global\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -53,6 +53,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>\Beyond_Imagination\Global;\Beyond_Imagination\Global\Vector;\Beyond_Imagination\GameObject\Scaling;\Beyond_Imagination\GameObject\Rotation;\Beyond_Imagination\GameObject\Position;\Beyond_Imagination\GameObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -77,18 +78,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="GlobalPosition.h" />
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="GameObject\GameObject.h" />
+    <ClInclude Include="GameObject\Position\LocalPosition.h" />
+    <ClInclude Include="GameObject\Position\PositionManager.h" />
+    <ClInclude Include="GameObject\Rotation\RotationManager.h" />
+    <ClInclude Include="GameObject\Scaling\ScaleManager.h" />
     <ClInclude Include="Global\Global.h" />
-    <ClInclude Include="LocalPosition.h" />
-    <ClInclude Include="PositionManager.h" />
-    <ClInclude Include="RotationManager.h" />
-    <ClInclude Include="ScaleManager.h" />
-    <ClInclude Include="Vector3.h" />
+    <ClInclude Include="Global\Vector\Vector3.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Global\Vector\Vector3.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Vector3.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

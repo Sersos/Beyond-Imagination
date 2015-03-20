@@ -1,0 +1,7 @@
+﻿  Window.cpp
+  Vector3.cpp
+c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\vector3.cpp(14): warning C4244: 'return': Konvertierung von 'double' in 'float', möglicher Datenverlust
+  main.cpp
+  Application.cpp
+  Code wird generiert...
+  Beyond_Imagination.vcxproj -> C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Debug\Beyond_Imagination.exe
