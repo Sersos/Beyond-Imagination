@@ -15,7 +15,7 @@ public:
 				Vector3& position, Vector3& rotation, Vector3& scale);
 
 	virtual void update(float delta) = 0;
-	virtual void render(ID3D11DeviceContext* deviceContext) = 0;
+	virtual void render(ID3D11DeviceContext* deviceContext, D3DXMATRIX& view, D3DXMATRIX& projection) = 0;
 	virtual void destroy() = 0;
 
 	void updatePosition(Vector3& offset);

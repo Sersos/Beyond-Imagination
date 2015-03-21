@@ -27,7 +27,7 @@ bool DirectxManager::initialize(HWND window)
 	swapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 
 	//not completed
-	/*
+	
 	hr = D3D11CreateDeviceAndSwapChain(
 		NULL,
 		D3D_DRIVER_TYPE_HARDWARE,
@@ -43,9 +43,7 @@ bool DirectxManager::initialize(HWND window)
 		&deviceContext);
 
 	if (FAILED(hr))
-		return false;
-		
-	*/
+		return false;	
 
 	return true;
 }

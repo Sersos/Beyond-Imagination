@@ -53,13 +53,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/Vector;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/WorldObject/Scaling;$(SolutionDir)/Beyond_Imagination/WorldObject/Rotation;$(SolutionDir)/Beyond_Imagination/WorldObject/Position;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/Vector;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/WorldObject/Scaling;$(SolutionDir)/Beyond_Imagination/WorldObject/Rotation;$(SolutionDir)/Beyond_Imagination/WorldObject/Position;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/Player/Input;$(SolutionDir)/Beyond_Imagination/Player/Camera;$(SolutionDir)/Beyond_Imagination/Player;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d10.lib;d3dx10.lib;d3d11.lib;d3dx11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d10.lib;d3dx10.lib;d3dx10d.lib;d3d11.lib;d3dx11.lib;d3dx11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -83,11 +83,13 @@
     <ClInclude Include="Application\DirectxManager.h" />
     <ClInclude Include="GameObject\Position\PositionManager.h" />
     <ClInclude Include="GameObject\Rotation\RotationManager.h" />
-    <ClInclude Include="GameObject\Scaling\GlobalScale.h" />
     <ClInclude Include="GameObject\Scaling\ScaleManager.h" />
     <ClInclude Include="Global\Global.h" />
     <ClInclude Include="Global\Shader\ShaderManager.h" />
     <ClInclude Include="Global\Vector\Vector3.h" />
+    <ClInclude Include="Player\Camera\Camera.h" />
+    <ClInclude Include="Player\Input\Input.h" />
+    <ClInclude Include="Player\Player.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WorldObject\Object\Object.h" />
     <ClInclude Include="WorldObject\Unit\Unit.h" />
@@ -98,6 +100,9 @@
     <ClCompile Include="Global\Shader\ShaderManager.cpp" />
     <ClCompile Include="Global\Vector\Vector3.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player\Camera\Camera.cpp" />
+    <ClCompile Include="Player\Input\Input.cpp" />
+    <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WorldObject\Object\Object.cpp" />
     <ClCompile Include="WorldObject\Unit\Unit.cpp" />

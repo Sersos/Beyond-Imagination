@@ -11,3 +11,6 @@ $(SolutionDir)/Beyond_Imagination/WorldObject/Position
 $(SolutionDir)/Beyond_Imagination/WorldObject/Rotation
 $(SolutionDir)/Beyond_Imagination/WorldObject/Scaling
 $(SolutionDir)/Beyond_Imagination/WorldObject/Unit
+$(SolutionDir)/Beyond_Imagination/Player
+$(SolutionDir)/Beyond_Imagination/Player/Camera
+$(SolutionDir)/Beyond_Imagination/Player/Input

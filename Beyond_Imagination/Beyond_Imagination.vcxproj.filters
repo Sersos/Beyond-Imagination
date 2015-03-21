@@ -64,6 +64,24 @@
     <Filter Include="Quelldateien\Global\Shader">
       <UniqueIdentifier>{03f414c3-5c01-47eb-86ed-a59621a2cbb5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\Player">
+      <UniqueIdentifier>{843d19d8-2a9f-41ed-9558-410e4e77824b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Player">
+      <UniqueIdentifier>{3f7f7d6c-813f-4b8e-b02f-3bba42dc1c4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Player\Camera">
+      <UniqueIdentifier>{1a39bc80-1c5b-4ae2-8867-6ca403121f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Player\Camera">
+      <UniqueIdentifier>{c9ee3600-db0d-40ae-a55b-ff98d128f520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Player\Input">
+      <UniqueIdentifier>{1177adc3-fcb0-4644-a620-c7a5f65d944b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Player\Input">
+      <UniqueIdentifier>{e8c6df3a-20ac-4f2e-82ef-c7f62c4acac3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -80,9 +98,6 @@
     </ClInclude>
     <ClInclude Include="Global\Global.h">
       <Filter>Headerdateien\Global</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject\Scaling\GlobalScale.h">
-      <Filter>Headerdateien\WorldObject\Scaling</Filter>
     </ClInclude>
     <ClInclude Include="GameObject\Position\PositionManager.h">
       <Filter>Headerdateien\WorldObject\Position</Filter>
@@ -101,6 +116,15 @@
     </ClInclude>
     <ClInclude Include="Global\Shader\ShaderManager.h">
       <Filter>Headerdateien\Global\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Player.h">
+      <Filter>Headerdateien\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Camera\Camera.h">
+      <Filter>Headerdateien\Player\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Input\Input.h">
+      <Filter>Headerdateien\Player\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +151,15 @@
     </ClCompile>
     <ClCompile Include="Global\Shader\ShaderManager.cpp">
       <Filter>Quelldateien\Global\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Player.cpp">
+      <Filter>Quelldateien\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Camera\Camera.cpp">
+      <Filter>Quelldateien\Player\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Input\Input.cpp">
+      <Filter>Quelldateien\Player\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
