@@ -1,6 +1,34 @@
-﻿  DirectxManager.cpp
+﻿  WorldObject.cpp
 c:\program files (x86)\microsoft sdks\windows\v7.1a\include\sal_supp.h(57): warning C4005: '__useHeader': Makro-Neudefinition
           c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2886): Siehe vorherige Definition von '__useHeader'
 c:\program files (x86)\microsoft sdks\windows\v7.1a\include\specstrings_supp.h(77): warning C4005: '__on_failure': Makro-Neudefinition
           c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2896): Siehe vorherige Definition von '__on_failure'
+  Unit.cpp
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\sal_supp.h(57): warning C4005: '__useHeader': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2886): Siehe vorherige Definition von '__useHeader'
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\specstrings_supp.h(77): warning C4005: '__on_failure': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2896): Siehe vorherige Definition von '__on_failure'
+  Object.cpp
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\sal_supp.h(57): warning C4005: '__useHeader': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2886): Siehe vorherige Definition von '__useHeader'
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\specstrings_supp.h(77): warning C4005: '__on_failure': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2896): Siehe vorherige Definition von '__on_failure'
+  Window.cpp
+  main.cpp
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\sal_supp.h(57): warning C4005: '__useHeader': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2886): Siehe vorherige Definition von '__useHeader'
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\specstrings_supp.h(77): warning C4005: '__on_failure': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2896): Siehe vorherige Definition von '__on_failure'
+  Vector3.cpp
+  ShaderManager.cpp
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\sal_supp.h(57): warning C4005: '__useHeader': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2886): Siehe vorherige Definition von '__useHeader'
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\specstrings_supp.h(77): warning C4005: '__on_failure': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2896): Siehe vorherige Definition von '__on_failure'
+  DirectxManager.cpp
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\sal_supp.h(57): warning C4005: '__useHeader': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2886): Siehe vorherige Definition von '__useHeader'
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\specstrings_supp.h(77): warning C4005: '__on_failure': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2896): Siehe vorherige Definition von '__on_failure'
+  Code wird generiert...
   Beyond_Imagination.vcxproj -> C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Debug\Beyond_Imagination.exe

@@ -53,7 +53,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v7.1A\Include;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/Vector;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/GameObject/Scaling;$(SolutionDir)/Beyond_Imagination/GameObject/Rotation;$(SolutionDir)/Beyond_Imagination/GameObject/Position;$(SolutionDir)/Beyond_Imagination/GameObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v7.1A\Include;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/Vector;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/WorldObject/Scaling;$(SolutionDir)/Beyond_Imagination/WorldObject/Rotation;$(SolutionDir)/Beyond_Imagination/WorldObject/Position;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -81,21 +81,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application\DirectxManager.h" />
-    <ClInclude Include="GameObject\GameObject.h" />
     <ClInclude Include="GameObject\Position\PositionManager.h" />
     <ClInclude Include="GameObject\Rotation\RotationManager.h" />
     <ClInclude Include="GameObject\Scaling\GlobalScale.h" />
     <ClInclude Include="GameObject\Scaling\ScaleManager.h" />
     <ClInclude Include="Global\Global.h" />
+    <ClInclude Include="Global\Shader\ShaderManager.h" />
     <ClInclude Include="Global\Vector\Vector3.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WorldObject\Object\Object.h" />
+    <ClInclude Include="WorldObject\Unit\Unit.h" />
+    <ClInclude Include="WorldObject\WorldObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\DirectxManager.cpp" />
-    <ClCompile Include="GameObject\GameObject.cpp" />
+    <ClCompile Include="Global\Shader\ShaderManager.cpp" />
     <ClCompile Include="Global\Vector\Vector3.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WorldObject\Object\Object.cpp" />
+    <ClCompile Include="WorldObject\Unit\Unit.cpp" />
+    <ClCompile Include="WorldObject\WorldObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Include-Paths.txt" />
+    <Text Include="Shader list.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

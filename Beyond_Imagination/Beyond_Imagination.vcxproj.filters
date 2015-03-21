@@ -16,26 +16,8 @@
     <Filter Include="Headerdateien\Global">
       <UniqueIdentifier>{3a58b44c-22bc-445a-871b-5f7900595438}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Headerdateien\GameObject">
-      <UniqueIdentifier>{b04884aa-d756-4b16-a443-9c3cad441a33}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\GameObject\Position">
-      <UniqueIdentifier>{647f9f6d-570d-4692-bba0-615e6c258ecd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\GameObject\Rotation">
-      <UniqueIdentifier>{d40454b0-b69f-4158-b40b-411e11533c60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\GameObject\Scaling">
-      <UniqueIdentifier>{0e003abe-0309-4ad9-bbc9-ff0ad71c3737}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Headerdateien\Global\Vector">
       <UniqueIdentifier>{cb79e45f-2431-4dc6-a7a4-ed4d850a814b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\Vector">
-      <UniqueIdentifier>{dd2b65b9-c2b9-438b-af43-9ff78bafde74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\GameObject">
-      <UniqueIdentifier>{87d0bb99-834c-4def-ba62-996f9017a46b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Headerdateien\Application">
       <UniqueIdentifier>{32c84d40-cee7-4d97-9f51-14c7234c4c53}</UniqueIdentifier>
@@ -43,16 +25,55 @@
     <Filter Include="Quelldateien\Application">
       <UniqueIdentifier>{43a8ac80-070c-4f79-a9b6-91bad3827d54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quelldateien\WorldObject">
+      <UniqueIdentifier>{87d0bb99-834c-4def-ba62-996f9017a46b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\WorldObject\Unit">
+      <UniqueIdentifier>{b709f39e-4692-4d38-928b-ce7bec71746c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\WorldObject\Object">
+      <UniqueIdentifier>{2b437915-d279-4f93-af8b-dddf0bac11d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\WorldObject">
+      <UniqueIdentifier>{b04884aa-d756-4b16-a443-9c3cad441a33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\WorldObject\Position">
+      <UniqueIdentifier>{647f9f6d-570d-4692-bba0-615e6c258ecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\WorldObject\Rotation">
+      <UniqueIdentifier>{d40454b0-b69f-4158-b40b-411e11533c60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\WorldObject\Scaling">
+      <UniqueIdentifier>{0e003abe-0309-4ad9-bbc9-ff0ad71c3737}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\WorldObject\Unit">
+      <UniqueIdentifier>{618f6d2c-54ed-4420-aa28-33425bed1a5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\WorldObject\Object">
+      <UniqueIdentifier>{8f1799fd-84cd-4462-a6f6-2b64ef3c1024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Global\Shader">
+      <UniqueIdentifier>{1760602f-31f6-4efb-84c6-94bfa6264702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Global">
+      <UniqueIdentifier>{2645b425-e797-4cdb-831a-64a84c8ad384}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Global\Vector">
+      <UniqueIdentifier>{dd2b65b9-c2b9-438b-af43-9ff78bafde74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Global\Shader">
+      <UniqueIdentifier>{03f414c3-5c01-47eb-86ed-a59621a2cbb5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="GameObject\Rotation\RotationManager.h">
-      <Filter>Headerdateien\GameObject\Rotation</Filter>
+      <Filter>Headerdateien\WorldObject\Rotation</Filter>
     </ClInclude>
     <ClInclude Include="GameObject\Scaling\ScaleManager.h">
-      <Filter>Headerdateien\GameObject\Scaling</Filter>
+      <Filter>Headerdateien\WorldObject\Scaling</Filter>
     </ClInclude>
     <ClInclude Include="Global\Vector\Vector3.h">
       <Filter>Headerdateien\Global\Vector</Filter>
@@ -60,17 +81,26 @@
     <ClInclude Include="Global\Global.h">
       <Filter>Headerdateien\Global</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\GameObject.h">
-      <Filter>Headerdateien\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject\Scaling\GlobalScale.h">
-      <Filter>Headerdateien\GameObject\Scaling</Filter>
+      <Filter>Headerdateien\WorldObject\Scaling</Filter>
     </ClInclude>
     <ClInclude Include="GameObject\Position\PositionManager.h">
-      <Filter>Headerdateien\GameObject\Position</Filter>
+      <Filter>Headerdateien\WorldObject\Position</Filter>
     </ClInclude>
     <ClInclude Include="Application\DirectxManager.h">
       <Filter>Headerdateien\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\WorldObject.h">
+      <Filter>Headerdateien\WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\Unit\Unit.h">
+      <Filter>Headerdateien\WorldObject\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\Object\Object.h">
+      <Filter>Headerdateien\WorldObject\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Global\Shader\ShaderManager.h">
+      <Filter>Headerdateien\Global\Shader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -81,13 +111,30 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Global\Vector\Vector3.cpp">
-      <Filter>Quelldateien\Vector</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject\GameObject.cpp">
-      <Filter>Quelldateien\GameObject</Filter>
+      <Filter>Quelldateien\Global\Vector</Filter>
     </ClCompile>
     <ClCompile Include="Application\DirectxManager.cpp">
       <Filter>Quelldateien\Application</Filter>
     </ClCompile>
+    <ClCompile Include="WorldObject\WorldObject.cpp">
+      <Filter>Quelldateien\WorldObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldObject\Unit\Unit.cpp">
+      <Filter>Quelldateien\WorldObject\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldObject\Object\Object.cpp">
+      <Filter>Quelldateien\WorldObject\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Global\Shader\ShaderManager.cpp">
+      <Filter>Quelldateien\Global\Shader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Include-Paths.txt">
+      <Filter>Ressourcendateien</Filter>
+    </Text>
+    <Text Include="Shader list.txt">
+      <Filter>Ressourcendateien</Filter>
+    </Text>
   </ItemGroup>
 </Project>

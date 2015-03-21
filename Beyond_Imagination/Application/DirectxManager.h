@@ -27,7 +27,7 @@ private:
 	ID3D11Device* device;
 	ID3D11DeviceContext* deviceContext;
 	IDXGISwapChain* swapChain;
-	ID3D11RenderTargetView* renderTargetView;
+	ID3D11RenderTargetView* renderTargetView;	
 
 	DXGI_SWAP_CHAIN_DESC swapChainDesc;
 
