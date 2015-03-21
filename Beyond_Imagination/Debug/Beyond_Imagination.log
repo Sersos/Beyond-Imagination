@@ -1,7 +1,6 @@
-﻿  Window.cpp
-  Vector3.cpp
-c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\vector3.cpp(14): warning C4244: 'return': Konvertierung von 'double' in 'float', möglicher Datenverlust
-  main.cpp
-  Application.cpp
-  Code wird generiert...
+﻿  DirectxManager.cpp
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\sal_supp.h(57): warning C4005: '__useHeader': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2886): Siehe vorherige Definition von '__useHeader'
+c:\program files (x86)\microsoft sdks\windows\v7.1a\include\specstrings_supp.h(77): warning C4005: '__on_failure': Makro-Neudefinition
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\sal.h(2896): Siehe vorherige Definition von '__on_failure'
   Beyond_Imagination.vcxproj -> C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Debug\Beyond_Imagination.exe

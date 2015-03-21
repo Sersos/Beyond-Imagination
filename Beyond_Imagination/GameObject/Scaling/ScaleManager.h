@@ -1,18 +1,15 @@
-#pragma once
-#include "Vector3.h"
-class ScaleManager
-{
-public:
-	ScaleManager(Vector3& v)
-	{
-		x = v.x;
-		y = v.y;
-		z = v.z;
-	}
-	~ScaleManager();
+#ifndef SCALEMANAGER_H
+#define SCALEMANAGER_H
 
+#include "Vector3.h"
+
+struct ScaleManager
+{
 	float x;
-	float y;
+	float y; 
 	float z;
 };
 
+struct GlobalScale : public ScaleManager {};
+
+#endif

@@ -1,7 +1,7 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "Global\Global.h"
+#include "Global.h"
 
 class Application
 {

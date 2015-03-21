@@ -53,11 +53,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>\Beyond_Imagination\Global;\Beyond_Imagination\Global\Vector;\Beyond_Imagination\GameObject\Scaling;\Beyond_Imagination\GameObject\Rotation;\Beyond_Imagination\GameObject\Position;\Beyond_Imagination\GameObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v7.1A\Include;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/Vector;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/GameObject/Scaling;$(SolutionDir)/Beyond_Imagination/GameObject/Rotation;$(SolutionDir)/Beyond_Imagination/GameObject/Position;$(SolutionDir)/Beyond_Imagination/GameObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v7.1A\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d10.lib;d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -78,18 +80,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
+    <ClInclude Include="Application\DirectxManager.h" />
     <ClInclude Include="GameObject\GameObject.h" />
-    <ClInclude Include="GameObject\Position\LocalPosition.h" />
     <ClInclude Include="GameObject\Position\PositionManager.h" />
     <ClInclude Include="GameObject\Rotation\RotationManager.h" />
+    <ClInclude Include="GameObject\Scaling\GlobalScale.h" />
     <ClInclude Include="GameObject\Scaling\ScaleManager.h" />
     <ClInclude Include="Global\Global.h" />
     <ClInclude Include="Global\Vector\Vector3.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Application\DirectxManager.cpp" />
+    <ClCompile Include="GameObject\GameObject.cpp" />
     <ClCompile Include="Global\Vector\Vector3.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Window.cpp" />

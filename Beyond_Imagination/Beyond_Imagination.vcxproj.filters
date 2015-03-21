@@ -38,16 +38,13 @@
       <UniqueIdentifier>{87d0bb99-834c-4def-ba62-996f9017a46b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Headerdateien\Application">
-      <UniqueIdentifier>{d7055a5c-8e15-4826-b065-1f5621b2694e}</UniqueIdentifier>
+      <UniqueIdentifier>{32c84d40-cee7-4d97-9f51-14c7234c4c53}</UniqueIdentifier>
     </Filter>
     <Filter Include="Quelldateien\Application">
-      <UniqueIdentifier>{8101c9c1-fa0c-47f8-83ee-76d0e0f6aa22}</UniqueIdentifier>
+      <UniqueIdentifier>{43a8ac80-070c-4f79-a9b6-91bad3827d54}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h">
-      <Filter>Headerdateien\Application</Filter>
-    </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -66,25 +63,31 @@
     <ClInclude Include="GameObject\GameObject.h">
       <Filter>Headerdateien\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject\Position\LocalPosition.h">
-      <Filter>Headerdateien\GameObject\Position</Filter>
+    <ClInclude Include="GameObject\Scaling\GlobalScale.h">
+      <Filter>Headerdateien\GameObject\Scaling</Filter>
     </ClInclude>
     <ClInclude Include="GameObject\Position\PositionManager.h">
       <Filter>Headerdateien\GameObject\Position</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\DirectxManager.h">
+      <Filter>Headerdateien\Application</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Application.cpp">
-      <Filter>Quelldateien\Application</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Global\Vector\Vector3.cpp">
       <Filter>Quelldateien\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject\GameObject.cpp">
+      <Filter>Quelldateien\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\DirectxManager.cpp">
+      <Filter>Quelldateien\Application</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #define WINDOW_H
 
 #include "Vector3.h"
+#include "Global.h"
 
 class Window
 {
