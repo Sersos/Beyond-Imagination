@@ -12,11 +12,14 @@ enum ShaderTypes
 
 class ShaderManager
 {
-	ShaderManager();
-	~ShaderManager();
+public:
+	ShaderManager();	
 
 	void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, uint16 id);
 	void useShader(ID3D11DeviceContext* deviceContext, uint16 id);
+
+	ID3D11VertexShader* getVertexShader(){ return vertexShader; };
+	ID3D11PixelShader* getPixelShader(){ return pixelShader; };
 	
 	void close();	
 

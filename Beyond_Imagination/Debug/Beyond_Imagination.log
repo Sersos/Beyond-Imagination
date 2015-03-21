@@ -55,5 +55,11 @@ c:\program files (x86)\microsoft directx sdk (june 2010)\include\d3d11.h(919): w
           c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50488): Siehe vorherige Definition von 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
 c:\program files (x86)\microsoft directx sdk (june 2010)\include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': Makro-Neudefinition
           c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50497): Siehe vorherige Definition von 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
-c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\application\directxmanager.cpp(13): warning C4101: 'hr': Unreferenzierte lokale Variable
+c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\application\directxmanager.cpp(16): warning C4101: 'hr': Unreferenzierte lokale Variable
+  Code wird generiert...
+  Überspringen... (keine relevanten Änderungen gefunden)
+  WorldObject.cpp
+  Unit.cpp
+  Object.cpp
+  ShaderManager.cpp
   Beyond_Imagination.vcxproj -> C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Debug\Beyond_Imagination.exe

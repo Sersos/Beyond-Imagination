@@ -1,4 +1,5 @@
 #include "DirectxManager.h"
+#include "ShaderManager.h"
 
 DirectxManager::DirectxManager()
 {
@@ -6,6 +7,8 @@ DirectxManager::DirectxManager()
 	deviceContext = 0;
 	swapChain = 0;
 	renderTargetView = 0;
+
+	shaderManager = new ShaderManager();
 }
 
 bool DirectxManager::initialize(HWND window)
@@ -45,6 +48,15 @@ bool DirectxManager::initialize(HWND window)
 	*/
 
 	return true;
+}
+
+void DirectxManager::beginScene()
+{
+	float backgroundColor[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);	
+
+	deviceContext->VSSetShader(shaderManager->getVertexShader(), NULL, 0);
+	deviceContext->PSSetShader(shaderManager->getPixelShader(), NULL, 0);	
 }
 
 void DirectxManager::presentScene()
