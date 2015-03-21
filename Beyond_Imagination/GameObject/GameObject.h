@@ -1,6 +1,11 @@
 //gameObject.h
 
-#include "Global.h"
+#include "
+#include "g"
+
+
+#define ONE 1
+
 
 
 
