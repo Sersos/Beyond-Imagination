@@ -8,8 +8,9 @@ DirectxManager::DirectxManager()
 	renderTargetView = 0;
 }
 
-void DirectxManager::initialize(HWND window)
+bool DirectxManager::initialize(HWND window)
 {
+	HRESULT hr;
 	ZeroMemory(&swapChainDesc, sizeof(DXGI_SWAP_CHAIN_DESC));
 	swapChainDesc.BufferCount = 1;
 	swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -23,8 +24,8 @@ void DirectxManager::initialize(HWND window)
 	swapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 
 	//not completed
-	
-	D3D11CreateDeviceAndSwapChain(
+	/*
+	hr = D3D11CreateDeviceAndSwapChain(
 		NULL,
 		D3D_DRIVER_TYPE_HARDWARE,
 		NULL,
@@ -38,6 +39,12 @@ void DirectxManager::initialize(HWND window)
 		NULL,
 		&deviceContext);
 
+	if (FAILED(hr))
+		return false;
+		
+	*/
+
+	return true;
 }
 
 void DirectxManager::presentScene()

@@ -53,13 +53,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v7.1A\Include;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/Vector;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/WorldObject/Scaling;$(SolutionDir)/Beyond_Imagination/WorldObject/Rotation;$(SolutionDir)/Beyond_Imagination/WorldObject/Position;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/Vector;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/WorldObject/Scaling;$(SolutionDir)/Beyond_Imagination/WorldObject/Rotation;$(SolutionDir)/Beyond_Imagination/WorldObject/Position;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v7.1A\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d10.lib;d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d10.lib;d3dx10.lib;d3d11.lib;d3dx11.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

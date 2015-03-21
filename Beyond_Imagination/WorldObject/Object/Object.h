@@ -3,24 +3,19 @@
 
 #include "DirectxManager.h"
 
-struct VertexPositionColor
+struct Vertex
 {
-	//D3DXVECTOR4 position;
-	//D3DXVECTOR4 color;
-};
-
-struct VertexPositionNormal
-{
-	//D3DXVECTOR4 position;
-	//D3DXVECTOR4 normal;
+	D3DXVECTOR3 position;
+	D3DXVECTOR4 color;
+	D3DXVECTOR3 normal;
 };
 
 class Object
 {
 public:
-	Object();
+	Object(ID3D11Device* device, ID3D11DeviceContext* deviceContext) { };
 
-	virtual void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext) = 0;
+	virtual void initialize(Vertex* vertex) = 0;
 	virtual void update(float delta) = 0;
 	virtual void render(ID3D11DeviceContext* deviceContext) = 0;
 	

@@ -7,6 +7,10 @@ class Unit : public WorldObject
 {
 public:
 	Unit();
+
+
+private:
+
 };
 
 #endif

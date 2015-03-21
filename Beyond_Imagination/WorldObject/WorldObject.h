@@ -6,8 +6,9 @@
 #include "ScaleManager.h"
 #include "Vector3.h"
 #include "DirectxManager.h"
+#include "Object.h"
 
-class WorldObject
+class WorldObject : public Object
 {
 public:
 	WorldObject(ID3D11Device* device, ID3D11DeviceContext* deviceContext,
@@ -26,7 +27,9 @@ private:
 	GlobalRotation rotation;
 	GlobalScale scale;
 
-	//matrix here
+	D3DXMATRIX worldMatrix;
+
+	bool active;
 	
 };
 

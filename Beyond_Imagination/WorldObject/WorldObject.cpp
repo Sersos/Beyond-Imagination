@@ -2,7 +2,7 @@
 #include "WorldObject.h"
 
 WorldObject::WorldObject(ID3D11Device* device, ID3D11DeviceContext* deviceContext,
-						Vector3& position, Vector3& rotation, Vector3& scale)
+	Vector3& position, Vector3& rotation, Vector3& scale) : Object(device, deviceContext)
 {
 	/*
 	this->position.x = position.x;
@@ -17,6 +17,8 @@ WorldObject::WorldObject(ID3D11Device* device, ID3D11DeviceContext* deviceContex
 	this->scale.y = scale.y;
 	this->scale.z = scale.z;	
 	*/
+
+	
 	
 }
 
