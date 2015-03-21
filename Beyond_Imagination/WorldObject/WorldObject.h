@@ -14,7 +14,7 @@ public:
 	WorldObject(ID3D11Device* device, ID3D11DeviceContext* deviceContext,
 				Vector3& position, Vector3& rotation, Vector3& scale);
 
-	virtual void update(float delta) = 0;
+	void update(float delta);
 	virtual void render(ID3D11DeviceContext* deviceContext, D3DXMATRIX& view, D3DXMATRIX& projection) = 0;
 	virtual void destroy() = 0;
 
@@ -28,8 +28,9 @@ private:
 	GlobalScale scale;
 
 	D3DXMATRIX worldMatrix;
-
-	bool active;
+	D3DXMATRIX translationMatrix;
+	D3DXMATRIX rotationMatrix;
+	D3DXMATRIX scalingMatrix;
 	
 };
 

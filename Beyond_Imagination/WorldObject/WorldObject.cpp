@@ -22,3 +22,15 @@ WorldObject::WorldObject(ID3D11Device* device, ID3D11DeviceContext* deviceContex
 	
 }
 
+void WorldObject::update(float delta)
+{
+	D3DXMATRIX translationMatrix;
+	D3DXMatrixTranslation(&translationMatrix, position.x, position.y, position.z);
+
+	D3DXMATRIX rotationX, rotationY, rotationZ, rotationMatrix;
+	D3DXMatrixRotationX(&rotationX, rotation.x);
+	D3DXMatrixRotationY(&rotationY, rotation.y);
+	D3DXMatrixRotationZ(&rotationZ, rotation.z);
+	rotationMatrix = rotationX * rotationY * rotationZ;
+}
+

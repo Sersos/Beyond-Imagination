@@ -13,10 +13,10 @@ struct Vertex
 class Object
 {
 public:
-	Object(ID3D11Device* device, ID3D11DeviceContext* deviceContext) { };
+	Object(ID3D11Device* device, ID3D11DeviceContext* deviceContext);
 
 	virtual void initialize(Vertex* vertex) = 0;
-	virtual void update(float delta) = 0;
+	void update(float delta);
 	virtual void render(ID3D11DeviceContext* deviceContext) = 0;
 	
 private:
