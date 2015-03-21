@@ -2,7 +2,7 @@
 
 #include <string>
 
-#define TITLE Beyond Imagenation
+#define TITLE Beyond Imagination
 #define CAMERA_MOVEMENT_SPEED 1.0
 #define CAMERA_ROTATE_SPEED 1.0
 

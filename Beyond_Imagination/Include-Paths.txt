@@ -14,3 +14,6 @@ $(SolutionDir)/Beyond_Imagination/WorldObject/Unit
 $(SolutionDir)/Beyond_Imagination/Player
 $(SolutionDir)/Beyond_Imagination/Player/Camera
 $(SolutionDir)/Beyond_Imagination/Player/Input
+$(SolutionDir)/Beyond_Imagination/models
+$(SolutionDir)/Beyond_Imagination/images
+$(SolutionDir)/Beyond_Imagination/sound

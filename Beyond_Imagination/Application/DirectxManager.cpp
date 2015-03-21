@@ -26,8 +26,7 @@ bool DirectxManager::initialize(HWND window)
 	swapChainDesc.Windowed = true;
 	swapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 
-	//not completed
-	
+	//not completed	
 	hr = D3D11CreateDeviceAndSwapChain(
 		NULL,
 		D3D_DRIVER_TYPE_HARDWARE,
@@ -45,16 +44,35 @@ bool DirectxManager::initialize(HWND window)
 	if (FAILED(hr))
 		return false;	
 
+	ID3D11Texture2D* pointerBackBuffer;
+	swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pointerBackBuffer);
+
+	device->CreateRenderTargetView(pointerBackBuffer, NULL, &renderTargetView);
+
+	pointerBackBuffer->Release();
+	pointerBackBuffer = 0;
+
+	deviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);
+
+	D3D11_VIEWPORT viewPort;
+	ZeroMemory(&viewPort, sizeof(D3D11_VIEWPORT));
+	viewPort.TopLeftX = 0;
+	viewPort.TopLeftY = 0;
+	viewPort.Width = DEFAULT_WINDOW_WIDTH;
+	viewPort.Height = DEFAULT_WINDOW_HEIGHT;
+
+	deviceContext->RSSetViewports(1, &viewPort);
+
 	return true;
 }
 
 void DirectxManager::beginScene()
 {
-	float backgroundColor[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float backgroundColor[4] = { 0.5f, 0.5f, 0, 0.5f };
 	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);	
 
-	deviceContext->VSSetShader(shaderManager->getVertexShader(), NULL, 0);
-	deviceContext->PSSetShader(shaderManager->getPixelShader(), NULL, 0);	
+	//deviceContext->VSSetShader(shaderManager->getVertexShader(), NULL, 0);
+	//deviceContext->PSSetShader(shaderManager->getPixelShader(), NULL, 0);	
 }
 
 void DirectxManager::presentScene()

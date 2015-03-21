@@ -1,7 +1,11 @@
 #include <windows.h>
 #include <windowsx.h>
 
+#include "DirectxManager.h"
+
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+
+DirectxManager* directxManager = NULL;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -40,10 +44,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	MSG msg;
 
 	//GameManager initialize here
+	directxManager = new DirectxManager();
+	directxManager->initialize(window);
+	directxManager->beginScene();
 
 	while (TRUE)
 	{
 		//GameManager render here
+		directxManager->beginScene();
+
+		directxManager->presentScene();
 
 
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -58,6 +68,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 
 	//GameManager close here
+	directxManager->close();
 
 	return msg.wParam;
 }

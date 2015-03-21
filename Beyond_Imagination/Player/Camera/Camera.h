@@ -20,13 +20,12 @@ public:
 	void update();
 
 	D3DXVECTOR3 getCameraPosition();
-
 	D3DXMATRIX getViewMatrix();
 	D3DXMATRIX getProjectionMatrix();
 
 private:
-	void rotateCamera();
-	void moveCamera();
+	void rotateCamera(D3DXVECTOR3& offset);
+	void moveCamera(D3DXVECTOR3& rotation);
 
 	D3DXVECTOR3 position;
 	D3DXVECTOR3 up;

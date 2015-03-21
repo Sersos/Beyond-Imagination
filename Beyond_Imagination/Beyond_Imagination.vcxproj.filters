@@ -169,5 +169,8 @@
     <Text Include="Shader list.txt">
       <Filter>Ressourcendateien</Filter>
     </Text>
+    <Text Include="Model list.txt">
+      <Filter>Ressourcendateien</Filter>
+    </Text>
   </ItemGroup>
 </Project>
