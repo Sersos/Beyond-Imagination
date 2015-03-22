@@ -6,18 +6,16 @@
 struct Vertex
 {
 	D3DXVECTOR3 position;
-	D3DXVECTOR4 color;
-	D3DXVECTOR3 normal;
+	D3DXVECTOR4 color;	
 };
 
 class Object
 {
 public:
-	Object(ID3D11Device* device, ID3D11DeviceContext* deviceContext);
+	Object();
 
-	virtual void initialize(Vertex* vertex) = 0;
-	void update(float delta);
-	virtual void render(ID3D11DeviceContext* deviceContext) = 0;
+	void initialize(ID3D11Device* device, Vertex vertex[]);	
+	void render(ID3D11DeviceContext* deviceContext);
 	
 private:
 	ID3D11Buffer* vertexBuffer;

@@ -2,10 +2,21 @@
 #include <windowsx.h>
 
 #include "DirectxManager.h"
+#include "Object.h"
+#include "ShaderManager.h"
+
+Vertex vertex[] = 
+{
+	{ D3DXVECTOR3(-0.5f, -0.5f, 0), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
+	{ D3DXVECTOR3(0.0f, 0.5f, 0), D3DXVECTOR4(0.0f, 1.0f, 0.0f, 1.0f) },
+	{ D3DXVECTOR3(0.5f, -0.5f, 0), D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f) }
+};
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 DirectxManager* directxManager = NULL;
+Object* object = NULL;
+ShaderManager* shaderManager = NULL;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -45,14 +56,20 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//GameManager initialize here
 	directxManager = new DirectxManager();
-	directxManager->initialize(window);
-	directxManager->beginScene();
+	directxManager->initialize(window);	
+
+	object = new Object();
+	object->initialize(directxManager->getDevice(), vertex);
+
+	shaderManager = new ShaderManager();
+	shaderManager->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), 0);
 
 	while (TRUE)
 	{
 		//GameManager render here
 		directxManager->beginScene();
 
+		object->render(directxManager->getDeviceContext());
 		directxManager->presentScene();
 
 
@@ -69,6 +86,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//GameManager close here
 	directxManager->close();
+	shaderManager->close();
 
 	return msg.wParam;
 }

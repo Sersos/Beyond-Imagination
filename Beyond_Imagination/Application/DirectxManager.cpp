@@ -69,10 +69,17 @@ bool DirectxManager::initialize(HWND window)
 void DirectxManager::beginScene()
 {
 	float backgroundColor[4] = { 0.5f, 0.5f, 0, 0.5f };
-	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);	
+	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);		
+}
 
-	//deviceContext->VSSetShader(shaderManager->getVertexShader(), NULL, 0);
-	//deviceContext->PSSetShader(shaderManager->getPixelShader(), NULL, 0);	
+ID3D11Device* DirectxManager::getDevice()
+{
+	return device;
+}
+
+ID3D11DeviceContext* DirectxManager::getDeviceContext()
+{
+	return deviceContext;
 }
 
 void DirectxManager::presentScene()
