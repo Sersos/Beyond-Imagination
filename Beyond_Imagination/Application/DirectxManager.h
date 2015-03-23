@@ -35,8 +35,7 @@ private:
 	IDXGISwapChain* swapChain;
 	ID3D11RenderTargetView* renderTargetView;
 	DXGI_SWAP_CHAIN_DESC swapChainDesc;
-
-	ShaderManager* shaderManager;
+	
 
 };
 

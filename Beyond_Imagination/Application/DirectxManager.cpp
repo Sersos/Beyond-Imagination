@@ -7,8 +7,6 @@ DirectxManager::DirectxManager()
 	deviceContext = 0;
 	swapChain = 0;
 	renderTargetView = 0;
-
-	shaderManager = new ShaderManager();
 }
 
 bool DirectxManager::initialize(HWND window)

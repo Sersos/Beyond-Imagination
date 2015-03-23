@@ -5,12 +5,7 @@
 #include "Object.h"
 #include "ShaderManager.h"
 
-Vertex vertex[] = 
-{
-	{ D3DXVECTOR3(0.0f, 0.5f, 0.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-	{ D3DXVECTOR3(0.5f, -0.5f, 0.0f), D3DXVECTOR4(0.0f, 1.0f, 0.0f, 1.0f) },
-	{ D3DXVECTOR3(-0.5f, -0.5f, 0.0f), D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f) }
-};
+
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -61,7 +56,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	directxManager->initialize(window);	
 	shaderManager->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), 0);
-	object->initialize(directxManager->getDevice(),directxManager->getDeviceContext(), vertex);
+	object->initialize(directxManager->getDevice(),directxManager->getDeviceContext());
 
 
 

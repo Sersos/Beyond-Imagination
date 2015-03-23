@@ -6,8 +6,15 @@ Object::Object()
 }
 
 
-void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext, Vertex vertex[])
+void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 {
+	Vertex vertex[] =
+	{
+		{ D3DXVECTOR3(0.0f, 0.5f, 0.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
+		{ D3DXVECTOR3(0.5f, -0.5f, 0.0f), D3DXVECTOR4(0.0f, 1.0f, 0.0f, 1.0f) },
+		{ D3DXVECTOR3(-0.5f, -0.5f, 0.0f), D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f) }
+	};
+	
 	D3D11_BUFFER_DESC bufferDesc;
 	ZeroMemory(&bufferDesc, sizeof(bufferDesc));
 

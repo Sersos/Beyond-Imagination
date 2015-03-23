@@ -1,15 +1,15 @@
 struct VOut
 {
-    float4 position : SV_POSITION;
-    float4 color : COLOR;
+    float4 Position : SV_POSITION;
+    float4 Color : COLOR;
 };
 
 VOut VShader(float4 position : POSITION, float4 color : COLOR)
 {
     VOut output;
 
-    output.position = position;
-    output.color = color;
+    output.Position = position;
+    output.Color = color;
 
     return output;
 }

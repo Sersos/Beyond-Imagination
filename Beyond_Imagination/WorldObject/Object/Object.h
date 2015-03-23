@@ -5,8 +5,8 @@
 
 struct Vertex
 {
-	D3DXVECTOR3 position;
-	D3DXVECTOR4 color;	
+	D3DXVECTOR3 Position;
+	D3DXVECTOR4 Color;	
 };
 
 class Object
@@ -14,7 +14,7 @@ class Object
 public:
 	Object();
 
-	void initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext, Vertex vertex[]);	
+	void initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext);	
 	void render(ID3D11DeviceContext* deviceContext);
 	
 
