@@ -18,6 +18,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	HWND window;
 	WNDCLASSEX windowClass;
 
+	directxManager = new DirectxManager();
+	shaderManager = new ShaderManager();
+	object = new Object();
+
 	ZeroMemory(&windowClass, sizeof(WNDCLASSEX));
 
 	windowClass.cbSize = sizeof(WNDCLASSEX);
@@ -50,21 +54,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	MSG msg;
 
 	//GameManager initialize here
-	directxManager = new DirectxManager();
-	shaderManager = new ShaderManager();
-	object = new Object();
-
 	directxManager->initialize(window);	
 	shaderManager->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), 0);
 	object->initialize(directxManager->getDevice(),directxManager->getDeviceContext());
 
-
-
 	while (TRUE)
 	{
-
-
-
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			TranslateMessage(&msg);

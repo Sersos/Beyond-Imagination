@@ -59,7 +59,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>d3d10.lib;d3dx10.lib;d3dx10d.lib;d3d11.lib;d3dx11.lib;d3dx11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d10.lib;d3dx10.lib;d3d11.lib;d3dx11.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,7 +86,6 @@
     <ClInclude Include="GameObject\Scaling\ScaleManager.h" />
     <ClInclude Include="Global\Global.h" />
     <ClInclude Include="Global\Shader\ShaderManager.h" />
-    <ClInclude Include="Global\Vector\Vector3.h" />
     <ClInclude Include="Player\Camera\Camera.h" />
     <ClInclude Include="Player\Input\Input.h" />
     <ClInclude Include="Player\Player.h" />
@@ -97,7 +96,6 @@
   <ItemGroup>
     <ClCompile Include="Application\DirectxManager.cpp" />
     <ClCompile Include="Global\Shader\ShaderManager.cpp" />
-    <ClCompile Include="Global\Vector\Vector3.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player\Camera\Camera.cpp" />
     <ClCompile Include="Player\Input\Input.cpp" />

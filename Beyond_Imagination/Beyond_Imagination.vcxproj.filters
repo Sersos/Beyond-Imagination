@@ -90,9 +90,6 @@
     <ClInclude Include="GameObject\Scaling\ScaleManager.h">
       <Filter>Headerdateien\WorldObject\Scaling</Filter>
     </ClInclude>
-    <ClInclude Include="Global\Vector\Vector3.h">
-      <Filter>Headerdateien\Global\Vector</Filter>
-    </ClInclude>
     <ClInclude Include="Global\Global.h">
       <Filter>Headerdateien\Global</Filter>
     </ClInclude>
@@ -127,9 +124,6 @@
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Global\Vector\Vector3.cpp">
-      <Filter>Quelldateien\Global\Vector</Filter>
     </ClCompile>
     <ClCompile Include="Application\DirectxManager.cpp">
       <Filter>Quelldateien\Application</Filter>
