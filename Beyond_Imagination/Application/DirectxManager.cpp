@@ -12,6 +12,8 @@ DirectxManager::DirectxManager()
 bool DirectxManager::initialize(HWND window)
 {
 	HRESULT hr;
+
+	//create swapChain desc
 	ZeroMemory(&swapChainDesc, sizeof(DXGI_SWAP_CHAIN_DESC));
 	swapChainDesc.BufferCount = 1;
 	swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -52,17 +54,17 @@ bool DirectxManager::initialize(HWND window)
 
 	deviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);
 
+	//create viewport for coordinates
 	D3D11_VIEWPORT viewPort;
 	ZeroMemory(&viewPort, sizeof(D3D11_VIEWPORT));
-	viewPort.TopLeftX = 0;
-	viewPort.TopLeftY = 0;
+	viewPort.TopLeftX = 0.0f;
+	viewPort.TopLeftY = 0.0f;	
+	viewPort.MaxDepth = 1.0f;
+	viewPort.MinDepth = 0.0f;
 	viewPort.Width = DEFAULT_WINDOW_WIDTH;
 	viewPort.Height = DEFAULT_WINDOW_HEIGHT;
 
 	deviceContext->RSSetViewports(1, &viewPort);
-
-
-
 	return true;
 }
 
