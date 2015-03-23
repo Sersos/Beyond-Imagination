@@ -84,9 +84,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject\Rotation\RotationManager.h">
       <Filter>Headerdateien\WorldObject\Rotation</Filter>
     </ClInclude>
@@ -129,9 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Global\Vector\Vector3.cpp">

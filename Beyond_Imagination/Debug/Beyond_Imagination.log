@@ -1,5 +1,4 @@
-﻿cl : Befehlszeile warning D9028: Fehler beim minimalen Neukompilieren, normale Erstellung wird durchgeführt.
-  DirectxManager.cpp
+﻿  Object.cpp
 c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': Makro-Neudefinition
           c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50092): Siehe vorherige Definition von 'DXGI_STATUS_OCCLUDED'
 c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': Makro-Neudefinition

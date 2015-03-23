@@ -5,7 +5,6 @@ Object::Object()
 
 }
 
-
 void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 {
 	Vertex vertex[] =
@@ -33,8 +32,7 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 	D3D11_MAPPED_SUBRESOURCE ms;
 	deviceContext->Map(vertexBuffer,NULL, D3D11_MAP_WRITE_DISCARD,NULL,&ms);
 	memcpy(ms.pData,vertex,sizeof(vertex));
-	deviceContext->Unmap(vertexBuffer,NULL);
-	
+	deviceContext->Unmap(vertexBuffer,NULL);	
 }
 
 void Object::render(ID3D11DeviceContext* deviceContext)
