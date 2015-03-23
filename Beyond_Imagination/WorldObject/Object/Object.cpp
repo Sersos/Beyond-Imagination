@@ -6,7 +6,7 @@ Object::Object()
 }
 
 
-void Object::initialize(ID3D11Device* device, Vertex vertex[])
+void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext, Vertex vertex[])
 {
 	D3D11_BUFFER_DESC bufferDesc;
 	ZeroMemory(&bufferDesc, sizeof(bufferDesc));
@@ -19,8 +19,15 @@ void Object::initialize(ID3D11Device* device, Vertex vertex[])
 	D3D11_SUBRESOURCE_DATA vertexData;
 	ZeroMemory(&vertexData, sizeof(D3D11_SUBRESOURCE_DATA));
 	vertexData.pSysMem = vertex;
+	
+	device->CreateBuffer(&bufferDesc,NULL,&vertexBuffer);
 
-	device->CreateBuffer(&bufferDesc, &vertexData, &vertexBuffer);
+	//from directXTutorial : copy vertices into buffer
+	D3D11_MAPPED_SUBRESOURCE ms;
+	deviceContext->Map(vertexBuffer,NULL, D3D11_MAP_WRITE_DISCARD,NULL,&ms);
+	memcpy(ms.pData,vertex,sizeof(vertex));
+	deviceContext->Unmap(vertexBuffer,NULL);
+	
 }
 
 void Object::render(ID3D11DeviceContext* deviceContext)
@@ -30,4 +37,5 @@ void Object::render(ID3D11DeviceContext* deviceContext)
 	deviceContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
 	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	deviceContext->Draw(3, 0);
+
 }

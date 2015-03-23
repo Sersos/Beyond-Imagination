@@ -7,9 +7,9 @@
 
 Vertex vertex[] = 
 {
-	{ D3DXVECTOR3(-0.5f, -0.5f, 0), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-	{ D3DXVECTOR3(0.0f, 0.5f, 0), D3DXVECTOR4(0.0f, 1.0f, 0.0f, 1.0f) },
-	{ D3DXVECTOR3(0.5f, -0.5f, 0), D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f) }
+	{ D3DXVECTOR3(0.0f, 0.5f, 0.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
+	{ D3DXVECTOR3(0.5f, -0.5f, 0.0f), D3DXVECTOR4(0.0f, 1.0f, 0.0f, 1.0f) },
+	{ D3DXVECTOR3(-0.5f, -0.5f, 0.0f), D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f) }
 };
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
@@ -56,21 +56,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//GameManager initialize here
 	directxManager = new DirectxManager();
-	directxManager->initialize(window);	
-
-	object = new Object();
-	object->initialize(directxManager->getDevice(), vertex);
-
 	shaderManager = new ShaderManager();
+	object = new Object();
+
+	directxManager->initialize(window);	
 	shaderManager->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), 0);
+	object->initialize(directxManager->getDevice(),directxManager->getDeviceContext(), vertex);
+
+
 
 	while (TRUE)
 	{
-		//GameManager render here
-		directxManager->beginScene();
 
-		object->render(directxManager->getDeviceContext());
-		directxManager->presentScene();
 
 
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -81,6 +78,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			if (msg.message == WM_QUIT)
 				break;
 		}
+
+		//GameManager render here
+		directxManager->beginScene();
+
+		object->render(directxManager->getDeviceContext());
+
+		directxManager->presentScene();
 
 	}
 

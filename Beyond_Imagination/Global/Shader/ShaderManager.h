@@ -18,17 +18,17 @@ public:
 	void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, uint16 id);
 	void useShader(ID3D11Device* device, ID3D11DeviceContext* deviceContext, uint16 id);
 
-	ID3D11VertexShader* getVertexShader(){ return vertexShader; };
-	ID3D11PixelShader* getPixelShader(){ return pixelShader; };
-	
+	//ID3D11VertexShader* getVertexShader(){ return vertexShader; };
+	//ID3D11PixelShader* getPixelShader(){ return pixelShader; };
+	ID3D11VertexShader* vertexShader;
+	ID3D11PixelShader* pixelShader;
 	void close();	
 
 private:
 	void compileShaderFromFile(WCHAR* filename, LPCSTR entryPoint, LPCSTR shaderModel, ID3D10Blob** blobout);
 
 	ID3D11InputLayout* inputLayout;
-	ID3D11VertexShader* vertexShader;
-	ID3D11PixelShader* pixelShader;
+
 	ID3D10Blob* vsBlob;
 	ID3D10Blob* psBlob;
 };

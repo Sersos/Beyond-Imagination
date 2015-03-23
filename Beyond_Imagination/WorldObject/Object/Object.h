@@ -14,12 +14,13 @@ class Object
 public:
 	Object();
 
-	void initialize(ID3D11Device* device, Vertex vertex[]);	
+	void initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext, Vertex vertex[]);	
 	void render(ID3D11DeviceContext* deviceContext);
 	
-private:
+
 	ID3D11Buffer* vertexBuffer;
 	ID3D11Buffer* indexBuffer;	
+
 	ID3D11ShaderResourceView* texture;
 };
 

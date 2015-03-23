@@ -63,6 +63,8 @@ bool DirectxManager::initialize(HWND window)
 
 	deviceContext->RSSetViewports(1, &viewPort);
 
+
+
 	return true;
 }
 
