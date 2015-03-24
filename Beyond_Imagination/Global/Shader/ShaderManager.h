@@ -14,7 +14,7 @@ struct ConstantBuffer
 enum ShaderTypes
 {
 	SHADER_POSITION_COLOR,
-	SHADER_POSITION_NORMAL,
+	SHADER_POSITION_TEXTURE_NORMAL, //terrain, player for example
 };
 
 class ShaderManager
