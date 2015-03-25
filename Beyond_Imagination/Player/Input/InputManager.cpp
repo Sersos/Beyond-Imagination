@@ -12,6 +12,22 @@ void InputManager::update()
 		GetCursorPos(&cursorPosition);	
 }
 
+bool InputManager::isKeyPressed(int button)
+{
+	if (InputManager::getKeyState(button))
+		return true;
+	else
+		return false;
+}
+
+bool InputManager::getKeyState(int button)
+{
+	if ((GetAsyncKeyState(button) & 0x8000) != 0)
+		return true;
+	else
+		return false;
+}
+
 bool InputManager::isCursorInWindow()
 {
 	return ScreenToClient(*window, &cursorPosition);

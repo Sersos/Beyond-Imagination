@@ -38,6 +38,9 @@ private:
 	//true if mouse is in window and window is active
 	bool isCursorInWindow();
 
+	//get status of specific button
+	bool getKeyState(int button);
+
 	HWND* window;
 	POINT cursorPosition;
 	
