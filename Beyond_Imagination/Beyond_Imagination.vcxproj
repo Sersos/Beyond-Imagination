@@ -87,7 +87,7 @@
     <ClInclude Include="Global\Global.h" />
     <ClInclude Include="Global\Shader\ShaderManager.h" />
     <ClInclude Include="Player\Camera\Camera.h" />
-    <ClInclude Include="Player\Input\Input.h" />
+    <ClInclude Include="Player\Input\InputManager.h" />
     <ClInclude Include="Player\Player.h" />
     <ClInclude Include="WorldObject\Object\Object.h" />
     <ClInclude Include="WorldObject\Unit\Unit.h" />
@@ -98,7 +98,7 @@
     <ClCompile Include="Global\Shader\ShaderManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player\Camera\Camera.cpp" />
-    <ClCompile Include="Player\Input\Input.cpp" />
+    <ClCompile Include="Player\Input\InputManager.cpp" />
     <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="WorldObject\Object\Object.cpp" />
     <ClCompile Include="WorldObject\Unit\Unit.cpp" />
