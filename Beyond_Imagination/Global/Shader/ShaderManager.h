@@ -36,9 +36,7 @@ private:
 	ID3DX11EffectTechnique* effectTechnique;
 	ID3DX11EffectMatrixVariable* worldViewProjection;
 
-	D3DXMATRIX world;
-	D3DXMATRIX view;
-	D3DXMATRIX projection;
+	D3DXMATRIX _worldViewProjection;
 };
 
 #endif

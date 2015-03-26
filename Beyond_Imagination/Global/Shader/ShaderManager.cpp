@@ -10,9 +10,7 @@ ShaderManager::ShaderManager() : worldViewProjection(0)
 
 void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, D3DXMATRIX world, D3DXMATRIX view, D3DXMATRIX projection)
 {
-	this->world = world;
-	this->view = view;
-	this->projection = projection;
+	_worldViewProjection = world * view * projection;
 
 	HRESULT result;
 	ID3D10Blob* compiledShader;
@@ -38,14 +36,10 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 
 void ShaderManager::render(ID3D11DeviceContext* deviceContext, Object* object)
 {
-	D3DXMATRIX _worldViewProjection = world * view * projection;
 	worldViewProjection->SetMatrix(reinterpret_cast<float*>(&_worldViewProjection));
 
 	D3DX11_TECHNIQUE_DESC techniqueDesc;
 	effectTechnique->GetDesc(&techniqueDesc);
-
-	//get indexbuffer from object
-	
 	
 	for (UINT p = 0; p < techniqueDesc.Passes; ++p)
 	{
@@ -66,8 +60,6 @@ void ShaderManager::buildInputLayout(ID3D11Device* device)
 	D3DX11_PASS_DESC passDesc;
 	effectTechnique->GetPassByIndex(0)->GetDesc(&passDesc);
 	device->CreateInputLayout(layout, 2, passDesc.pIAInputSignature, passDesc.IAInputSignatureSize, &inputLayout);
-
-
 }
 
 void ShaderManager::close()

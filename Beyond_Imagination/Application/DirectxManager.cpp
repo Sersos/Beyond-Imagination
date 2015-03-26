@@ -61,7 +61,7 @@ bool DirectxManager::initialize(HWND window)
 	pointerBackBuffer = 0;
 
 	//depth buffer desc
-	ZeroMemory(&depthBufferDesc, sizeof(D3D11_TEXTURE2D_DESC));
+	ZeroMemory(&depthBufferDesc, sizeof(depthBufferDesc));
 	depthBufferDesc.Width = DEFAULT_WINDOW_WIDTH;
 	depthBufferDesc.Height = DEFAULT_WINDOW_HEIGHT;
 	depthBufferDesc.MipLevels = 1;
@@ -79,7 +79,7 @@ bool DirectxManager::initialize(HWND window)
 		return false;
 
 	//depth stencil desc
-	ZeroMemory(&depthStencilDesc, sizeof(D3D11_DEPTH_STENCIL_DESC));
+	ZeroMemory(&depthStencilDesc, sizeof(depthStencilDesc));
 	depthStencilDesc.DepthEnable = true;
 	depthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
 	depthStencilDesc.DepthFunc = D3D11_COMPARISON_LESS;
@@ -155,7 +155,7 @@ void DirectxManager::beginScene()
 {
 	float backgroundColor[4] = { 0.5f, 0.5f, 0, 0.5f };
 	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);	
-	deviceContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+	deviceContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
 
 ID3D11Device* DirectxManager::getDevice()

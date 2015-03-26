@@ -5,7 +5,7 @@ Object::Object()
 	vertexBuffer	= 0;
 	indexBuffer		= 0;
 
-	D3DXMatrixIdentity(&world);
+	
 }
 
 void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
@@ -19,14 +19,14 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 	//create vertices
 	Vertex vertex[] =
 	{
-		{ D3DXVECTOR3(-1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 0.0f) },
-		{ D3DXVECTOR3(-1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(+1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 0.0f) },
-		{ D3DXVECTOR3(+1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(-1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(-1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(+1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(+1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) }
+		D3DXVECTOR3(-1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 0.0f),
+		D3DXVECTOR3(-1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 0.0f),
+		D3DXVECTOR3(+1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(-1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(-1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f)
 	};
 	
 	//create vertexbuffer desc	
@@ -48,7 +48,7 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 	memcpy(ms.pData, vertex, sizeof(vertex));
 	deviceContext->Unmap(vertexBuffer, NULL);	
 
-	UINT indices[] = {
+	DWORD indices[] = {
 		// front face
 		0, 1, 2,
 		0, 2, 3,
@@ -76,8 +76,8 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 
 	//create indexbuffer desc
 	ZeroMemory(&indexBufferDesc, sizeof(indexBufferDesc));
-	indexBufferDesc.Usage = D3D11_USAGE_IMMUTABLE;
-	indexBufferDesc.ByteWidth = sizeof(UINT) * 36;
+	indexBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+	indexBufferDesc.ByteWidth = sizeof(DWORD) * 36;
 	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	indexBufferDesc.CPUAccessFlags = 0;
 	
@@ -85,7 +85,9 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 	indexData.pSysMem = indices;
 
 	//create buffer
-	device->CreateBuffer(&indexBufferDesc, &indexData, &indexBuffer);	
+	device->CreateBuffer(&indexBufferDesc, &indexData, &indexBuffer);
+
+	D3DXMatrixIdentity(&world);
 }
 
 void Object::render(ID3D11DeviceContext* deviceContext)

@@ -39,8 +39,7 @@ private:
 	ID3D11DepthStencilState* depthStencilState;
 	ID3D11DepthStencilView* depthStencilView;
 	ID3D11RasterizerState* rasterizerState;
-	DXGI_SWAP_CHAIN_DESC swapChainDesc;
-	
+	DXGI_SWAP_CHAIN_DESC swapChainDesc;	
 
 };
 
