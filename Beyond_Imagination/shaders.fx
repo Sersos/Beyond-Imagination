@@ -1,4 +1,4 @@
-cbuffer ConstantBuffer
+cbuffer ConstantBuffer : register (b0)
 {
 	matrix worldViewProjection;
 }
