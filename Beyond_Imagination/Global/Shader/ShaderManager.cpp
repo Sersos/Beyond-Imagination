@@ -32,6 +32,8 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	worldViewProjection = effect->GetVariableByName("worldViewProjection")->AsMatrix();
 
 	buildInputLayout(device);	
+
+	deviceContext->IASetInputLayout(inputLayout);
 }
 
 void ShaderManager::render(ID3D11DeviceContext* deviceContext, Object* object)
@@ -43,11 +45,12 @@ void ShaderManager::render(ID3D11DeviceContext* deviceContext, Object* object)
 	effectTechnique->GetDesc(&techniqueDesc);
 
 	//get indexbuffer from object
-	object->render(deviceContext);
+	
 	
 	for (UINT p = 0; p < techniqueDesc.Passes; ++p)
 	{
-		effectTechnique->GetPassByIndex(p)->Apply(0, deviceContext);		
+		effectTechnique->GetPassByIndex(p)->Apply(0, deviceContext);
+		object->render(deviceContext);
 		deviceContext->DrawIndexed(36, 0, 0);
 	}
 }
@@ -63,6 +66,8 @@ void ShaderManager::buildInputLayout(ID3D11Device* device)
 	D3DX11_PASS_DESC passDesc;
 	effectTechnique->GetPassByIndex(0)->GetDesc(&passDesc);
 	device->CreateInputLayout(layout, 2, passDesc.pIAInputSignature, passDesc.IAInputSignatureSize, &inputLayout);
+
+
 }
 
 void ShaderManager::close()

@@ -77,7 +77,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		//GameManager render here
 		directxManager->beginScene();		
 		shaderManager->render(directxManager->getDeviceContext(), object);
-
 		directxManager->presentScene();
 
 	}
