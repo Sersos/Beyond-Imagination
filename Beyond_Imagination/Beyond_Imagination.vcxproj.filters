@@ -120,6 +120,9 @@
     <ClInclude Include="Player\Input\InputManager.h">
       <Filter>Headerdateien\Player\Input</Filter>
     </ClInclude>
+    <ClInclude Include="Global\Material\Material.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -148,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="Player\Input\InputManager.cpp">
       <Filter>Quelldateien\Player\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Global\Material\Material.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -35,7 +35,7 @@ private:
 	ID3D11PixelShader* pixelShader;
 	ID3D10Blob* vsBlob;
 	ID3D10Blob* psBlob;
-	ID3D11Buffer* matrixBuffer;
+	ID3D11Buffer* matrixBuffer;	
 
 	D3DXMATRIX world;
 	D3DXMATRIX view;
