@@ -4,11 +4,12 @@
 #include "DirectxManager.h"
 #include "Global.h"
 
+class Object;
+
 struct ConstantBuffer
 {
-	D3DXMATRIX world;
-	D3DXMATRIX view;
-	D3DXMATRIX projection;
+	//multiply world & view & projection matrix
+	D3DXMATRIX worldViewProjection;
 };
 
 enum ShaderTypes
@@ -22,20 +23,18 @@ class ShaderManager
 public:
 	ShaderManager();	
 
-	void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, uint16 id);
-	void useShader(ID3D11Device* device, ID3D11DeviceContext* deviceContext, uint16 id);	
-	void render(ID3D11DeviceContext* deviceContext, D3DXMATRIX world, D3DXMATRIX view, D3DXMATRIX projection);
+	void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, D3DXMATRIX world, D3DXMATRIX view, D3DXMATRIX projection);
+	void update();
+	void render(ID3D11DeviceContext* deviceContext, Object* object);
 	void close();	
 
-private:
-	void compileShaderFromFile(WCHAR* filename, LPCSTR entryPoint, LPCSTR shaderModel, ID3D10Blob** blobout);
+private:	
+	void buildInputLayout(ID3D11Device* device);
 
 	ID3D11InputLayout* inputLayout;
-	ID3D11VertexShader* vertexShader;
-	ID3D11PixelShader* pixelShader;
-	ID3D10Blob* vsBlob;
-	ID3D10Blob* psBlob;
-	ID3D11Buffer* matrixBuffer;	
+	ID3DX11Effect* effect;
+	ID3DX11EffectTechnique* effectTechnique;
+	ID3DX11EffectMatrixVariable* worldViewProjection;
 
 	D3DXMATRIX world;
 	D3DXMATRIX view;

@@ -6,6 +6,7 @@
 #include <D3DX10.h>
 #include <D3D11.h>
 #include <D3DX11.h>
+#include <d3dx11effect.h>
 #include <Windows.h>
 #include <WindowsX.h>
 
@@ -37,6 +38,7 @@ private:
 	ID3D11Texture2D* depthStencilBuffer;
 	ID3D11DepthStencilState* depthStencilState;
 	ID3D11DepthStencilView* depthStencilView;
+	ID3D11RasterizerState* rasterizerState;
 	DXGI_SWAP_CHAIN_DESC swapChainDesc;
 	
 

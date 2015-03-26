@@ -1,3 +1,8 @@
+cbuffer ConstantBuffer
+{
+	matrix worldViewProjection;
+}
+
 struct VOut
 {
     float4 Position : SV_POSITION;
@@ -8,7 +13,8 @@ VOut VShader(float4 position : POSITION, float4 color : COLOR)
 {
     VOut output;
 
-    output.Position = position;
+	//mul = multiply
+	output.Position = mul(position, worldViewProjection);
     output.Color = color;
 
     return output;
@@ -18,4 +24,14 @@ VOut VShader(float4 position : POSITION, float4 color : COLOR)
 float4 PShader(float4 position : SV_POSITION, float4 color : COLOR) : SV_TARGET
 {
     return color;
+}
+
+technique11 C
+{
+	pass P0
+	{
+		SetVertexShader( CompileShader( vs_5_0, VShader() ) );
+			SetGeometryShader(NULL);
+		SetPixelShader( CompileShader( ps_5_0, PShader()  ) );
+	}
 }

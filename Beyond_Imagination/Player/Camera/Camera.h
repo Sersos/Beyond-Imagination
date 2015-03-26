@@ -4,13 +4,6 @@
 #include "DirectxManager.h"
 #include "Global.h"
 
-struct ConstantBuffer
-{
-	D3DXMATRIX view;
-	D3DXMATRIX projection;
-	D3DXMATRIX world;
-};
-
 class Camera
 {
 public:

@@ -4,6 +4,7 @@
 #include "DirectxManager.h"
 #include "Object.h"
 #include "ShaderManager.h"
+#include "Camera.h"
 
 
 
@@ -12,6 +13,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 DirectxManager* directxManager = NULL;
 Object* object = NULL;
 ShaderManager* shaderManager = NULL;
+Camera* camera = NULL;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -21,6 +23,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	directxManager = new DirectxManager();
 	shaderManager = new ShaderManager();
 	object = new Object();
+	camera = new Camera();
 
 	ZeroMemory(&windowClass, sizeof(WNDCLASSEX));
 
@@ -55,8 +58,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//GameManager initialize here
 	directxManager->initialize(window);	
-	shaderManager->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), 0);
-	object->initialize(directxManager->getDevice(),directxManager->getDeviceContext());
+	camera->initialize(D3DXVECTOR3(2.0f, 2.0f, 5.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	shaderManager->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), object->getWorldMatrix(), 
+							camera->getViewMatrix(), camera->getProjectionMatrix());
+	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext());
 
 	while (TRUE)
 	{
@@ -70,9 +75,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 
 		//GameManager render here
-		directxManager->beginScene();
-
-		object->render(directxManager->getDeviceContext());
+		directxManager->beginScene();		
+		shaderManager->render(directxManager->getDeviceContext(), object);
 
 		directxManager->presentScene();
 

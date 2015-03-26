@@ -17,11 +17,14 @@ public:
 	void initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext);	
 	void render(ID3D11DeviceContext* deviceContext);
 
+	D3DXMATRIX getWorldMatrix();
+
 private:
 	ID3D11Buffer* vertexBuffer;
 	ID3D11Buffer* indexBuffer;	
 
-	ID3D11ShaderResourceView* texture;
+	D3DXMATRIX world;
+	
 };
 
 #endif

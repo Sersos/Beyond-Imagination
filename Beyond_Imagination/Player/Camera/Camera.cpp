@@ -15,7 +15,7 @@ void Camera::initialize(D3DXVECTOR3& position, D3DXVECTOR3& target)
 
 	D3DXMatrixPerspectiveFovLH(&projectionMatrix, 0.4f * 3.14f /* default*/,
 		(float)DEFAULT_WINDOW_WIDTH / DEFAULT_WINDOW_HEIGHT,
-		1.0f,
+		0.1f,
 		DEFAULT_VIEW_RANGE);
 }
 

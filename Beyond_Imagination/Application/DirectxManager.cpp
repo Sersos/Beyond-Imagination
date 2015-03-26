@@ -10,6 +10,7 @@ DirectxManager::DirectxManager()
 	depthStencilBuffer = 0;
 	depthStencilState = 0;
 	depthStencilView = 0;
+	rasterizerState = 0;
 }
 
 bool DirectxManager::initialize(HWND window)
@@ -17,6 +18,8 @@ bool DirectxManager::initialize(HWND window)
 	HRESULT hr;
 	D3D11_TEXTURE2D_DESC depthBufferDesc;
 	D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
+	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
+	D3D11_RASTERIZER_DESC rasterizerDesc;
 
 	//create swapChain desc
 	ZeroMemory(&swapChainDesc, sizeof(DXGI_SWAP_CHAIN_DESC));
@@ -100,10 +103,39 @@ bool DirectxManager::initialize(HWND window)
 	//create the depth stencil state
 	hr = device->CreateDepthStencilState(&depthStencilDesc, &depthStencilState);
 
-	//initalize other 3D stuff
+	//finally set depth stencil state
+	deviceContext->OMSetDepthStencilState(depthStencilState, 1);
 
+	//fill depthstencilviewdesc with data
+	ZeroMemory(&depthStencilViewDesc, sizeof(depthStencilViewDesc));
+	depthStencilViewDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+	depthStencilViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+	depthStencilViewDesc.Texture2D.MipSlice = 0;
 
-	deviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);
+	//create depthstencilview
+	hr = device->CreateDepthStencilView(depthStencilBuffer, &depthStencilViewDesc, &depthStencilView);
+	if (FAILED(hr))
+		return false;
+
+	deviceContext->OMSetRenderTargets(1, &renderTargetView, depthStencilView);
+
+	//setup rasterizerdesc
+	rasterizerDesc.AntialiasedLineEnable = false;
+	rasterizerDesc.CullMode = D3D11_CULL_BACK;
+	rasterizerDesc.DepthBias = 0;
+	rasterizerDesc.DepthBiasClamp = 0.0f;
+	rasterizerDesc.DepthClipEnable = true;
+	rasterizerDesc.FillMode = D3D11_FILL_SOLID;
+	rasterizerDesc.FrontCounterClockwise = false; 
+	rasterizerDesc.MultisampleEnable = false;
+	rasterizerDesc.ScissorEnable = false; 
+	rasterizerDesc.SlopeScaledDepthBias = 0.0f;
+
+	//create rasterizerstate
+	hr = device->CreateRasterizerState(&rasterizerDesc, &rasterizerState);
+
+	//set rasterizerstate
+	deviceContext->RSSetState(rasterizerState);
 
 	//create viewport for coordinates
 	D3D11_VIEWPORT viewPort;
@@ -122,7 +154,8 @@ bool DirectxManager::initialize(HWND window)
 void DirectxManager::beginScene()
 {
 	float backgroundColor[4] = { 0.5f, 0.5f, 0, 0.5f };
-	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);		
+	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);	
+	deviceContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 }
 
 ID3D11Device* DirectxManager::getDevice()
