@@ -36,6 +36,8 @@ public:
 	virtual void createVertexLayout(ID3D11Device* device, const D3D11_INPUT_ELEMENT_DESC* pLayout,UINT numElements, ID3D11InputLayout** inputLayout);
 	virtual void setDiffuseColor(D3DXCOLOR);
 	virtual void setAmbientColor(D3DXCOLOR);
+	virtual void setupPerObject(const D3DXMATRIX& worldMatrix, const D3DXMATRIX& viewMatrix, const D3DXMATRIX& projectionMatrix);
+	virtual void setupPerFrame();
 	ID3DX11Effect* getEffect();
 	ID3DX11EffectTechnique* getTechnique();
 
