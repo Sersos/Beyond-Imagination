@@ -1,6 +1,6 @@
 #include "Material.h"
 
-Material::Material(WCHAR _effectFileName, std::string _techniqueName):
+Material::Material(ID3D11Device* device, WCHAR _effectFileName, CHAR _techniqueName) :
 diffuseColor(1.0f, 1.0f, 1.0f, 1.0f), ambientColor(0.5f, 0.5f, 0.5f, 0.5f)
 {
 	//set Parameters	
@@ -22,29 +22,45 @@ void Material::setup()
 	if (materialDiffuseColorVariable)
 		materialDiffuseColorVariable->SetFloatVector(diffuseColor);
 }
+//set Matrix von Effect
+void Material::setupPerObject(const D3DXMATRIX& world, const D3DXMATRIX& view, const D3DXMATRIX& worldViewProjection)
+{
+	effect->GetVariableByName("world")->AsMatrix()->SetMatrix((float*)&world);
+	effect->GetVariableByName("view")->AsMatrix()->SetMatrix((float*)&view);
+	effect->GetVariableByName("worldViewProjection")->AsMatrix()->SetMatrix((float*)&worldViewProjection);
+}
+//set Light
+void Material::setupPerFrame(/*const Light* light*/)
+{
+	D3DXVECTOR3 lightDir;
+	D3DXVECTOR3 lightDiffuseColor;
+
+	effect->GetVariableByName("lightDir")->AsVector()->SetFloatVector(lightDir);
+	effect->GetVariableByName("lightDiffuse")->AsVector()->SetFloatVector(lightDiffuseColor);
+	
+}
 //Loading shader and get Technique
 void Material::create(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
-	//set Material parameters to the Effect
-	materialAmbientColorVariable = effect->GetVariableByName("materialAmbientColor")->AsVector();
-	materialDiffuseColorVariable = effect->GetVariableByName("materialDiffuseColor")->AsVector();
 	
 	device->GetImmediateContext(&deviceContext);
 
-	DWORD shaderFlag = D3D10_SHADER_ENABLE_STRICTNESS;
+	//set Material parameters to the Effect
+	materialAmbientColorVariable = effect->GetVariableByName("materialAmbientColor")->AsVector();
+	materialDiffuseColorVariable = effect->GetVariableByName("materialDiffuseColor")->AsVector();
 
+	// set effectfile path
+	//WCHAR str[MAX_PATH] = L"Global\Effect\effect.fx";
+
+	DWORD shaderFlag = D3D10_SHADER_ENABLE_STRICTNESS;
 	
 	ID3DBlob* blob = NULL;
+	HRESULT result;
 
-	compileShaderFromFile(&effectFileName, "", "fx_5_0", shaderFlag, &blob);
+	result = D3DX11CompileFromFile(L"effect.fx", NULL, NULL, NULL, "fx_5_0", NULL, NULL, NULL, &blob, NULL, NULL);
 	D3DX11CreateEffectFromMemory(blob->GetBufferPointer(),blob->GetBufferSize(),shaderFlag,device,&effect);
 
 	technique = effect->GetTechniqueByName(techniqueName.c_str());
-}
-//D3DX11CompileFromFile with less parameters
-void Material::compileShaderFromFile(WCHAR* filename, LPCSTR entryPoint, LPCSTR shaderModel,DWORD flag, ID3D10Blob** blobout)
-{
-	D3DX11CompileFromFile(filename, NULL, NULL, entryPoint, shaderModel, flag, NULL, NULL, blobout, NULL, NULL);
 }
 
 void Material::createVertexLayout(ID3D11Device* device, const D3D11_INPUT_ELEMENT_DESC* layout, UINT numElements, ID3D11InputLayout** inputLayout)

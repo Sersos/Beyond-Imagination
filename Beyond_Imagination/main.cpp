@@ -5,6 +5,7 @@
 #include "Object.h"
 #include "ShaderManager.h"
 #include "Camera.h"
+#include "Material.h"
 
 
 
@@ -14,6 +15,7 @@ DirectxManager* directxManager = NULL;
 Object* object = NULL;
 ShaderManager* shaderManager = NULL;
 Camera* camera = NULL;
+Material* material = NULL;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -24,6 +26,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	shaderManager = new ShaderManager();
 	object = new Object();
 	camera = new Camera();
+	
 
 	ZeroMemory(&windowClass, sizeof(WNDCLASSEX));
 
@@ -59,6 +62,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//GameManager initialize here
 	directxManager->initialize(window);	
 	camera->initialize(D3DXVECTOR3(2.0f, 2.0f, -5.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+
 	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext());
 	shaderManager->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), object->getWorldMatrix(), 
 							camera->getViewMatrix(), camera->getProjectionMatrix());	

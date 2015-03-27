@@ -15,7 +15,7 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	HRESULT result;
 	ID3D10Blob* compiledShader;
 
-	result = D3DX11CompileFromFile(L"shaders.fx", 0, 0, 0, "fx_5_0", 0, 0, 0, &compiledShader, NULL, 0);
+	result = D3DX11CompileFromFile(L"effect.fx", 0, 0, 0, "fx_5_0", 0, 0, 0, &compiledShader, NULL, 0);
 	if (FAILED(result))
 		MessageBox(0, L"Cant compile Shader", 0, MB_OK);
 
@@ -26,7 +26,7 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	//can be released here
 	//compiledShader->Release();
 
-	effectTechnique = effect->GetTechniqueByName("C");
+	effectTechnique = effect->GetTechniqueByName("RenderScene");
 	worldViewProjection = effect->GetVariableByName("worldViewProjection")->AsMatrix();
 
 	buildInputLayout(device);	

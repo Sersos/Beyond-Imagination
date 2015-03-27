@@ -167,4 +167,7 @@
       <Filter>Ressourcendateien</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="effect.fx" />
+  </ItemGroup>
 </Project>
