@@ -1,7 +1,4 @@
-cbuffer ConstantBuffer : register (b0)
-{
-	matrix worldViewProjection;
-}
+matrix worldViewProjection;
 
 struct VOut
 {

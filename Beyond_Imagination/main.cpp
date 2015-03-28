@@ -61,14 +61,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//GameManager initialize here
 	directxManager->initialize(window);	
-	camera->initialize(D3DXVECTOR3(2.0f, 2.0f, -5.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-
+	camera->initialize(D3DXVECTOR3(1.5f, 2.0f, -10.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	shaderManager->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), object->getWorldMatrix(),
+		camera->getViewMatrix(), camera->getProjectionMatrix());
 	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext());
-	shaderManager->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), object->getWorldMatrix(), 
-							camera->getViewMatrix(), camera->getProjectionMatrix());	
+	
 
 	while (TRUE)
 	{
+		//GameManager render here
+		directxManager->beginScene();
+		object->render(directxManager->getDeviceContext(), shaderManager);
+		shaderManager->render(directxManager->getDeviceContext());
+		
+		directxManager->presentScene();
+		
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			TranslateMessage(&msg);
@@ -77,11 +84,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			if (msg.message == WM_QUIT)
 				break;
 		}
-
-		//GameManager render here
-		directxManager->beginScene();		
-		shaderManager->render(directxManager->getDeviceContext(), object);
-		directxManager->presentScene();
 
 	}
 

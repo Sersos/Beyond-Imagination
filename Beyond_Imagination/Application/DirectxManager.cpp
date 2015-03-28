@@ -29,7 +29,7 @@ bool DirectxManager::initialize(HWND window)
 	swapChainDesc.BufferDesc.Height = 720; // window height
 	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	swapChainDesc.OutputWindow = window;
-	swapChainDesc.SampleDesc.Count = 4;
+	swapChainDesc.SampleDesc.Count = 1;
 	swapChainDesc.SampleDesc.Quality = 0;
 	swapChainDesc.Windowed = true;
 	swapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
@@ -61,7 +61,7 @@ bool DirectxManager::initialize(HWND window)
 	pointerBackBuffer = 0;
 
 	//depth buffer desc
-	ZeroMemory(&depthBufferDesc, sizeof(depthBufferDesc));
+	ZeroMemory(&depthBufferDesc, sizeof(D3D11_TEXTURE2D_DESC));
 	depthBufferDesc.Width = DEFAULT_WINDOW_WIDTH;
 	depthBufferDesc.Height = DEFAULT_WINDOW_HEIGHT;
 	depthBufferDesc.MipLevels = 1;
@@ -79,7 +79,7 @@ bool DirectxManager::initialize(HWND window)
 		return false;
 
 	//depth stencil desc
-	ZeroMemory(&depthStencilDesc, sizeof(depthStencilDesc));
+	ZeroMemory(&depthStencilDesc, sizeof(D3D11_DEPTH_STENCIL_DESC));
 	depthStencilDesc.DepthEnable = true;
 	depthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
 	depthStencilDesc.DepthFunc = D3D11_COMPARISON_LESS;
@@ -107,7 +107,7 @@ bool DirectxManager::initialize(HWND window)
 	deviceContext->OMSetDepthStencilState(depthStencilState, 1);
 
 	//fill depthstencilviewdesc with data
-	ZeroMemory(&depthStencilViewDesc, sizeof(depthStencilViewDesc));
+	ZeroMemory(&depthStencilViewDesc, sizeof(D3D11_DEPTH_STENCIL_VIEW_DESC));
 	depthStencilViewDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
 	depthStencilViewDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
 	depthStencilViewDesc.Texture2D.MipSlice = 0;
@@ -120,8 +120,9 @@ bool DirectxManager::initialize(HWND window)
 	deviceContext->OMSetRenderTargets(1, &renderTargetView, depthStencilView);
 
 	//setup rasterizerdesc
+	ZeroMemory(&rasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
 	rasterizerDesc.AntialiasedLineEnable = false;
-	rasterizerDesc.CullMode = D3D11_CULL_BACK;
+	rasterizerDesc.CullMode = D3D11_CULL_NONE;
 	rasterizerDesc.DepthBias = 0;
 	rasterizerDesc.DepthBiasClamp = 0.0f;
 	rasterizerDesc.DepthClipEnable = true;
@@ -155,7 +156,7 @@ void DirectxManager::beginScene()
 {
 	float backgroundColor[4] = { 0.5f, 0.5f, 0, 0.5f };
 	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);	
-	deviceContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+	deviceContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 }
 
 ID3D11Device* DirectxManager::getDevice()

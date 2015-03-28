@@ -15,7 +15,9 @@ public:
 	Object();
 
 	void initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext);	
-	void render(ID3D11DeviceContext* deviceContext);
+	void render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager);
+
+	ID3D11Buffer** GetIndexBuffer() { return &indexBuffer; };
 
 	D3DXMATRIX getWorldMatrix();
 

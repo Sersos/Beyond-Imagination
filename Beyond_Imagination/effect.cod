@@ -115,7 +115,7 @@ fxgroup
                 //   o1.x <- <VShader return value>.Diffuse.x; o1.y <- <VShader return value>.Diffuse.y; o1.z <- <VShader return value>.Diffuse.z; o1.w <- <VShader return value>.Diffuse.w; 
                 //   o0.x <- <VShader return value>.Position.x; o0.y <- <VShader return value>.Position.y; o0.z <- <VShader return value>.Position.z; o0.w <- <VShader return value>.Position.w
                 //
-                #line 46 "D:\SpieleEntwicklung\DirectX\VincentJannik\Code\Beyond-Imagination\Beyond_Imagination\effect.fx"
+                #line 46 "C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\effect.fx"
                 dp4 r0.x, v0.xyzw, cb0[8].xyzw  // r0.x <- o.Position.x
                 dp4 r0.y, v0.xyzw, cb0[9].xyzw  // r0.y <- o.Position.y
                 dp4 r0.z, v0.xyzw, cb0[10].xyzw  // r0.z <- o.Position.z
@@ -190,7 +190,7 @@ fxgroup
                 //   v2.x <- o.TextureUV.x; v2.y <- o.TextureUV.y; 
                 //   o0.x <- <PShader return value>.x; o0.y <- <PShader return value>.y; o0.z <- <PShader return value>.z; o0.w <- <PShader return value>.w
                 //
-                #line 63 "D:\SpieleEntwicklung\DirectX\VincentJannik\Code\Beyond-Imagination\Beyond_Imagination\effect.fx"
+                #line 63 "C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\effect.fx"
                 sample r0.xyzw, v2.xyxx, t0.xyzw, s0
                 mul o0.xyzw, r0.xyzw, v1.xyzw
                 ret 
