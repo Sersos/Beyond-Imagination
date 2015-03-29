@@ -23,15 +23,15 @@ public:
 	void close();	
 
 	ID3DX11EffectTechnique* effectTechnique;
-	ID3DX11EffectMatrixVariable* effectWorldViewProjection;
-	D3DXMATRIX worldViewProjection;
+	ID3DX11EffectMatrixVariable* effectWorldViewProjection;	
+	
+	D3DXMATRIX g_worldViewProjection;
 
 private:	
 	void buildInputLayout(ID3D11Device* device);
 
 	ID3D11InputLayout* inputLayout;
-	ID3DX11Effect* effect;	
-
+	ID3DX11Effect* effect;		
 	
 };
 

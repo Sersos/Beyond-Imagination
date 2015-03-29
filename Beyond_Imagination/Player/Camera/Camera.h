@@ -18,12 +18,11 @@ public:
 
 private:
 	void rotateCamera(D3DXVECTOR3& offset);
-	void moveCamera(D3DXVECTOR3& rotation);
+	void moveCamera(D3DXVECTOR3& rotation);	
 
-	D3DXVECTOR3 position;
 	D3DXVECTOR3 up;
+	D3DXVECTOR3 position;
 	D3DXVECTOR3 target;
-
 	D3DXMATRIX viewMatrix;
 	D3DXMATRIX projectionMatrix;
 };

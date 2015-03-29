@@ -5,6 +5,7 @@ Object::Object()
 {
 	vertexBuffer	= 0;
 	indexBuffer		= 0;
+	angle = 0;
 }
 
 void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
@@ -18,13 +19,13 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 	//create vertices
 	Vertex vertex[] =
 	{
-		{ D3DXVECTOR3(-1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 0.0f) },
-		{ D3DXVECTOR3(-1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(+1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 0.0f) },
-		{ D3DXVECTOR3(+1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(-1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(-1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(+1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
+		{ D3DXVECTOR3(-1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
+		{ D3DXVECTOR3(-1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f) },
+		{ D3DXVECTOR3(+1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f) },
+		{ D3DXVECTOR3(+1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f) },
+		{ D3DXVECTOR3(-1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f) },
+		{ D3DXVECTOR3(-1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f) },
+		{ D3DXVECTOR3(+1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f) },
 		{ D3DXVECTOR3(+1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) }
 	};
 	
@@ -33,21 +34,20 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 	vertexBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
 	vertexBufferDesc.ByteWidth = sizeof(Vertex) * 8;
 	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;	
 	
-	ZeroMemory(&vertexData, sizeof(D3D11_SUBRESOURCE_DATA));
 	vertexData.pSysMem = vertex;
 
 	//create buffer
-	device->CreateBuffer(&vertexBufferDesc, NULL, &vertexBuffer);
+	device->CreateBuffer(&vertexBufferDesc, &vertexData, &vertexBuffer);
 
-	//from directXTutorial : copy vertices into buffer
-	D3D11_MAPPED_SUBRESOURCE ms;
-	deviceContext->Map(vertexBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
-	memcpy(ms.pData, vertex, sizeof(vertex));
-	deviceContext->Unmap(vertexBuffer, NULL);	
+	////from directXTutorial : copy vertices into buffer
+	//D3D11_MAPPED_SUBRESOURCE ms;
+	//deviceContext->Map(vertexBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
+	//memcpy(ms.pData, vertex, sizeof(vertex));
+	//deviceContext->Unmap(vertexBuffer, NULL);	
 
-	UINT indices[] = {
+	DWORD indices[] = {
 		// front face
 		0, 1, 2,
 		0, 2, 3,
@@ -75,34 +75,39 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 
 	//create indexbuffer desc
 	ZeroMemory(&indexBufferDesc, sizeof(indexBufferDesc));
-	indexBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-	indexBufferDesc.ByteWidth = sizeof(UINT) * 36;
+	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	indexBufferDesc.ByteWidth = sizeof(DWORD) * 36;
 	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-	indexBufferDesc.CPUAccessFlags = 0;
-	
-	ZeroMemory(&indexData, sizeof(D3D11_SUBRESOURCE_DATA));
+	indexBufferDesc.CPUAccessFlags = 0;		
 	indexData.pSysMem = indices;
 
 	//create buffer
 	device->CreateBuffer(&indexBufferDesc, &indexData, &indexBuffer);
 
 	D3DXMatrixIdentity(&world);
-}
 
-void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager)
-{
+	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
 	UINT stride = sizeof(Vertex);
 	UINT offset = 0;
 	deviceContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
 	deviceContext->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
-	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	
+}
 
+void Object::update()
+{
+	D3DXMatrixRotationX(&world, 0.001f);
+}
+
+void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager)
+{
 	D3DX11_TECHNIQUE_DESC techniqueDesc;
 	shaderManager->effectTechnique->GetDesc(&techniqueDesc);
+	shaderManager->effectWorldViewProjection->SetMatrix((float*)&shaderManager->g_worldViewProjection);
 
 	for (UINT p = 0; p < techniqueDesc.Passes; ++p)
 	{
-		shaderManager->effectWorldViewProjection->SetMatrix(reinterpret_cast<float*>(&shaderManager->worldViewProjection));
 		shaderManager->effectTechnique->GetPassByIndex(p)->Apply(0, deviceContext);
 		deviceContext->DrawIndexed(36, 0, 0);
 	}

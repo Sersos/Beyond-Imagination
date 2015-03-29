@@ -15,7 +15,7 @@ DirectxManager* directxManager = NULL;
 Object* object = NULL;
 ShaderManager* shaderManager = NULL;
 Camera* camera = NULL;
-Material* material = NULL;
+
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -61,20 +61,26 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//GameManager initialize here
 	directxManager->initialize(window);	
-	camera->initialize(D3DXVECTOR3(1.5f, 2.0f, -10.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-	shaderManager->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), object->getWorldMatrix(),
-		camera->getViewMatrix(), camera->getProjectionMatrix());
-	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext());
-	
+	camera->initialize(D3DXVECTOR3(1, 1, -3.0f), D3DXVECTOR3(0, 0, 0));
+
+	shaderManager->initialize(directxManager->getDevice(),
+		directxManager->getDeviceContext(),
+		object->getWorldMatrix(),
+		camera->getViewMatrix(),
+		camera->getProjectionMatrix());
+
+	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext());		
 
 	while (TRUE)
 	{
+		object->update();
+		
 		//GameManager render here
 		directxManager->beginScene();
-		object->render(directxManager->getDeviceContext(), shaderManager);
-		shaderManager->render(directxManager->getDeviceContext());
+
+		object->render(directxManager->getDeviceContext(), shaderManager);		
 		
-		directxManager->presentScene();
+		directxManager->presentScene();		
 		
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{

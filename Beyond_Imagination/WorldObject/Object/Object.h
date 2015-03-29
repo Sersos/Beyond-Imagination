@@ -14,10 +14,9 @@ class Object
 public:
 	Object();
 
-	void initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext);	
-	void render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager);
-
-	ID3D11Buffer** GetIndexBuffer() { return &indexBuffer; };
+	void initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext);
+	void update();
+	void render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager);	
 
 	D3DXMATRIX getWorldMatrix();
 
@@ -26,6 +25,8 @@ private:
 	ID3D11Buffer* indexBuffer;	
 
 	D3DXMATRIX world;
+
+	float angle;
 	
 };
 
