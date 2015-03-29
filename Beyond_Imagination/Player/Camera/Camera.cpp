@@ -10,7 +10,11 @@ Camera::Camera(HWND* window)
 
 void Camera::initialize(D3DXVECTOR3& position, D3DXVECTOR3& target)
 {
-	up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//initialize up-Vector
+	up.x = 0.0f;
+	up.y = 1.0f;
+	up.z = 0.0f;
+
 	this->position = position;
 	this->target = target;	
 
