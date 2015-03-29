@@ -84,7 +84,6 @@
     <ClInclude Include="GameObject\Position\PositionManager.h" />
     <ClInclude Include="GameObject\Rotation\RotationManager.h" />
     <ClInclude Include="GameObject\Scaling\ScaleManager.h" />
-    <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="Global\Global.h" />
     <ClInclude Include="Global\Material\Material.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -99,7 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\DirectxManager.cpp" />
-    <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="Global\Material\Material.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>

@@ -60,7 +60,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	MSG msg;
 
 	//GameManager initialize here
-	directxManager->initialize(window, false);	
+	directxManager->initialize(window, true);	
 	camera->initialize(D3DXVECTOR3(-5, -8, -10.0f), D3DXVECTOR3(0, 0, 0));
 
 	shaderManager->initialize(directxManager->getDevice(),

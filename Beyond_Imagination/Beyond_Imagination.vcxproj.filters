@@ -123,9 +123,6 @@
     <ClInclude Include="Global\Material\Material.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="GameStateManager.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -156,9 +153,6 @@
       <Filter>Quelldateien\Player\Input</Filter>
     </ClCompile>
     <ClCompile Include="Global\Material\Material.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStateManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
