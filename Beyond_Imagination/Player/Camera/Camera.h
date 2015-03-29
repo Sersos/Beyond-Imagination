@@ -4,15 +4,16 @@
 #include "DirectxManager.h"
 #include "Global.h"
 
+class InputManager;
+
 class Camera
 {
 public:
-	Camera();
+	Camera(HWND* window);	
 
 	void initialize(D3DXVECTOR3& position, D3DXVECTOR3& target);
 	void update();
-
-	D3DXVECTOR3 getCameraPosition();
+	
 	D3DXMATRIX getViewMatrix();
 	D3DXMATRIX getProjectionMatrix();
 
@@ -25,6 +26,8 @@ private:
 	D3DXVECTOR3 target;
 	D3DXMATRIX viewMatrix;
 	D3DXMATRIX projectionMatrix;
+
+	InputManager* inputManager;
 };
 
 #endif

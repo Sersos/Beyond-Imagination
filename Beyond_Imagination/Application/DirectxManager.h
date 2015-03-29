@@ -17,7 +17,7 @@ class DirectxManager
 public:
 	DirectxManager();
 
-	bool initialize(HWND window);
+	bool initialize(HWND window, bool wireFrame);
 	void beginScene();
 	void presentScene();
 	void close();
@@ -25,12 +25,13 @@ public:
 	void switchToFullScreen();
 	void enableSamplerState(){ }; //if shader with texture is used
 	void enableStencilBuffer() { };
-	void enableRasterizerState() { };
+	void enableWireFrame();
 
 	ID3D11Device* getDevice();
 	ID3D11DeviceContext* getDeviceContext();
 
 private:
+	//important structs d3d11
 	ID3D11Device* device;
 	ID3D11DeviceContext* deviceContext;
 	IDXGISwapChain* swapChain;
@@ -39,7 +40,13 @@ private:
 	ID3D11DepthStencilState* depthStencilState;
 	ID3D11DepthStencilView* depthStencilView;
 	ID3D11RasterizerState* rasterizerState;
-	DXGI_SWAP_CHAIN_DESC swapChainDesc;	
+
+	//important descs for different functions
+	DXGI_SWAP_CHAIN_DESC swapChainDesc;
+	D3D11_TEXTURE2D_DESC depthBufferDesc;
+	D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
+	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
+	D3D11_RASTERIZER_DESC rasterizerDesc;
 
 };
 

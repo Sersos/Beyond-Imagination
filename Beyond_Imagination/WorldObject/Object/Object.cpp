@@ -5,7 +5,8 @@ Object::Object()
 {
 	vertexBuffer	= 0;
 	indexBuffer		= 0;
-	angle = 0;
+	scale = 0;
+	D3DXMatrixIdentity(&world);
 }
 
 void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
@@ -19,14 +20,14 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 	//create vertices
 	Vertex vertex[] =
 	{
-		{ D3DXVECTOR3(-1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(-1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f) },
-		{ D3DXVECTOR3(+1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(+1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f) },
-		{ D3DXVECTOR3(-1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f) },
-		{ D3DXVECTOR3(-1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f) },
-		{ D3DXVECTOR3(+1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f) },
-		{ D3DXVECTOR3(+1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) }
+		D3DXVECTOR3(-0.5f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(-1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(-1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(-1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) 
 	};
 	
 	//create vertexbuffer desc	
@@ -82,9 +83,7 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 	indexData.pSysMem = indices;
 
 	//create buffer
-	device->CreateBuffer(&indexBufferDesc, &indexData, &indexBuffer);
-
-	D3DXMatrixIdentity(&world);
+	device->CreateBuffer(&indexBufferDesc, &indexData, &indexBuffer);	
 
 	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
@@ -97,14 +96,17 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 
 void Object::update()
 {
-	D3DXMatrixRotationX(&world, 0.001f);
+	scale += 0.0005f;
+	D3DXMatrixRotationZ(&world, scale);
 }
 
-void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager)
+void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection)
 {
+	D3DXMATRIX worldViewProjection = world * view * projection;
+	
 	D3DX11_TECHNIQUE_DESC techniqueDesc;
 	shaderManager->effectTechnique->GetDesc(&techniqueDesc);
-	shaderManager->effectWorldViewProjection->SetMatrix((float*)&shaderManager->g_worldViewProjection);
+	shaderManager->effectWorldViewProjection->SetMatrix((float*)worldViewProjection);
 
 	for (UINT p = 0; p < techniqueDesc.Passes; ++p)
 	{

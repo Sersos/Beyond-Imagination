@@ -14,9 +14,8 @@ VOut VShader(float4 position : POSITION, float4 color : COLOR)
     VOut output;
 
 	//mul = multiply
-	output.Position = mul(position, worldViewProjection);
-	
-    output.Color = color;
+	output.Position = mul(position, worldViewProjection); 
+	output.Color = color;
 
     return output;
 }

@@ -17,15 +17,15 @@ class ShaderManager
 public:
 	ShaderManager();	
 
-	void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, D3DXMATRIX world, D3DXMATRIX view, D3DXMATRIX projection);
+	void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext);
 	void update();
 	void render(ID3D11DeviceContext* deviceContext);
 	void close();	
 
 	ID3DX11EffectTechnique* effectTechnique;
-	ID3DX11EffectMatrixVariable* effectWorldViewProjection;	
+	ID3DX11EffectMatrixVariable* effectWorldViewProjection;
 	
-	D3DXMATRIX g_worldViewProjection;
+	D3DXMATRIX worldViewProjection;
 
 private:	
 	void buildInputLayout(ID3D11Device* device);

@@ -1,8 +1,11 @@
 #include "Camera.h"
+#include "InputManager.h"
 
-Camera::Camera()
+Camera::Camera(HWND* window)
 {
-
+	//initialize inputManager here
+	inputManager = NULL;
+	inputManager = new InputManager(window);
 }
 
 void Camera::initialize(D3DXVECTOR3& position, D3DXVECTOR3& target)
@@ -21,7 +24,13 @@ void Camera::initialize(D3DXVECTOR3& position, D3DXVECTOR3& target)
 
 void Camera::update()
 {
-		
+	D3DXVECTOR2 lastMousePosition = inputManager->getMousePosition();
+
+	if (inputManager->isKeyPressed(MouseOpcodes::MOUSE_LEFT_KEY))
+	{
+	
+		//if (lastPositioninputManager->getMousePosition() > )
+	}
 }
 
 D3DXMATRIX Camera::getViewMatrix()

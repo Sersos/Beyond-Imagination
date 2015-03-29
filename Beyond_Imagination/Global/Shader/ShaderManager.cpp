@@ -8,10 +8,10 @@ ShaderManager::ShaderManager()
 	effectTechnique = NULL;	
 }
 
-void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, D3DXMATRIX world, D3DXMATRIX view, D3DXMATRIX projection)
+void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
 	HRESULT result;
-	ID3D10Blob* compiledShader;
+	ID3D10Blob* compiledShader;	
 
 	result = D3DX11CompileFromFile(L"shaders.shader", 0, 0, 0, "fx_5_0", 0, 0, 0, &compiledShader, NULL, 0);
 	if (FAILED(result))
@@ -22,12 +22,10 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 		MessageBox(0, L"Cant create Effect", 0, MB_OK);
 
 	//can be released here
-	//compiledShader->Release();
+	compiledShader->Release();
 
 	effectTechnique = effect->GetTechniqueByName("C");
 	effectWorldViewProjection = effect->GetVariableByName("worldViewProjection")->AsMatrix();
-
-	g_worldViewProjection = world * view * projection;
 	
 	buildInputLayout(device);
 

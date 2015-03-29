@@ -13,13 +13,9 @@ DirectxManager::DirectxManager()
 	rasterizerState = 0;
 }
 
-bool DirectxManager::initialize(HWND window)
+bool DirectxManager::initialize(HWND window, bool wireFrame)
 {
-	HRESULT hr;
-	D3D11_TEXTURE2D_DESC depthBufferDesc;
-	D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
-	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
-	D3D11_RASTERIZER_DESC rasterizerDesc;
+	HRESULT hr;	
 
 	//create swapChain desc
 	ZeroMemory(&swapChainDesc, sizeof(DXGI_SWAP_CHAIN_DESC));
@@ -126,7 +122,16 @@ bool DirectxManager::initialize(HWND window)
 	rasterizerDesc.DepthBias = 0;
 	rasterizerDesc.DepthBiasClamp = 0.0f;
 	rasterizerDesc.DepthClipEnable = true;
-	rasterizerDesc.FillMode = D3D11_FILL_SOLID;
+	if (wireFrame)
+	{
+		//enable wireframe mode, only lines will be drawn
+		enableWireFrame();
+	}		
+	else
+	{
+		rasterizerDesc.FillMode = D3D11_FILL_SOLID;
+	}	
+
 	rasterizerDesc.FrontCounterClockwise = false; 
 	rasterizerDesc.MultisampleEnable = false;
 	rasterizerDesc.ScissorEnable = false; 
@@ -154,7 +159,7 @@ bool DirectxManager::initialize(HWND window)
 
 void DirectxManager::beginScene()
 {
-	float backgroundColor[4] = { 0.5f, 0.5f, 0, 0.5f };
+	float backgroundColor[4] = { 0, 0.7f, 0.7f, 0.5f };
 	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);	
 	deviceContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 }
@@ -173,6 +178,11 @@ void DirectxManager::presentScene()
 {
 	//show content of swapChain
 	swapChain->Present(0, 0);
+}
+
+void DirectxManager::enableWireFrame()
+{
+	rasterizerDesc.FillMode = D3D11_FILL_WIREFRAME;
 }
 
 void DirectxManager::switchToFullScreen()

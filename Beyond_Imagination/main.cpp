@@ -5,9 +5,8 @@
 #include "Object.h"
 #include "ShaderManager.h"
 #include "Camera.h"
-#include "Material.h"
-
-
+#include <string>
+#include <sstream>
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -25,8 +24,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	directxManager = new DirectxManager();
 	shaderManager = new ShaderManager();
 	object = new Object();
-	camera = new Camera();
-	
+	camera = new Camera(&window);	
 
 	ZeroMemory(&windowClass, sizeof(WNDCLASSEX));
 
@@ -57,30 +55,65 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		NULL);
 
 	ShowWindow(window, nCmdShow);
+
+	std::wstring mMainWndCaption;
 	MSG msg;
 
 	//GameManager initialize here
-	directxManager->initialize(window);	
-	camera->initialize(D3DXVECTOR3(1, 1, -3.0f), D3DXVECTOR3(0, 0, 0));
+	directxManager->initialize(window, false);	
+	camera->initialize(D3DXVECTOR3(-5, -8, -10.0f), D3DXVECTOR3(0, 0, 0));
 
 	shaderManager->initialize(directxManager->getDevice(),
-		directxManager->getDeviceContext(),
-		object->getWorldMatrix(),
-		camera->getViewMatrix(),
-		camera->getProjectionMatrix());
+		directxManager->getDeviceContext());
 
-	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext());		
+	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext());	
+
+	//variables for fps counter
+	unsigned long lastTime = GetTickCount();
+	unsigned long timer = GetTickCount();
+	double ms = 1000.0 / 60.0;
+	double delta = 0;
+	int updates = 0;
+	int frames = 0;
 
 	while (TRUE)
 	{
-		object->update();
-		
 		//GameManager render here
-		directxManager->beginScene();
-
-		object->render(directxManager->getDeviceContext(), shaderManager);		
+		directxManager->beginScene();		
+		object->render(directxManager->getDeviceContext(), 
+			shaderManager, 
+			camera->getViewMatrix(),
+			camera->getProjectionMatrix());
 		
-		directxManager->presentScene();		
+		directxManager->presentScene();	
+
+		long now = GetTickCount();
+		delta += (now - lastTime) / ms;
+		lastTime = now;
+		while (delta >= 1)
+		{
+			updates++;
+			delta--;
+
+		}
+
+		//update here
+		object->update();
+
+		frames++;
+
+		if (GetTickCount() - timer > 1000)
+		{
+			timer += 1000;
+
+			std::wostringstream outs;
+			outs.precision(8);
+			outs << mMainWndCaption << L" " << L"Beyond Imagination" << L" " << L"FPS: " << frames << L" " << L"UPS: " << updates << L" ";
+			SetWindowText(window, outs.str().c_str());
+
+			updates = 0;
+			frames = 0;
+		}
 		
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
