@@ -61,12 +61,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//GameManager initialize here
 	directxManager->initialize(window, true);	
-	camera->initialize(D3DXVECTOR3(-5, -8, -10.0f), D3DXVECTOR3(0, 0, 0));
+	camera->initialize(D3DXVECTOR3(0, 0, 100.0f), D3DXVECTOR3(0, 0, 0));
 
 	shaderManager->initialize(directxManager->getDevice(),
 		directxManager->getDeviceContext());
-
-	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext());	
+	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext(),D3DXVECTOR3(0.0f,0.0f,0.0f));	
 
 	//variables for fps counter
 	unsigned long lastTime = GetTickCount();

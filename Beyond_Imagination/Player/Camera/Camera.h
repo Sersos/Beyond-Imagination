@@ -13,6 +13,7 @@ public:
 
 	void initialize(D3DXVECTOR3& position, D3DXVECTOR3& target);
 	void update();
+	void camType(int t);
 	
 	D3DXMATRIX getViewMatrix();
 	D3DXMATRIX getProjectionMatrix();

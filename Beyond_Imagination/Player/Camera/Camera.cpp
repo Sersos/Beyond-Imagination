@@ -19,13 +19,25 @@ void Camera::initialize(D3DXVECTOR3& position, D3DXVECTOR3& target)
 	this->target = target;	
 
 	D3DXMatrixLookAtLH(&viewMatrix, &this->position, &this->target, &up);
+	camType(1);
 
-	D3DXMatrixPerspectiveFovLH(&projectionMatrix, 0.25f * D3DX_PI /* default*/,
-		((float)DEFAULT_WINDOW_WIDTH / DEFAULT_WINDOW_HEIGHT),
-		1.0f,
-		DEFAULT_VIEW_RANGE);
 }
-
+void Camera::camType(int t)
+{
+	//Perspective Cam
+	if (t == 0)
+	{
+		D3DXMatrixPerspectiveFovLH(&projectionMatrix, 0.25f * D3DX_PI /* default*/,
+			((float)DEFAULT_WINDOW_WIDTH / DEFAULT_WINDOW_HEIGHT),
+			1.0f,
+			DEFAULT_VIEW_RANGE);
+	}
+	//Orthographic
+	else if (t == 1)
+	{
+		D3DXMatrixOrthoLH(&projectionMatrix,2,(2/((float)DEFAULT_WINDOW_WIDTH/DEFAULT_WINDOW_HEIGHT)),1.0f,DEFAULT_VIEW_RANGE);
+	}
+}
 void Camera::update()
 {
 	D3DXVECTOR2 lastMousePosition = inputManager->getMousePosition();

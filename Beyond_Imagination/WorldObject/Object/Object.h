@@ -14,7 +14,7 @@ class Object
 public:
 	Object();
 
-	void initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext);
+	void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, D3DXVECTOR3 origin);
 	void update();
 	void render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection);	
 
@@ -34,6 +34,8 @@ private:
 	//buffers for vertices and indices
 	ID3D11Buffer* vertexBuffer;
 	ID3D11Buffer* indexBuffer;	
+	D3DXVECTOR3 origin;
+
 
 	//world matrix, manipulate in "update-funtion"
 	D3DXMATRIX world;

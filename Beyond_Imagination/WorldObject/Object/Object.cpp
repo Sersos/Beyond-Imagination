@@ -9,7 +9,7 @@ Object::Object()
 	D3DXMatrixIdentity(&world);
 }
 
-void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
+void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, D3DXVECTOR3 origin)
 {
 	D3D11_BUFFER_DESC vertexBufferDesc;
 	D3D11_SUBRESOURCE_DATA vertexData;
@@ -20,14 +20,16 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 	//create vertices
 	Vertex vertex[] =
 	{
-		D3DXVECTOR3(-0.5f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
-		D3DXVECTOR3(-1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
-		D3DXVECTOR3(+1.0f, +1.0f, -1.0f), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f),
-		D3DXVECTOR3(+1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f),
-		D3DXVECTOR3(-1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
-		D3DXVECTOR3(-1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
-		D3DXVECTOR3(+1.0f, +1.0f, +1.0f), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f),
-		D3DXVECTOR3(+1.0f, -1.0f, +1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f) 
+		//clockvise
+		D3DXVECTOR3(origin.x + 0.5f, origin.y + 0.5f,origin.z + 0.5f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(origin.x + 0.5f, origin.y - 0.5f, origin.z + 0.5f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(origin.x - 0.5, origin.y - 0.5, origin.z + 0.5), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(origin.x - 0.5, origin.y + 0.5, origin.z + 0.5), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f),
+
+		D3DXVECTOR3(origin.x + 0.5f, origin.y + 0.5f, origin.z - 0.5f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(origin.x + 0.5f, origin.y - 0.5f, origin.z - 0.5f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(origin.x - 0.5, origin.y - 0.5, origin.z - 0.5), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(origin.x - 0.5, origin.y + 0.5, origin.z - 0.5), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f)
 	};
 	
 	//create vertexbuffer desc	
@@ -42,36 +44,32 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 	//create buffer
 	device->CreateBuffer(&vertexBufferDesc, &vertexData, &vertexBuffer);
 
-	////from directXTutorial : copy vertices into buffer
-	//D3D11_MAPPED_SUBRESOURCE ms;
-	//deviceContext->Map(vertexBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
-	//memcpy(ms.pData, vertex, sizeof(vertex));
-	//deviceContext->Unmap(vertexBuffer, NULL);	
+
 
 	DWORD indices[] = {
 		// front face
-		0, 1, 2,
-		0, 2, 3,
+		4, 5, 7,
+		5, 6, 7,
 
 		// back face
-		4, 6, 5,
-		4, 7, 6,
+		0, 1, 3,
+		1, 2, 3,
 
 		// left face
-		4, 5, 1,
-		4, 1, 0,
+		2, 3, 7,
+		2, 6, 7,
 
 		// right face
-		3, 2, 6,
-		3, 6, 7,
+		0, 1, 4,
+		1, 4, 5,
 
 		// top face
-		1, 5, 6,
-		1, 6, 2,
+		0, 3, 4,
+		3, 4, 7,
 
 		// bottom face
-		4, 0, 3,
-		4, 3, 7
+		1, 2, 5,
+		2, 5, 6
 	};
 
 	//create indexbuffer desc
@@ -97,7 +95,7 @@ void Object::initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext)
 void Object::update()
 {
 	scale += 0.0005f;
-	D3DXMatrixRotationZ(&world, scale);
+	//D3DXMatrixRotationZ(&world, scale);
 }
 
 void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection)
