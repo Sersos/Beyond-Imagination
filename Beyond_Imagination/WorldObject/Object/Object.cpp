@@ -44,8 +44,6 @@ void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext
 	//create buffer
 	device->CreateBuffer(&vertexBufferDesc, &vertexData, &vertexBuffer);
 
-
-
 	DWORD indices[] = {
 		// front face
 		4, 5, 7,
@@ -88,14 +86,14 @@ void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext
 	UINT stride = sizeof(Vertex);
 	UINT offset = 0;
 	deviceContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
-	deviceContext->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
-	
+	deviceContext->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);	
 }
 
 void Object::update()
 {
-	scale += 0.0005f;
-	//D3DXMatrixRotationZ(&world, scale);
+	/*scale += 0.0005f;
+	D3DXMatrixRotationZ(&world, scale);
+	D3DXMatrixRotationX(&world, scale);*/
 }
 
 void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection)

@@ -4,21 +4,7 @@
 #include <Windows.h>
 #include <windowsx.h>
 #include <DirectxManager.h>
-
-enum MouseOpcodes
-{
-	//mouse codes
-	MOUSE_LEFT_KEY	= 0x01,
-	MOUSE_RIGHT_KEY = 0x02,
-
-};
-
-enum KeyboardOpcodes
-{
-	//not finished
-	KEYBOARD_W = 1,
-	KEYBOARD_S = 2,
-};
+#include <VirtualKeyCodes.h>
 
 class InputManager
 {

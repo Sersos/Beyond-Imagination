@@ -159,7 +159,7 @@ bool DirectxManager::initialize(HWND window, bool wireFrame)
 
 void DirectxManager::beginScene()
 {
-	float backgroundColor[4] = { 0, 0.7f, 0.7f, 0.5f };
+	float backgroundColor[4] = { 0.35, 0.7f, 0.7f, 0.5f };
 	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);	
 	deviceContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 }

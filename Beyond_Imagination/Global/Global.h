@@ -3,8 +3,8 @@
 #include <string>
 
 #define TITLE Beyond Imagination
-#define CAMERA_MOVEMENT_SPEED 1.0
-#define CAMERA_ROTATE_SPEED 1.0
+#define CAMERA_MOVEMENT_SPEED 0.005f
+#define CAMERA_ROTATION 5.0f
 
 #define DEFAULT_WINDOW_WIDTH 1280
 #define DEFAULT_WINDOW_HEIGHT 720

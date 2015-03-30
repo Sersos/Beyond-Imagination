@@ -11,24 +11,29 @@ class Camera
 public:
 	Camera(HWND* window);	
 
-	void initialize(D3DXVECTOR3& position, D3DXVECTOR3& target);
+	void initialize(D3DXVECTOR3& position);
 	void update();
-	void camType(int t);
+
+	//select Left hand or ortho perspective, 0 for left handed and 1 for ortho
+	void selectPerspective(int t /* id */);
 	
 	D3DXMATRIX getViewMatrix();
 	D3DXMATRIX getProjectionMatrix();
 
+	D3DXVECTOR3 m_forward;
+	D3DXVECTOR3 m_right;
+
 private:
-	void rotateCamera(D3DXVECTOR3& offset);
-	void moveCamera(D3DXVECTOR3& rotation);	
+	void move(D3DXVECTOR3& offset);
 
-	D3DXVECTOR3 up;
-	D3DXVECTOR3 position;
-	D3DXVECTOR3 target;
-	D3DXMATRIX viewMatrix;
-	D3DXMATRIX projectionMatrix;
+	D3DXVECTOR3 m_up;
+	D3DXVECTOR3 m_position;
+	D3DXVECTOR3 m_target;	
 
-	InputManager* inputManager;
+	D3DXMATRIX	m_viewMatrix;
+	D3DXMATRIX	m_projectionMatrix;
+
+	InputManager* m_inputManager;
 };
 
 #endif

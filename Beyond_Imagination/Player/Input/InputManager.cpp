@@ -2,14 +2,12 @@
 
 InputManager::InputManager(HWND* window)
 {
-	window = NULL;
 	this->window = window;
 }
 
 void InputManager::update()
 {
-	if (isCursorInWindow())
-		GetCursorPos(&cursorPosition);	
+	GetCursorPos(&cursorPosition);	
 }
 
 bool InputManager::isKeyPressed(int button)

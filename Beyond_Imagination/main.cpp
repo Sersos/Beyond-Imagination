@@ -7,6 +7,7 @@
 #include "Camera.h"
 #include <string>
 #include <sstream>
+#include <InputManager.h>
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -14,7 +15,7 @@ DirectxManager* directxManager = NULL;
 Object* object = NULL;
 ShaderManager* shaderManager = NULL;
 Camera* camera = NULL;
-
+InputManager* inputManager = NULL;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -24,7 +25,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	directxManager = new DirectxManager();
 	shaderManager = new ShaderManager();
 	object = new Object();
-	camera = new Camera(&window);	
+	camera = new Camera(&window);
+	inputManager = new InputManager(&window);
 
 	ZeroMemory(&windowClass, sizeof(WNDCLASSEX));
 
@@ -60,8 +62,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	MSG msg;
 
 	//GameManager initialize here
-	directxManager->initialize(window, true);	
-	camera->initialize(D3DXVECTOR3(0, 0, 100.0f), D3DXVECTOR3(0, 0, 0));
+	directxManager->initialize(window, false);	
+	camera->initialize(D3DXVECTOR3(0, 0, 10));
 
 	shaderManager->initialize(directxManager->getDevice(),
 		directxManager->getDeviceContext());
@@ -78,11 +80,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	while (TRUE)
 	{
 		//GameManager render here
-		directxManager->beginScene();		
-		object->render(directxManager->getDeviceContext(), 
-			shaderManager, 
-			camera->getViewMatrix(),
-			camera->getProjectionMatrix());
+		inputManager->update();	
+		camera->update();
+		directxManager->beginScene();
+		object->render(directxManager->getDeviceContext(),
+						shaderManager,
+						camera->getViewMatrix(),
+						camera->getProjectionMatrix());				
 		
 		directxManager->presentScene();	
 
@@ -97,6 +101,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 
 		//update here
+		
 		object->update();
 
 		frames++;
@@ -107,7 +112,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			std::wostringstream outs;
 			outs.precision(8);
-			outs << mMainWndCaption << L" " << L"Beyond Imagination" << L" " << L"FPS: " << frames << L" " << L"UPS: " << updates << L" ";
+			outs << mMainWndCaption << L" " << camera->m_forward.x <<
+				L" " << camera->m_forward.y <<
+				L" " << camera->m_forward.z <<		
+				
+				 L" " << L"FPS: " << frames << L" " << L"UPS: " << updates << L" " <<
+				L"MouseX: " << inputManager->getMousePosition().x << L" " << L"MouseY: " << inputManager->getMousePosition().y << L" ";
 			SetWindowText(window, outs.str().c_str());
 
 			updates = 0;

@@ -123,6 +123,9 @@
     <ClInclude Include="Global\Material\Material.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Global\VirtualKeyCodes.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -166,8 +169,5 @@
     <Text Include="Model list.txt">
       <Filter>Ressourcendateien</Filter>
     </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="effect.fx" />
   </ItemGroup>
 </Project>
