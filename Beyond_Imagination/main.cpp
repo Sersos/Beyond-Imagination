@@ -63,7 +63,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//GameManager initialize here
 	directxManager->initialize(window, false);	
-	camera->initialize(D3DXVECTOR3(0, 0, 10));
+	camera->initialize(D3DXVECTOR3(0, 0, 0));
 
 	shaderManager->initialize(directxManager->getDevice(),
 		directxManager->getDeviceContext());
@@ -112,10 +112,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			std::wostringstream outs;
 			outs.precision(8);
-			outs << mMainWndCaption << L" " << camera->m_forward.x <<
-				L" " << camera->m_forward.y <<
-				L" " << camera->m_forward.z <<		
-				
+			outs << mMainWndCaption << L" tx:" << camera->m_target.x <<
+				L" ty:" << camera->m_target.y <<
+				L" tz:" << camera->m_target.z <<
 				 L" " << L"FPS: " << frames << L" " << L"UPS: " << updates << L" " <<
 				L"MouseX: " << inputManager->getMousePosition().x << L" " << L"MouseY: " << inputManager->getMousePosition().y << L" ";
 			SetWindowText(window, outs.str().c_str());

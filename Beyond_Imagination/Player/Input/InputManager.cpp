@@ -10,6 +10,7 @@ void InputManager::update()
 	GetCursorPos(&cursorPosition);	
 }
 
+
 bool InputManager::isKeyPressed(int button)
 {
 	if (InputManager::getKeyState(button))

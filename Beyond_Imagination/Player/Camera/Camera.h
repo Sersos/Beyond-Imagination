@@ -22,13 +22,16 @@ public:
 
 	D3DXVECTOR3 m_forward;
 	D3DXVECTOR3 m_right;
+	D3DXVECTOR3 m_target;
+	D3DXVECTOR3 m_eulerAngle;
 
 private:
 	void move(D3DXVECTOR3& offset);
 
 	D3DXVECTOR3 m_up;
 	D3DXVECTOR3 m_position;
-	D3DXVECTOR3 m_target;	
+
+
 
 	D3DXMATRIX	m_viewMatrix;
 	D3DXMATRIX	m_projectionMatrix;
