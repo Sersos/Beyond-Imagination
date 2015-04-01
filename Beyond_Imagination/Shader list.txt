@@ -1,4 +1,0 @@
-//Shader list
-
-vs_position_color.vs
-ps_position_color.ps

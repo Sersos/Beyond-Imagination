@@ -53,7 +53,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/Vector;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/WorldObject/Scaling;$(SolutionDir)/Beyond_Imagination/WorldObject/Rotation;$(SolutionDir)/Beyond_Imagination/WorldObject/Position;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/sound;$(SolutionDir)/Beyond_Imagination/images;$(SolutionDir)/Beyond_Imagination/models;$(SolutionDir)/Beyond_Imagination/Player/Input;$(SolutionDir)/Beyond_Imagination/Player/Camera;$(SolutionDir)/Beyond_Imagination/Player;$(SolutionDir)/Beyond_Imagination/Global/Material;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application/GameStateManager/GameState;$(SolutionDir)/Beyond_Imagination/Application/GameStateManager;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/Material;$(SolutionDir)/Beyond_Imagination/Global/Effect;$(SolutionDir)/Beyond_Imagination/Global/Lighting;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/sound;$(SolutionDir)/Beyond_Imagination/images;$(SolutionDir)/Beyond_Imagination/models;$(SolutionDir)/Beyond_Imagination/Player/Input;$(SolutionDir)/Beyond_Imagination/Player/Camera;$(SolutionDir)/Beyond_Imagination/Player;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -81,10 +81,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application\DirectxManager.h" />
+    <ClInclude Include="Application\GameStateManager\ApplicationManager.h" />
+    <ClInclude Include="Application\GameStateManager\GameState\ApplicationState.h" />
     <ClInclude Include="GameObject\Position\PositionManager.h" />
     <ClInclude Include="GameObject\Rotation\RotationManager.h" />
     <ClInclude Include="GameObject\Scaling\ScaleManager.h" />
     <ClInclude Include="Global\Global.h" />
+    <ClInclude Include="Global\Lighting\LightManager.h" />
     <ClInclude Include="Global\Material\Material.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -99,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\DirectxManager.cpp" />
+    <ClCompile Include="Application\GameStateManager\ApplicationManager.cpp" />
     <ClCompile Include="Global\Material\Material.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -112,9 +116,15 @@
     <ClCompile Include="WorldObject\WorldObject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Include-Paths.txt" />
-    <Text Include="Model list.txt" />
-    <Text Include="Shader list.txt" />
+    <Text Include="TextFiles\Include-Paths.txt" />
+    <Text Include="TextFiles\Model list.txt" />
+    <Text Include="TextFiles\Shader list.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="shaders.shader">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <FileType>Document</FileType>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

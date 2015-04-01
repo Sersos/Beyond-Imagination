@@ -126,6 +126,15 @@
     <ClInclude Include="Global\VirtualKeyCodes.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Global\Lighting\LightManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\GameStateManager\GameState\ApplicationState.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\GameStateManager\ApplicationManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -158,16 +167,22 @@
     <ClCompile Include="Global\Material\Material.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Application\GameStateManager\ApplicationManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Include-Paths.txt">
+    <Text Include="TextFiles\Include-Paths.txt">
       <Filter>Ressourcendateien</Filter>
     </Text>
-    <Text Include="Shader list.txt">
+    <Text Include="TextFiles\Model list.txt">
       <Filter>Ressourcendateien</Filter>
     </Text>
-    <Text Include="Model list.txt">
+    <Text Include="TextFiles\Shader list.txt">
       <Filter>Ressourcendateien</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="shaders.shader" />
   </ItemGroup>
 </Project>

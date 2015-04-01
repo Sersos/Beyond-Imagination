@@ -1,0 +1,24 @@
+//Include Paths
+
+//jannik local
+C:\Program Files %28x86%29\Microsoft SDKs\Windows\v7.1A\Include
+C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc
+
+//vincent has to update here
+
+$(SolutionDir)/Beyond_Imagination/Application
+$(SolutionDir)/Beyond_Imagination/Application/GameStateManager
+$(SolutionDir)/Beyond_Imagination/Application/GameStateManager/GameState
+$(SolutionDir)/Beyond_Imagination/Global
+$(SolutionDir)/Beyond_Imagination/Global/Shader
+$(SolutionDir)/Beyond_Imagination/Global/Material
+$(SolutionDir)/Beyond_Imagination/Global/Effect
+$(SolutionDir)/Beyond_Imagination/WorldObject
+$(SolutionDir)/Beyond_Imagination/WorldObject/Object
+$(SolutionDir)/Beyond_Imagination/WorldObject/Unit
+$(SolutionDir)/Beyond_Imagination/Player
+$(SolutionDir)/Beyond_Imagination/Player/Camera
+$(SolutionDir)/Beyond_Imagination/Player/Input
+$(SolutionDir)/Beyond_Imagination/models
+$(SolutionDir)/Beyond_Imagination/images
+$(SolutionDir)/Beyond_Imagination/sound
