@@ -7,7 +7,7 @@
 #include "Camera.h"
 #include <string>
 #include <sstream>
-#include <InputManager.h>
+#include "InputManager.h"
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 

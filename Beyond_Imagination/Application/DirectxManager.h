@@ -10,8 +10,6 @@
 #include <Windows.h>
 #include <WindowsX.h>
 
-class ShaderManager;
-
 class DirectxManager
 {
 public:

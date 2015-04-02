@@ -1,18 +1,22 @@
 #include "Material.h"
 
-Material::Material(ID3D11Device* device, WCHAR _effectFileName, CHAR _techniqueName) :
-diffuseColor(1.0f, 1.0f, 1.0f, 1.0f), ambientColor(0.5f, 0.5f, 0.5f, 0.5f)
+/*
+Material::Material() 
 {
 	//set Parameters	
-	effectFileName = _effectFileName;
-	techniqueName = _techniqueName;
+	//effectFileName = _effectFileName;
+	//techniqueName = _techniqueName;
 
-	//pointers to Null	
-	effect = NULL;
-	technique = NULL;
-	materialAmbientColorVariable = NULL;
-	materialDiffuseColorVariable = NULL;
+	m_effect = 0;
+	m_effectTechnique = 0;
+}
 
+/*
+void Material::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, LPCWSTR filename, LPCSTR effectName)
+{
+	HRESULT hr;
+
+	hr = 
 }
 //set all effekt variables
 void Material::setup()
@@ -30,7 +34,7 @@ void Material::setupPerObject(const D3DXMATRIX& world, const D3DXMATRIX& view, c
 	effect->GetVariableByName("worldViewProjection")->AsMatrix()->SetMatrix((float*)&worldViewProjection);
 }
 //set Light
-void Material::setupPerFrame(/*const Light* light*/)
+void Material::setupPerFrame()
 {
 	D3DXVECTOR3 lightDir;
 	D3DXVECTOR3 lightDiffuseColor;
@@ -95,3 +99,5 @@ ID3DX11EffectTechnique* Material::getTechnique()
 Material::~Material()
 {
 }
+
+*/

@@ -16,6 +16,7 @@ $(SolutionDir)/Beyond_Imagination/Global/Effect
 $(SolutionDir)/Beyond_Imagination/WorldObject
 $(SolutionDir)/Beyond_Imagination/WorldObject/Object
 $(SolutionDir)/Beyond_Imagination/WorldObject/Unit
+$(SolutionDir)/Beyond_Imagination/World
 $(SolutionDir)/Beyond_Imagination/Player
 $(SolutionDir)/Beyond_Imagination/Player/Camera
 $(SolutionDir)/Beyond_Imagination/Player/Input

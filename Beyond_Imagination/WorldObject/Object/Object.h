@@ -2,6 +2,7 @@
 #define OBJECT_H
 
 #include "DirectxManager.h"
+#include "ShaderManager.h"
 
 struct Vertex
 {

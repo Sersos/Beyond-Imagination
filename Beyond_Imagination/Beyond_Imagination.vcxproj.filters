@@ -135,6 +135,12 @@
     <ClInclude Include="Application\GameStateManager\ApplicationManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Global\Lighting\LightHelper.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="World\World.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -170,6 +176,9 @@
     <ClCompile Include="Application\GameStateManager\ApplicationManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="World\World.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TextFiles\Include-Paths.txt">
@@ -183,6 +192,10 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="shaders.shader" />
+    <FxCompile Include="shader.hlsl" />
+    <FxCompile Include="Shader.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LightHelper.fx" />
   </ItemGroup>
 </Project>

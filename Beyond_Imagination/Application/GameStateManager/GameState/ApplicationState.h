@@ -14,6 +14,9 @@ enum ApplicationStateType
 	APPLICATION_SINGLEPLAYER_WHATEVER = 2,
 	APPLICATION_SINGLEPLAYER_WHATEVER = 3,
 	APPLICATION_SINGLEPLAYER_WHATEVER = 4,
+
+	//later: status for multiplayer
+	APPLICATION_MULTIPLAYER_MENU = 5,
 };
 
 class ApplicationState
@@ -27,7 +30,7 @@ public:
 
 protected:
 	//protected variables here
-	InputManager* inputManager = NULL;
+	InputManager* m_inputManager;
 };
 
 #endif
