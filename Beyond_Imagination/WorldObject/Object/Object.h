@@ -28,6 +28,8 @@ public:
 	//scale object with one factor for all axis
 	//void scale(float factor) { };
 
+	void translate(D3DXVECTOR3& offset) { D3DXMatrixTranslation(&world, offset.x, offset.y, offset.z); }
+
 	//return world matrix
 	D3DXMATRIX getWorldMatrix();
 
@@ -42,6 +44,7 @@ private:
 	D3DXMATRIX world;
 
 	float scale;
+	float rotation;
 	
 };
 

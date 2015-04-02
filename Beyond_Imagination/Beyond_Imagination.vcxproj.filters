@@ -129,16 +129,16 @@
     <ClInclude Include="Global\Lighting\LightManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Application\GameStateManager\GameState\ApplicationState.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Application\GameStateManager\ApplicationManager.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="Global\Lighting\LightHelper.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="World\World.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\ApplicationStateManager\GameState\ApplicationState.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\ApplicationStateManager\ApplicationManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -173,10 +173,10 @@
     <ClCompile Include="Global\Material\Material.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Application\GameStateManager\ApplicationManager.cpp">
+    <ClCompile Include="World\World.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="World\World.cpp">
+    <ClCompile Include="Application\ApplicationStateManager\ApplicationManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

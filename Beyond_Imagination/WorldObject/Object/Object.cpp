@@ -5,7 +5,8 @@ Object::Object()
 {
 	vertexBuffer	= 0;
 	indexBuffer		= 0;
-	scale = 0;
+	scale = 1;
+	rotation = 0;
 	D3DXMatrixIdentity(&world);
 }
 
@@ -91,9 +92,10 @@ void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext
 
 void Object::update()
 {
-	/*scale += 0.0005f;
-	D3DXMatrixRotationZ(&world, scale);
-	D3DXMatrixRotationX(&world, scale);*/
+	rotation += 0.0005f;
+
+	world = *D3DXMatrixRotationYawPitchRoll(&world, rotation, rotation, rotation);
+	
 }
 
 void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection)

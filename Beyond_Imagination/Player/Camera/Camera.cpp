@@ -42,7 +42,6 @@ void Camera::selectPerspective(int t)
 }
 void Camera::update()
 {
-
 	D3DXVECTOR2 oldmousePosition = m_inputManager->getMousePosition();
 	//get length of position vector
 	float length = D3DXVec3Length(&m_position);
@@ -152,7 +151,6 @@ void Camera::update()
 		m_target.y = m_position.y + sinf(m_eulerAngle.z);
 		m_target.x = m_position.x + cosf(m_eulerAngle.z);
 	}
-
 
 	//get current view matrix after updates	
 	D3DXMatrixLookAtLH(&m_viewMatrix, &m_position, &m_target, &m_up);
