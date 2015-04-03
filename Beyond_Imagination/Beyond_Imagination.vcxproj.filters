@@ -195,10 +195,9 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="shader.hlsl" />
-    <FxCompile Include="LightHelper.fx" />
+    <CustomBuild Include="Shader.fx" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="Shader.fx" />
+    <None Include="LightHelper.fx" />
   </ItemGroup>
 </Project>

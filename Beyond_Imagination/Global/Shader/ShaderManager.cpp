@@ -1,6 +1,7 @@
 #include "ShaderManager.h"
 #include "Object.h"
-#include <iostream>
+#include <fstream>
+#include <vector>
 
 ShaderManager::ShaderManager() 
 {
@@ -14,22 +15,27 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	HRESULT result;
 	ID3D10Blob* compiledShader;	
 	
-	
+	/*
 	result = D3DX11CompileFromFile(L"Shader.fx", 0, 0, 0, "fx_5_0", 0, 0, 0, &compiledShader, NULL, 0);
 	if (FAILED(result))
-		MessageBox(0, L"Cant compile Shader", 0, MB_OK);
+		MessageBox(0, L"Cant compile Shader", 0, MB_OK);*/
 	
-	
+	std::ifstream fin("Shader.fxo", std::ios::binary);
+	fin.seekg(0, std::ios_base::end);
+	int size = (int)fin.tellg();
+	fin.seekg(0, std::ios_base::beg);
+	std::vector<char> vectorShader(size);
 
-	//std::ifstream fin("Shader.fxo", std::ios::binary);
-	
+	fin.read(&vectorShader[0], size);
+	fin.close();
 
-	result = D3DX11CreateEffectFromMemory(compiledShader->GetBufferPointer(), compiledShader->GetBufferSize(), 0, device, &effect);
+
+	result = D3DX11CreateEffectFromMemory(&vectorShader[0], size, 0, device, &effect);
 	if (FAILED(result))
 		MessageBox(0, L"Cant create Effect", 0, MB_OK);
 
 	//can be released here
-	compiledShader->Release();
+	//compiledShader->Release();
 
 	effectTechnique = effect->GetTechniqueByName("PositionColor");
 	effectWorldViewProjection = effect->GetVariableByName("worldViewProjection")->AsMatrix();

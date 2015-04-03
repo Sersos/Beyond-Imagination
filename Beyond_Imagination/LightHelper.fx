@@ -38,7 +38,7 @@ struct Material
 };
 
 void computeDirectionalLight(Material material, DirectionalLight directionalLight, 
-							float3 normal, float3 toEye, out float4 ambient, out float diffuse, out float4 specular)
+							float3 normal, float3 toEye, out float4 ambient, out float4 diffuse, out float4 specular)
 {
 	//initialize variables with 0
 	ambient = float4(0.0f, 0.0f, 0.0f, 0.0f);
@@ -57,7 +57,7 @@ void computeDirectionalLight(Material material, DirectionalLight directionalLigh
 	if (diffuseFactor > 0.0f)
 	{
 		float3 v = reflect(-lightVector, normal);
-		float specFactor = pow(max(dot(v, toEye), 0.0f), mat.specular.w);
+		float specFactor = pow(max(dot(v, toEye), 0.0f), material.specular.w);
 
 		diffuse  = diffuseFactor * material.diffuse * directionalLight.diffuse;
 		specular = specFactor * material.specular * directionalLight.specular;
@@ -85,7 +85,7 @@ void computePointLight(Material material, PointLight pointLight, float3 position
 	//ambient
 	ambient = material.ambient * pointLight.ambient;
 
-	float diffuseFactor = dot(LightVector, normal);
+	float diffuseFactor = dot(lightVector, normal);
 
 	[flatten]
 	if (diffuseFactor > 0.0f)
@@ -105,7 +105,7 @@ void computePointLight(Material material, PointLight pointLight, float3 position
 }
 
 void computeSpotLight(Material material, SpotLight spotLight, float3 position,
-					float3 normal, float3 toEye, out float4 ambient, out float4 diffuse, out float specular)
+					float3 normal, float3 toEye, out float4 ambient, out float4 diffuse, out float4 specular)
 {
 	//initialize variables with 0
 	ambient = float4(0.0f, 0.0f, 0.0f, 0.0f);
@@ -135,11 +135,11 @@ void computeSpotLight(Material material, SpotLight spotLight, float3 position,
 		specular = specFactor * material.specular * spotLight.specular;
 	}
 
-	float spot = pow(max(dot(-lightVector, spotLight.direction), 0.0f), spotLight.direction);
+	float spotFactor = pow( max( dot(-lightVector, spotLight.direction), 0.0f), spotLight.spot);
 
-	float att = spot / dot(spotLight.att, float3(1.0f, distance, distance * distance));
+	float att = spotFactor / dot(spotLight.att, float3(1.0f, distance, distance * distance));
 
-	ambient  *= spot;
+	ambient *= spotFactor;
 	diffuse  *= att;
 	specular *= att;
 }
