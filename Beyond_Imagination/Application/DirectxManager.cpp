@@ -1,6 +1,7 @@
 #include "DirectxManager.h"
 #include "ShaderManager.h"
 
+
 DirectxManager::DirectxManager()
 {
 	device = 0;
@@ -11,6 +12,7 @@ DirectxManager::DirectxManager()
 	depthStencilState = 0;
 	depthStencilView = 0;
 	rasterizerState = 0;
+	m_blendState = 0;
 }
 
 bool DirectxManager::initialize(HWND window, bool wireFrame)
@@ -113,6 +115,8 @@ bool DirectxManager::initialize(HWND window, bool wireFrame)
 	if (FAILED(hr))
 		return false;
 
+	enableBlend(true);
+
 	deviceContext->OMSetRenderTargets(1, &renderTargetView, depthStencilView);
 
 	//setup rasterizerdesc
@@ -159,7 +163,7 @@ bool DirectxManager::initialize(HWND window, bool wireFrame)
 
 void DirectxManager::beginScene()
 {
-	float backgroundColor[4] = { 0.35, 0.7f, 0.7f, 0.5f };
+	float backgroundColor[4] = { 0.2f, 0.2f, 0.2f, 0.5f };
 	deviceContext->ClearRenderTargetView(renderTargetView, backgroundColor);	
 	deviceContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 }
@@ -183,6 +187,25 @@ void DirectxManager::presentScene()
 void DirectxManager::enableWireFrame()
 {
 	rasterizerDesc.FillMode = D3D11_FILL_WIREFRAME;
+}
+
+void DirectxManager::enableBlend(bool blend)
+{
+	D3D11_BLEND_DESC blendDesc;
+	ZeroMemory(&blendDesc,	sizeof(D3D11_BLEND_DESC));
+	blendDesc.RenderTarget[0].BlendEnable = blend;
+	blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+	blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+	blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+	blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+	blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+	blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+
+	float blendFactor[4] = { 0.75, 0.75, 0.75, 1.0f };
+
+	device->CreateBlendState(&blendDesc, &m_blendState);	
+	deviceContext->OMSetBlendState(m_blendState, blendFactor, 0xffffffff);
 }
 
 void DirectxManager::switchToFullScreen()

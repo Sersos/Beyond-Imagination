@@ -21,8 +21,7 @@ public:
 	void close();
 
 	void switchToFullScreen();
-	void enableSamplerState(){ }; //if shader with texture is used
-	void enableStencilBuffer() { };
+	void enableBlend(bool blend);
 	void enableWireFrame();
 
 	ID3D11Device* getDevice();
@@ -38,6 +37,7 @@ private:
 	ID3D11DepthStencilState* depthStencilState;
 	ID3D11DepthStencilView* depthStencilView;
 	ID3D11RasterizerState* rasterizerState;
+	ID3D11BlendState* m_blendState;
 
 	//important descs for different functions
 	DXGI_SWAP_CHAIN_DESC swapChainDesc;

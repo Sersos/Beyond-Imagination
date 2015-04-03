@@ -126,9 +126,6 @@
     <ClInclude Include="Global\VirtualKeyCodes.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Global\Lighting\LightManager.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="Global\Lighting\LightHelper.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -142,6 +139,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Global\Transform\Transform.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Global\Lighting\LightManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Global\CoordinateSystem\CoordinateSystem.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -182,6 +185,9 @@
     <ClCompile Include="Application\ApplicationStateManager\ApplicationManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Global\CoordinateSystem\CoordinateSystem.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TextFiles\Include-Paths.txt">
@@ -199,5 +205,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="LightHelper.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="CoordinateSystem.fx" />
   </ItemGroup>
 </Project>

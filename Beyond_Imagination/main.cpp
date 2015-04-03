@@ -8,6 +8,7 @@
 #include <string>
 #include <sstream>
 #include "InputManager.h"
+#include "CoordinateSystem.h"
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -16,6 +17,7 @@ Object* object = NULL;
 ShaderManager* shaderManager = NULL;
 Camera* camera = NULL;
 InputManager* inputManager = NULL;
+CoordinateSystem* coordinateSystem = NULL;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -27,6 +29,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	object = new Object();	
 	camera = new Camera(&window);
 	inputManager = new InputManager(&window);
+	coordinateSystem = new CoordinateSystem();
 
 	ZeroMemory(&windowClass, sizeof(WNDCLASSEX));
 
@@ -65,6 +68,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	directxManager->initialize(window, false);	
 	camera->initialize(D3DXVECTOR3(0, 0, 0));
 
+	coordinateSystem->initialize(directxManager->getDevice(), directxManager->getDeviceContext());
+
 	shaderManager->initialize(directxManager->getDevice(),
 		directxManager->getDeviceContext());	
 	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), D3DXVECTOR3(0.0f, 0.0f, 0.0f));			
@@ -82,7 +87,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		//GameManager render here
 		inputManager->update();	
 		camera->update();
-		directxManager->beginScene();		
+		directxManager->beginScene();
+
+		coordinateSystem->render(directxManager->getDeviceContext(),
+			camera->getViewMatrix(),
+			camera->getProjectionMatrix());
+
 		shaderManager->render(directxManager->getDeviceContext(), camera);
 
 		object->render(directxManager->getDeviceContext(),

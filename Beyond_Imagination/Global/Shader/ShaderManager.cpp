@@ -29,7 +29,6 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	fin.read(&vectorShader[0], size);
 	fin.close();
 
-
 	result = D3DX11CreateEffectFromMemory(&vectorShader[0], size, 0, device, &m_effect);
 	if (FAILED(result))
 		MessageBox(0, L"Cant create Effect", 0, MB_OK);
@@ -50,7 +49,7 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	m_effectEyePosition = m_effect->GetVariableByName("gEyePosition")->AsVector();
 
 	//initialize light here
-	m_directionalLight.ambient = D3DXVECTOR4(0.2f, 0.2f, 0.2f, 1.0f);
+	m_directionalLight.ambient = D3DXVECTOR4(0.2f, 0.5f, 0.2f, 1.0f);
 	m_directionalLight.diffuse = D3DXVECTOR4(0.5f, 0.5f, 0.5f, 1.0f);
 	m_directionalLight.specular = D3DXVECTOR4(0.5f, 0.5f, 0.5f, 1.0f);
 	m_directionalLight.direction = D3DXVECTOR3(0, 0, -1);
@@ -59,6 +58,7 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	m_pointLight.diffuse = D3DXVECTOR4(0.7f, 0.7f, 0.7f, 1.0f);
 	m_pointLight.specular = D3DXVECTOR4(0.7f, 0.7f, 0.7f, 1.0f);
 	m_pointLight.att = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	m_pointLight.position = D3DXVECTOR3(0.0f, 5.0f, 0.0f);
 	m_pointLight.range = 25.0f;
 
 	m_spotLight.ambient = D3DXVECTOR4(0.0f, 0.0f, 0.0f, 1.0f);
@@ -69,7 +69,7 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	m_spotLight.range = 10000.0f;
 
 	//initialize material here
-	m_material.ambient = D3DXVECTOR4(1, 0, 0, 1.0f);
+	m_material.ambient = D3DXVECTOR4(0.9f, 0.9f, 0.9f, 1.0f);
 	m_material.diffuse = D3DXVECTOR4(0.48f, 0.77f, 0.46f, 1.0f);
 	m_material.specular = D3DXVECTOR4(0.2f, 0.2f, 0.2f, 16.0f);
 	
@@ -82,6 +82,7 @@ void ShaderManager::render(ID3D11DeviceContext* deviceContext, Camera* camera)
 	m_effectMaterial->SetRawValue(&m_material, 0, sizeof(m_material));
 
 	//cbPerFrame
+	
 	m_effectDirectionalLight->SetRawValue(&m_directionalLight, 0, sizeof(m_directionalLight));
 	//m_effectPointLight->SetRawValue(&m_pointLight, 0, sizeof(m_pointLight));
 	//m_effectSpotLight->SetRawValue(&m_spotLight, 0, sizeof(m_spotLight));

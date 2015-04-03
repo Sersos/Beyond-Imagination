@@ -19,9 +19,12 @@ namespace World
 	public:
 		World();
 
-		void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, uint8 width, uint8 height);
+		void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, uint8 width, uint8 depth);
 		void update();
 		void render(ID3D11DeviceContext* deviceContext);
+
+		uint8 getWidth() { return m_width; }
+		uint8 getDepth() { return m_depth; }
 
 	private:
 		ID3D11Buffer* m_vertexBuffer;
@@ -29,6 +32,9 @@ namespace World
 
 		std::vector<Vertex> m_vertices;
 		std::vector<uint8>  m_indices;
+
+		uint8 m_width;
+		uint8 m_depth;
 
 		World::WorldObject m_worldObject;
 	};

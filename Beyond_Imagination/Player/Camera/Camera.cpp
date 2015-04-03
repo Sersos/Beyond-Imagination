@@ -24,6 +24,7 @@ void Camera::initialize(D3DXVECTOR3& position)
 
 	selectPerspective(0);
 }
+
 void Camera::selectPerspective(int t)
 {
 	//Perspective Cam

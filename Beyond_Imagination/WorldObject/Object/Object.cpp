@@ -88,14 +88,7 @@ void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext
 
 	//create buffer
 	device->CreateBuffer(&indexBufferDesc, &indexData, &indexBuffer);	
-
-	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
-	UINT stride = sizeof(Vertex);
-	UINT offset = 0;
-	deviceContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
-	deviceContext->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);	
-
+	
 	D3DXMatrixIdentity(&m_world);
 	Transform::rotate(&m_rotationMatrix, D3DXVECTOR3(0.0f, 5.0f, 0.0f));
 	Transform::scale(&m_scaleMatrix, D3DXVECTOR3(1.0f, 1.0f, 1.0f));
@@ -110,6 +103,13 @@ void Object::update()
 
 void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection)
 {
+	UINT stride = sizeof(Vertex);
+	UINT offset = 0;
+	deviceContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
+	deviceContext->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+	
+	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	
 	m_world = m_rotationMatrix * m_scaleMatrix  * m_positionMatrix;
 	D3DXMATRIX worldViewProjection = m_world * view * projection;
 	D3DXMATRIX worldInvTranspose = LightHelper::inverseTranspose(&m_world);

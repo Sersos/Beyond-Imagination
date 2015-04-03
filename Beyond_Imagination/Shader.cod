@@ -91,7 +91,7 @@ fxgroup
                 dcl_output o2.xyz
                 dcl_temps 3
                 
-                #line 37 "C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx"
+                #line 37 "C:\Users\Besitzer\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx"
                 dp4 r0.x, v0.xyzw, cb0[0].xyzw  // output<4:NaN:Inf>
                 dp4 r0.y, v0.xyzw, cb0[1].xyzw  // output<5:NaN:Inf>
                 dp4 r0.z, v0.xyzw, cb0[2].xyzw  // output<6:NaN:Inf>
@@ -213,7 +213,7 @@ fxgroup
                 dcl_output o0.xyzw
                 dcl_temps 17
                 
-                #line 49 "C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx"
+                #line 49 "C:\Users\Besitzer\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx"
                 dp3 r0.x, v2.xyzx, v2.xyzx
                 rsq r0.x, r0.x
                 mul r0.xyz, r0.xxxx, v2.xyzx  // pixelIn<8:NaN:Inf,9:NaN:Inf,10:NaN:Inf>
@@ -261,7 +261,7 @@ fxgroup
                 movc r6.xyz, r1.wwww, r6.xyzx, l(0,0,0,0)  // diffuse<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
                 movc r7.xyz, r1.wwww, r7.xyzx, l(0,0,0,0)  // specular<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
                 
-                #line 60 "C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx"
+                #line 60 "C:\Users\Besitzer\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx"
                 mov r5.xyz, r5.xyzx  // a<0:Inf,1:Inf,2:Inf>
                 mov r6.xyz, r6.xyzx  // d<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
                 mov r7.xyz, r7.xyzx  // s<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
@@ -331,7 +331,7 @@ fxgroup
                   mov r10.xyz, l(0,0,0,0)  // specular<0: 0f,1: 0f,2: 0f>
                 endif 
                 
-                #line 66 "C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx"
+                #line 66 "C:\Users\Besitzer\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx"
                 mov r8.xyz, r8.xyzx  // a<0:Inf,1:Inf,2:Inf>
                 mov r9.xyz, r9.xyzx  // d<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
                 mov r10.xyz, r10.xyzx  // s<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
@@ -406,7 +406,7 @@ fxgroup
                   mov r1.xyz, l(0,0,0,0)  // specular<0: 0f,1: 0f,2: 0f>
                 endif 
                 
-                #line 72 "C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx"
+                #line 72 "C:\Users\Besitzer\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx"
                 mov r2.xyz, r2.xyzx  // a<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
                 mov r0.xyz, r0.xyzx  // d<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
                 mov r1.xyz, r1.xyzx  // s<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
