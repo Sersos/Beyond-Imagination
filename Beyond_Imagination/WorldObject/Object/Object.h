@@ -3,6 +3,7 @@
 
 #include "DirectxManager.h"
 #include "ShaderManager.h"
+#include "Transform.h"
 
 struct Vertex
 {
@@ -19,32 +20,18 @@ public:
 	void update();
 	void render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection);	
 
-	//rotate object on every axis: x, y and z
-	void rotate(D3DXVECTOR3& rotation) { };
-
-	//scale object on every axis: x, y and z
-	//void scale(D3DXVECTOR3& scale) { };
-
-	//scale object with one factor for all axis
-	//void scale(float factor) { };
-
-	void translate(D3DXVECTOR3& offset) { D3DXMatrixTranslation(&world, offset.x, offset.y, offset.z); }
-
-	//return world matrix
-	D3DXMATRIX getWorldMatrix();
-
 private:
 	//buffers for vertices and indices
 	ID3D11Buffer* vertexBuffer;
 	ID3D11Buffer* indexBuffer;	
-	D3DXVECTOR3 origin;
+	//D3DXVECTOR3 origin;
 
+	D3DXMATRIX m_positionMatrix;
+	D3DXMATRIX m_rotationMatrix;
+	D3DXMATRIX m_scaleMatrix;
 
 	//world matrix, manipulate in "update-funtion"
-	D3DXMATRIX world;
-
-	float scale;
-	float rotation;
+	D3DXMATRIX world;	
 	
 };
 

@@ -1,4 +1,4 @@
-//#include "LightHelper.fx"
+#include "LightHelper.fx"
 
 cbuffer cbPerObject
 {

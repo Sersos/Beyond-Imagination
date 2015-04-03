@@ -13,7 +13,6 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 
 DirectxManager* directxManager = NULL;
 Object* object = NULL;
-Object* object2[50];
 ShaderManager* shaderManager = NULL;
 Camera* camera = NULL;
 InputManager* inputManager = NULL;
@@ -25,13 +24,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	directxManager = new DirectxManager();
 	shaderManager = new ShaderManager();
-	object = new Object();
-	
-	for (int i = 0; i < 50; i++)
-	{
-		object2[i] = new Object();
-	}
-
+	object = new Object();	
 	camera = new Camera(&window);
 	inputManager = new InputManager(&window);
 
@@ -76,13 +69,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		directxManager->getDeviceContext());	
 	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), D3DXVECTOR3(0.0f, 0.0f, 0.0f));			
 	
-	for (int i = 0; i < 50; i++)
-	{
-		object2[i]->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-		object2[i]->translate(D3DXVECTOR3(0.0f, 1.0f, -i * 1.0f));
-	}	
-	
-
 	//variables for fps counter
 	unsigned long lastTime = GetTickCount();
 	unsigned long timer = GetTickCount();
@@ -101,17 +87,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		object->render(directxManager->getDeviceContext(),
 				shaderManager,
 				camera->getViewMatrix(),
-				camera->getProjectionMatrix());
-
-		for (int i = 0; i < 50; i++)
-		{
-			object2[i]->render(directxManager->getDeviceContext(),
-				shaderManager,
-				camera->getViewMatrix(),
-				camera->getProjectionMatrix());
-
-			//object2[i]->update();
-		}				
+				camera->getProjectionMatrix());			
 		
 		directxManager->presentScene();	
 
@@ -126,8 +102,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 
 		//update here		
-		//object->update();
-		//object2->update();		
+		object->update();				
 
 		frames++;
 

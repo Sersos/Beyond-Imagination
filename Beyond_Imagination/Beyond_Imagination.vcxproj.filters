@@ -141,6 +141,9 @@
     <ClInclude Include="Application\ApplicationStateManager\ApplicationManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Global\Transform\Transform.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -193,9 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shader.hlsl" />
-    <FxCompile Include="Shader.fx" />
+    <FxCompile Include="LightHelper.fx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="LightHelper.fx" />
+    <CustomBuild Include="Shader.fx" />
   </ItemGroup>
 </Project>

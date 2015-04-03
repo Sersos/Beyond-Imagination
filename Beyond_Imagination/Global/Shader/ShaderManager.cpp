@@ -1,5 +1,6 @@
 #include "ShaderManager.h"
 #include "Object.h"
+#include <iostream>
 
 ShaderManager::ShaderManager() 
 {
@@ -12,10 +13,16 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 {
 	HRESULT result;
 	ID3D10Blob* compiledShader;	
-
+	
+	/*
 	result = D3DX11CompileFromFile(L"Shader.fx", 0, 0, 0, "fx_5_0", 0, 0, 0, &compiledShader, NULL, 0);
 	if (FAILED(result))
 		MessageBox(0, L"Cant compile Shader", 0, MB_OK);
+	
+	*/
+
+	std::ifstream fin("Shader.fxo", std::ios::binary);
+	
 
 	result = D3DX11CreateEffectFromMemory(compiledShader->GetBufferPointer(), compiledShader->GetBufferSize(), 0, device, &effect);
 	if (FAILED(result))

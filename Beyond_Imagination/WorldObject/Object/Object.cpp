@@ -4,10 +4,7 @@
 Object::Object() 
 {
 	vertexBuffer	= 0;
-	indexBuffer		= 0;
-	scale = 1;
-	rotation = 0;
-	D3DXMatrixIdentity(&world);
+	indexBuffer		= 0;		
 }
 
 void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, D3DXVECTOR3 origin)
@@ -21,16 +18,23 @@ void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext
 	//create vertices
 	Vertex vertex[] =
 	{
-		//clockvise
-		D3DXVECTOR3(origin.x + 0.5f, origin.y + 0.5f,origin.z + 0.5f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
-		D3DXVECTOR3(origin.x + 0.5f, origin.y - 0.5f, origin.z + 0.5f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
-		D3DXVECTOR3(origin.x - 0.5, origin.y - 0.5, origin.z + 0.5), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f),
-		D3DXVECTOR3(origin.x - 0.5, origin.y + 0.5, origin.z + 0.5), D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(-1.0f, -1.0f, -1.0f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(-1.0f, +1.0f, -1.0f), D3DXVECTOR4(0.5f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, +1.0f, -1.0f), D3DXVECTOR4(0.5f, 1.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, -1.0f, -1.0f), D3DXVECTOR4(0.5f, 1.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(-1.0f, -1.0f, +1.0f), D3DXVECTOR4(0.5f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(-1.0f, +1.0f, +1.0f), D3DXVECTOR4(0.5f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, +1.0f, +1.0f), D3DXVECTOR4(0.5f, 1.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(+1.0f, -1.0f, +1.0f), D3DXVECTOR4(0.5f, 0.0f, 0.0f, 1.0f)
 
-		D3DXVECTOR3(origin.x + 0.5f, origin.y + 0.5f, origin.z - 0.5f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
-		D3DXVECTOR3(origin.x + 0.5f, origin.y - 0.5f, origin.z - 0.5f), D3DXVECTOR4(1.0f, 0.0f, 1.0f, 1.0f),
-		D3DXVECTOR3(origin.x - 0.5, origin.y - 0.5, origin.z - 0.5), D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f),
-		D3DXVECTOR3(origin.x - 0.5, origin.y + 0.5, origin.z - 0.5), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f)
+		/*D3DXVECTOR3(origin.x + 0.5f, origin.y + 0.5f, origin.z + 0.5f), D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(origin.x + 0.5f, origin.y - 0.5f, origin.z + 0.5f), D3DXVECTOR4(0.5f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(origin.x - 0.5, origin.y - 0.5, origin.z + 0.5), D3DXVECTOR4(0.5f, 1.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(origin.x - 0.5, origin.y + 0.5, origin.z + 0.5), D3DXVECTOR4(0.5f, 1.0f, 0.0f, 1.0f),
+		D3DXVECTOR3(origin.x + 0.5f, origin.y + 0.5f, origin.z - 0.5f), D3DXVECTOR4(0.5f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(origin.x + 0.5f, origin.y - 0.5f, origin.z - 0.5f), D3DXVECTOR4(0.5f, 0.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(origin.x - 0.5, origin.y - 0.5, origin.z - 0.5), D3DXVECTOR4(0.5f, 1.0f, 1.0f, 1.0f),
+		D3DXVECTOR3(origin.x - 0.5, origin.y + 0.5, origin.z - 0.5), D3DXVECTOR4(0.5f, 0.0f, 0.0f, 1.0f)*/
 	};
 	
 	//create vertexbuffer desc	
@@ -88,18 +92,32 @@ void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext
 	UINT offset = 0;
 	deviceContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
 	deviceContext->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);	
+
+	D3DXMatrixIdentity(&world);
+	Transform::rotate(&m_rotationMatrix, D3DXVECTOR3(0.0f, 5.0f, 0.0f));
+	Transform::scale(&m_scaleMatrix, D3DXVECTOR3(1.0f, 1.0f, 1.0f));
+	Transform::translate(&m_positionMatrix, D3DXVECTOR3(5.0f, 5.0f, 5.0f));
+
+	/*
+	
+	1
+	5	5
+	5		1
+	5			0
+	
+	
+	
+	*/
 }
 
 void Object::update()
 {
-	rotation += 0.0005f;
-
-	world = *D3DXMatrixRotationYawPitchRoll(&world, rotation, rotation, rotation);
 	
 }
 
 void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection)
 {
+	world = m_rotationMatrix * m_scaleMatrix  * m_positionMatrix;
 	D3DXMATRIX worldViewProjection = world * view * projection;
 	
 	D3DX11_TECHNIQUE_DESC techniqueDesc;
@@ -113,7 +131,3 @@ void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderMan
 	}
 }
 
-D3DXMATRIX Object::getWorldMatrix()
-{
-	return world;
-}
