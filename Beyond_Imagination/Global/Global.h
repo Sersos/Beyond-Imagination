@@ -1,5 +1,4 @@
 //global.h
-
 #include <string>
 
 #define TITLE Beyond Imagination
@@ -11,10 +10,10 @@
 #define DEFAULT_VIEW_RANGE 1000.0f
 
 typedef unsigned short uint8;
-typedef unsigned int uint16;
-typedef unsigned long uint32;
+typedef unsigned int   uint16;
+typedef unsigned long  uint32;
 
 typedef signed short int8;
-typedef signed int int16;
-typedef signed long int32;
+typedef signed int   int16;
+typedef signed long  int32;
 

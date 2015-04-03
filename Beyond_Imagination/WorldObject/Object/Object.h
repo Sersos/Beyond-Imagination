@@ -8,7 +8,7 @@
 struct Vertex
 {
 	D3DXVECTOR3 Position;
-	D3DXVECTOR4 Color;	
+	D3DXVECTOR3 Normal;	
 };
 
 class Object
@@ -23,15 +23,14 @@ public:
 private:
 	//buffers for vertices and indices
 	ID3D11Buffer* vertexBuffer;
-	ID3D11Buffer* indexBuffer;	
-	//D3DXVECTOR3 origin;
+	ID3D11Buffer* indexBuffer;		
 
 	D3DXMATRIX m_positionMatrix;
 	D3DXMATRIX m_rotationMatrix;
 	D3DXMATRIX m_scaleMatrix;
 
 	//world matrix, manipulate in "update-funtion"
-	D3DXMATRIX world;	
+	D3DXMATRIX m_world;	
 	
 };
 

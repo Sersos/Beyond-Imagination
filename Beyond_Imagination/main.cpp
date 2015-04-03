@@ -83,7 +83,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		inputManager->update();	
 		camera->update();
 		directxManager->beginScene();		
-		
+		shaderManager->render(directxManager->getDeviceContext(), camera);
+
 		object->render(directxManager->getDeviceContext(),
 				shaderManager,
 				camera->getViewMatrix(),

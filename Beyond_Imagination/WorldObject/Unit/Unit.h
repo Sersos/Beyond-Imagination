@@ -3,7 +3,7 @@
 
 #include "WorldObject.h"
 
-class Unit : public WorldObject
+class Unit : public World::WorldObject, Object
 {
 public:
 	Unit();

@@ -1,4 +1,15 @@
-﻿  ShaderManager.cpp
+﻿  fxc compile for debug: C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx
+C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx(51,29): warning X3206: implicit truncation of vector type
+C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx(51,8): warning X3206: implicit truncation of vector type
+C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx(66,2): warning X3206: 'computePointLight': implicit truncation of vector type
+C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fx(72,2): warning X3206: 'computeSpotLight': implicit truncation of vector type
+  
+  Microsoft (R) Direct3D Shader Compiler 9.29.952.3111
+  Copyright (C) Microsoft Corporation 2002-2009. All rights reserved.
+  
+  compilation succeeded; see Shader.cod
+  compilation succeeded; see C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Beyond_Imagination\Shader.fxo
+  ShaderManager.cpp
 c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': Makro-Neudefinition
           c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50092): Siehe vorherige Definition von 'DXGI_STATUS_OCCLUDED'
 c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': Makro-Neudefinition
@@ -55,5 +66,4 @@ c:\program files (x86)\microsoft directx sdk (june 2010)\include\d3d11.h(919): w
           c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50488): Siehe vorherige Definition von 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
 c:\program files (x86)\microsoft directx sdk (june 2010)\include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': Makro-Neudefinition
           c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50497): Siehe vorherige Definition von 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
-c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\global\shader\shadermanager.cpp(16): warning C4101: 'compiledShader': Unreferenzierte lokale Variable
   Beyond_Imagination.vcxproj -> C:\Users\janni_000\Documents\GitHub\Beyond-Imagination\Debug\Beyond_Imagination.exe

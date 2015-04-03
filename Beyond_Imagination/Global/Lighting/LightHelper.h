@@ -6,9 +6,9 @@
 class LightHelper
 {
 public:
-	static D3DXMATRIX inverseTranspose(D3DXMATRIX matrix)
+	static D3DXMATRIX inverseTranspose(D3DXMATRIX* matrix)
 	{
-		D3DXMATRIX temp = matrix;
+		D3DXMATRIX temp = *matrix;
 		temp._31 = 0.0f;
 		temp._32 = 0.0f;
 		temp._33 = 0.0f;

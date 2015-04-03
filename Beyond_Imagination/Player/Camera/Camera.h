@@ -18,20 +18,21 @@ public:
 	void selectPerspective(int t /* id */);
 	
 	D3DXMATRIX getViewMatrix();
-	D3DXMATRIX getProjectionMatrix();
+	D3DXMATRIX getProjectionMatrix();	
 
 	D3DXVECTOR3 m_forward;
 	D3DXVECTOR3 m_right;
 	D3DXVECTOR3 m_target;
 	D3DXVECTOR3 m_eulerAngle;
 
+	D3DXVECTOR3 getPosition(){ return m_position; };
+
 private:
 	void move(D3DXVECTOR3& offset);
 
 	D3DXVECTOR3 m_up;
 	D3DXVECTOR3 m_position;
-
-
+	
 
 	D3DXMATRIX	m_viewMatrix;
 	D3DXMATRIX	m_projectionMatrix;
