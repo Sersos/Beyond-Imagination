@@ -13,13 +13,12 @@ void CoordinateSystem::initialize(ID3D11Device* device, ID3D11DeviceContext* dev
 	D3D11_SUBRESOURCE_DATA vertexData;
 	ID3D10Blob* compiledShader;
 
-
-
 	Axis axis[SIZE * 6 * 2];
 	int i = 0;
 
 	//Y
-	for (int x = -SIZE / 2; x < SIZE / 2; x++){
+	for (int x = -SIZE / 2; x < SIZE / 2; x++)
+	{
 		axis[i].Position = D3DXVECTOR3(x * SPACING, -SIZE, 0.0f);
 		axis[i].Color = D3DXVECTOR4(1.0f, 0.0f, 0.0f, 0.5f);
 		i++;
@@ -36,7 +35,8 @@ void CoordinateSystem::initialize(ID3D11Device* device, ID3D11DeviceContext* dev
 	}
 
 	//Z
-	for (int y = -SIZE / 2; y < SIZE / 2; y++){
+	for (int y = -SIZE / 2; y < SIZE / 2; y++)
+	{
 		axis[i].Position = D3DXVECTOR3(0.0f, y * SPACING, -SIZE);
 		axis[i].Color = D3DXVECTOR4(0.0f, 1.0f, 0.0f, 0.5f);
 		i++;
@@ -53,7 +53,8 @@ void CoordinateSystem::initialize(ID3D11Device* device, ID3D11DeviceContext* dev
 	}
 
 	//X
-	for (int z = -SIZE / 2; z < SIZE / 2; z++){
+	for (int z = -SIZE / 2; z < SIZE / 2; z++)
+	{
 		axis[i].Position = D3DXVECTOR3(-SIZE, 0.0f, z * SPACING);
 		axis[i].Color = D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f);
 		i++;
