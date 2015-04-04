@@ -125,6 +125,9 @@
     <ClCompile Include="World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\..\..\Studium\Programmieren\3DGameProg\DVD\Code\Chapter 6 Drawing in Direct3D\Skull\Models\skull.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Text>
     <Text Include="TextFiles\Include-Paths.txt" />
     <Text Include="TextFiles\Model list.txt" />
     <Text Include="TextFiles\Shader list.txt" />
@@ -155,6 +158,11 @@
     <FxCompile Include="CoordinateSystem.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="spaceShipModel.obj">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Object>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

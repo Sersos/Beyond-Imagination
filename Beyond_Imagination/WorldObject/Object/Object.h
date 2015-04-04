@@ -4,6 +4,7 @@
 #include "DirectxManager.h"
 #include "ShaderManager.h"
 #include "Transform.h"
+#include "ModelLoader.h"
 
 struct Vertex
 {
@@ -16,7 +17,7 @@ class Object
 public:
 	Object();
 
-	void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, D3DXVECTOR3 origin);
+	void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext);
 	void update();
 	void render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection);	
 
@@ -31,7 +32,7 @@ private:
 
 	//world matrix, manipulate in "update-funtion"
 	D3DXMATRIX m_world;	
-	
+	ModelLoader* m_model; 
 };
 
 #endif

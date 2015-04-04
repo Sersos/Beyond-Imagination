@@ -205,6 +205,7 @@
     <Text Include="TextFiles\Shader list.txt">
       <Filter>Ressourcendateien</Filter>
     </Text>
+    <Text Include="..\..\..\Studium\Programmieren\3DGameProg\DVD\Code\Chapter 6 Drawing in Direct3D\Skull\Models\skull.txt" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader.fx" />
@@ -214,5 +215,8 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="CoordinateSystem.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="spaceShipModel.obj" />
   </ItemGroup>
 </Project>

@@ -72,7 +72,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	shaderManager->initialize(directxManager->getDevice(),
 		directxManager->getDeviceContext());	
-	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext(), D3DXVECTOR3(0.0f, 0.0f, 0.0f));			
+	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext());			
 	
 	//variables for fps counter
 	unsigned long lastTime = GetTickCount();

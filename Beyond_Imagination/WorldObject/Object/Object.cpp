@@ -4,19 +4,22 @@
 Object::Object() 
 {
 	vertexBuffer	= 0;
-	indexBuffer		= 0;		
+	indexBuffer		= 0;
+	m_model = new ModelLoader();
 }
 
-void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, D3DXVECTOR3 origin)
+void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
 	D3D11_BUFFER_DESC vertexBufferDesc;
 	D3D11_SUBRESOURCE_DATA vertexData;
 
 	D3D11_BUFFER_DESC indexBufferDesc;
 	D3D11_SUBRESOURCE_DATA indexData;
+	
+	m_model->loadObject("spaceShipModel.obj");
 
 	D3DXVECTOR3 normal;
-
+	/*
 	//create vertices
 	Vertex vertex[] =
 	{
@@ -37,21 +40,23 @@ void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext
 		D3DXVECTOR3(origin.x + 0.5f, origin.y + 0.5f, origin.z - 0.5f), D3DXVECTOR4(0.5f, 0.0f, 1.0f, 1.0f),
 		D3DXVECTOR3(origin.x + 0.5f, origin.y - 0.5f, origin.z - 0.5f), D3DXVECTOR4(0.5f, 0.0f, 1.0f, 1.0f),
 		D3DXVECTOR3(origin.x - 0.5, origin.y - 0.5, origin.z - 0.5), D3DXVECTOR4(0.5f, 1.0f, 1.0f, 1.0f),
-		D3DXVECTOR3(origin.x - 0.5, origin.y + 0.5, origin.z - 0.5), D3DXVECTOR4(0.5f, 0.0f, 0.0f, 1.0f)*/
+		D3DXVECTOR3(origin.x - 0.5, origin.y + 0.5, origin.z - 0.5), D3DXVECTOR4(0.5f, 0.0f, 0.0f, 1.0f)
 	};
+	*/
+	
 	
 	//create vertexbuffer desc	
 	ZeroMemory(&vertexBufferDesc, sizeof(vertexBufferDesc));
 	vertexBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-	vertexBufferDesc.ByteWidth = sizeof(Vertex) * 8;
+	vertexBufferDesc.ByteWidth = sizeof(ModelData) * m_model->m_vertexCount;
 	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;	
 	
-	vertexData.pSysMem = vertex;
+	vertexData.pSysMem = &m_model->m_vertices[0];
 
 	//create buffer
 	device->CreateBuffer(&vertexBufferDesc, &vertexData, &vertexBuffer);
-
+	/*
 	DWORD indices[] = {
 		// front face
 		4, 5, 7,
@@ -77,21 +82,22 @@ void Object::initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext
 		1, 2, 5,
 		2, 5, 6
 	};
+	*/	
 
 	//create indexbuffer desc
 	ZeroMemory(&indexBufferDesc, sizeof(indexBufferDesc));
 	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	indexBufferDesc.ByteWidth = sizeof(DWORD) * 36;
+	indexBufferDesc.ByteWidth = sizeof(uint8) * m_model->m_indexCount;
 	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	indexBufferDesc.CPUAccessFlags = 0;		
-	indexData.pSysMem = indices;
+	indexData.pSysMem = &m_model->m_indices[0];
 
 	//create buffer
 	device->CreateBuffer(&indexBufferDesc, &indexData, &indexBuffer);	
 	
 	D3DXMatrixIdentity(&m_world);
 	Transform::rotate(&m_rotationMatrix, D3DXVECTOR3(0.0f, 5.0f, 0.0f));
-	Transform::scale(&m_scaleMatrix, D3DXVECTOR3(1.0f, 1.0f, 1.0f));
+	Transform::scale(&m_scaleMatrix, D3DXVECTOR3(50.0f, 50.0f, 50.0f));
 	Transform::translate(&m_positionMatrix, D3DXVECTOR3(0, 0, 1));
 	//Transform::translate(&m_positionMatrix, D3DXVECTOR3(5.0f, 5.0f, 5.0f));
 }
@@ -103,7 +109,7 @@ void Object::update()
 
 void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection)
 {
-	UINT stride = sizeof(Vertex);
+	UINT stride = sizeof(ModelData);
 	UINT offset = 0;
 	deviceContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
 	deviceContext->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
@@ -124,7 +130,7 @@ void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderMan
 	for (UINT p = 0; p < techniqueDesc.Passes; ++p)
 	{
 		shaderManager->m_effectTechnique->GetPassByIndex(p)->Apply(0, deviceContext);
-		deviceContext->DrawIndexed(36, 0, 0);
+		deviceContext->DrawIndexed(m_model->m_indexCount, 0, 0);
 	}
 }
 
