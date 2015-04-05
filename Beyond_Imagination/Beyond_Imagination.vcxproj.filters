@@ -150,6 +150,9 @@
     <ClInclude Include="Global\ModelLoader\ModelLoader.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Logs\FileOutputManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -194,6 +197,9 @@
     <ClCompile Include="Global\ModelLoader\ModelLoader.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Logs\FileOutputManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TextFiles\Include-Paths.txt">
@@ -205,18 +211,17 @@
     <Text Include="TextFiles\Shader list.txt">
       <Filter>Ressourcendateien</Filter>
     </Text>
-    <Text Include="..\..\..\Studium\Programmieren\3DGameProg\DVD\Code\Chapter 6 Drawing in Direct3D\Skull\Models\skull.txt" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="Shader.fx" />
+    <Object Include="models\spaceShipModel.obj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="LightHelper.fx" />
+    <CustomBuild Include="Global\Shader\Shader.fx" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="CoordinateSystem.fx" />
+    <None Include="Global\Shader\LightHelper.fx" />
   </ItemGroup>
   <ItemGroup>
-    <Object Include="spaceShipModel.obj" />
+    <FxCompile Include="Global\Shader\CoordinateSystem.fx" />
   </ItemGroup>
 </Project>

@@ -1,53 +1,69 @@
 #include "ModelLoader.h"
-#include <fstream>
+#include "FileOutputManager.h"
 
 ModelLoader::ModelLoader()
 {
-
+	m_vertexCount = 0;
+	m_indexCount = 0;
 }
 
 void ModelLoader::loadObject(const char* filename)
 {
-	////create fstream with filename
+	//create fstream with filename
 	//std::wifstream file(filename);
 	//wchar_t currentChar;
 	//std::string ignore;
 
 	//int normalcounter = 0;
 
-	std::ifstream fin("skull.txt");
+	FileOutputManager* file = new FileOutputManager();
+	file->createFile("Logs/log.txt");
+	std::ifstream fin(filename); //file to load in
+	//std::ofstream fileOut("logs/log.txt"); //file to write in (logfile)
 
 	if (!fin)
 		MessageBox(0, L"Cant load file", 0, MB_OK);
 	
 	std::string ignore;
-
+	int triangleCount = 0;
+	
 	fin >> ignore >> m_vertexCount;
-	fin >> ignore >> m_indexCount;
+	file->save("vertexCount: ", m_vertexCount, true);
+
+	fin >> ignore >> triangleCount;
+	file->save("triangleCount: ", triangleCount, true);
+
 	fin >> ignore >> ignore >> ignore >> ignore;
 
 	m_vertices.resize(m_vertexCount);
-	for (UINT i = 0; i < m_vertexCount; i++)
-	{
-		fin >> m_vertices[i].Position.x >> m_vertices[i].Position.y >> m_vertices[i].Position.z >> m_vertices[i].Normal.x >> m_vertices[i].Normal.y >> m_vertices[i].Normal.z;		
-	}
-
-	fin >> ignore;
-	fin >> ignore;
-	fin >> ignore;
+	m_indexCount = 3 * triangleCount;
+	file->save("indexCount: ", m_indexCount, true);
 
 	m_indices.resize(m_indexCount);
-	for (UINT i = 0; i < m_indexCount; i++)
-	{
-		int index[3];
-		fin >> index[0] >> index[1] >> index[2];
 
-		for (int x = 0; x < sizeof(index); x++)
-			m_indices.push_back(index[x]);
+	for (UINT i = 0; i < m_vertexCount; ++i)
+	{
+		fin >> m_vertices[i].Position.x >> m_vertices[i].Position.y >> m_vertices[i].Position.z
+			>> m_vertices[i].Normal.x >> m_vertices[i].Normal.y >> m_vertices[i].Normal.z;
+
+		file->save("x: ", m_vertices[i].Position.x, false);
+		file->save("y: ", m_vertices[i].Position.y, false);
+		file->save("z: ", m_vertices[i].Position.z, true);
 	}
 
-	fin.close();
+	fin >> ignore;
+	fin >> ignore;
+	fin >> ignore;
 
+	for (int i = 0; i < triangleCount; ++i)
+	{
+		fin >> m_indices[i * 3 + 0] >> m_indices[i * 3 + 1] >> m_indices[i * 3 + 2];
+	}
+
+		
+	fin.close();
+	file->close();
+	
 
 	//while (file)
 	//{
@@ -114,3 +130,4 @@ void ModelLoader::loadObject(const char* filename)
 	//}	
 	
 }
+

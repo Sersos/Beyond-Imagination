@@ -4,7 +4,9 @@ c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\directxmanager.obj
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\applicationmanager.obj
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\coordinatesystem.obj
+c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\modelloader.obj
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\shadermanager.obj
+c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\fileoutputmanager.obj
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\main.obj
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\camera.obj
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\inputmanager.obj
@@ -14,10 +16,10 @@ c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\worldobject.obj
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\world.obj
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\material.obj
-c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\modelloader.obj
-c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\shader.fxo
-c:\users\janni_000\documents\github\beyond-imagination\debug\beyond_imagination.pdb
+c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\global\shader\shader.fxo
 c:\users\janni_000\documents\github\beyond-imagination\debug\beyond_imagination.ilk
+c:\users\janni_000\documents\github\beyond-imagination\debug\beyond_imagination.exe
+c:\users\janni_000\documents\github\beyond-imagination\debug\beyond_imagination.pdb
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\beyond_i.d85eac36.tlog\beyond_imagination.write.1u.tlog
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\beyond_i.d85eac36.tlog\cl.command.1.tlog
 c:\users\janni_000\documents\github\beyond-imagination\beyond_imagination\debug\beyond_i.d85eac36.tlog\cl.read.1.tlog

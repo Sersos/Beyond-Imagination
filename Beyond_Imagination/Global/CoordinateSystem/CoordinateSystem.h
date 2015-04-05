@@ -4,9 +4,6 @@
 #include "DirectxManager.h"
 #include "ShaderManager.h"
 
-#define SIZE 500
-#define SPACING 1
-
 struct Axis
 {
 	D3DXVECTOR3 Position;
@@ -21,10 +18,10 @@ public:
 	void initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext);
 	void update();
 	void render(ID3D11DeviceContext* deviceContext, D3DXMATRIX view, D3DXMATRIX projection);
+	void close();
 
 private:
 	ID3D11Buffer* m_vertexBuffer;
-
 	ID3D11InputLayout* m_inputLayout;
 
 	D3DXMATRIX m_world;

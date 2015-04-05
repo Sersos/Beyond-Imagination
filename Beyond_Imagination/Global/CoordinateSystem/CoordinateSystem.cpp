@@ -83,7 +83,7 @@ void CoordinateSystem::initialize(ID3D11Device* device, ID3D11DeviceContext* dev
 
 	D3DXMatrixIdentity(&m_world);
 
-	result = D3DX11CompileFromFile(L"CoordinateSystem.fx", 0, 0, 0, "fx_5_0", 0, 0, 0, &compiledShader, NULL, 0);
+	result = D3DX11CompileFromFile(L"Global/Shader/CoordinateSystem.fx", 0, 0, 0, "fx_5_0", 0, 0, 0, &compiledShader, NULL, 0);
 	if (FAILED(result))
 		MessageBox(0, L"Cant load CoordinateSystem.fx", 0, MB_OK);
 
@@ -131,6 +131,12 @@ void CoordinateSystem::render(ID3D11DeviceContext* deviceContext, D3DXMATRIX vie
 		m_effectTechnique->GetPassByIndex(p)->Apply(0, deviceContext);
 		deviceContext->Draw(SIZE * 6 * 2, 0);
 	}
+}
 
+void CoordinateSystem::close()
+{
+	ReleaseCOM(m_vertexBuffer);
+	ReleaseCOM(m_inputLayout);
+	ReleaseCOM(m_effect);
 }
 

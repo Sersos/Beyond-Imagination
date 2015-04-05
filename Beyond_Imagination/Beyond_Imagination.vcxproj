@@ -54,7 +54,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application/GameStateManager/GameState;$(SolutionDir)/Beyond_Imagination/Application/GameStateManager;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/CoordinateSystem;$(SolutionDir)/Beyond_Imagination/Global/ModelLoader;$(SolutionDir)/Beyond_Imagination/Global/Material;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Global/Transform;$(SolutionDir)/Beyond_Imagination/Global/Effect;$(SolutionDir)/Beyond_Imagination/Global/Lighting;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/World;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/sound;$(SolutionDir)/Beyond_Imagination/images;$(SolutionDir)/Beyond_Imagination/models;$(SolutionDir)/Beyond_Imagination/Player/Input;$(SolutionDir)/Beyond_Imagination/Player/Camera;$(SolutionDir)/Beyond_Imagination/Player;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Beyond_Imagination/Logs;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application/GameStateManager/GameState;$(SolutionDir)/Beyond_Imagination/Application/GameStateManager;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/CoordinateSystem;$(SolutionDir)/Beyond_Imagination/Global/ModelLoader;$(SolutionDir)/Beyond_Imagination/Global/Material;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Global/Transform;$(SolutionDir)/Beyond_Imagination/Global/Effect;$(SolutionDir)/Beyond_Imagination/Global/Lighting;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/World;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/sound;$(SolutionDir)/Beyond_Imagination/images;$(SolutionDir)/Beyond_Imagination/models;$(SolutionDir)/Beyond_Imagination/Player/Input;$(SolutionDir)/Beyond_Imagination/Player/Camera;$(SolutionDir)/Beyond_Imagination/Player;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -98,6 +99,7 @@
     <ClInclude Include="Global\Shader\ShaderManager.h" />
     <ClInclude Include="Global\Transform\Transform.h" />
     <ClInclude Include="Global\VirtualKeyCodes.h" />
+    <ClInclude Include="Logs\FileOutputManager.h" />
     <ClInclude Include="Player\Camera\Camera.h" />
     <ClInclude Include="Player\Input\InputManager.h" />
     <ClInclude Include="Player\Player.h" />
@@ -115,6 +117,7 @@
     </ClCompile>
     <ClCompile Include="Global\ModelLoader\ModelLoader.cpp" />
     <ClCompile Include="Global\Shader\ShaderManager.cpp" />
+    <ClCompile Include="Logs\FileOutputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player\Camera\Camera.cpp" />
     <ClCompile Include="Player\Input\InputManager.cpp" />
@@ -125,27 +128,24 @@
     <ClCompile Include="World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\Studium\Programmieren\3DGameProg\DVD\Code\Chapter 6 Drawing in Direct3D\Skull\Models\skull.txt">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </Text>
     <Text Include="TextFiles\Include-Paths.txt" />
     <Text Include="TextFiles\Model list.txt" />
     <Text Include="TextFiles\Shader list.txt" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="Shader.fx">
+    <CustomBuild Include="Global\Shader\Shader.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </ExcludedFromBuild>
       <FileType>Document</FileType>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </DeploymentContent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /Fc /Od /Zi /T fx_5_0 /Fo "$(SolutionDir)\Beyond_Imagination\Shader.fxo" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /Fc /Od /Zi /T fx_5_0 /Fo "$(SolutionDir)\Beyond_Imagination\Global\Shader\Shader.fxo" "%(FullPath)"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc compile for debug: %(FullPath)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\Beyond_Imagination\Shader.fxo</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\Beyond_Imagination\Global\Shader\Shader.fxo</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="LightHelper.fx">
+    <None Include="Global\Shader\LightHelper.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </ExcludedFromBuild>
       <FileType>Document</FileType>
@@ -155,12 +155,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="CoordinateSystem.fx">
+    <FxCompile Include="Global\Shader\CoordinateSystem.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <Object Include="spaceShipModel.obj">
+    <Object Include="models\spaceShipModel.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </Object>
   </ItemGroup>

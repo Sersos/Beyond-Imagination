@@ -1,4 +1,5 @@
 //Shader list
 
-vs_position_color.vs
-ps_position_color.ps
+Shader.fx
+LightHelper.fx
+CoordinateSystem.fx

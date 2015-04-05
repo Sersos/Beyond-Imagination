@@ -17,13 +17,13 @@ class ModelLoader
 public:
 	ModelLoader(); 
 
-	void loadObject(const char* filename);
+	void loadObject(const char* filename);	
 
 	std::vector <ModelData> m_vertices;
-	std::vector <uint8> m_indices;
+	std::vector <int> m_indices;
 
-	uint8 m_indexCount;
-	uint8 m_vertexCount;	
+	int m_indexCount;
+	int m_vertexCount;	
 };
 
 #endif

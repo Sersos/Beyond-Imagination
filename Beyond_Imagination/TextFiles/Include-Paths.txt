@@ -26,6 +26,7 @@ $(SolutionDir)/Beyond_Imagination/Player/Input
 $(SolutionDir)/Beyond_Imagination/models
 $(SolutionDir)/Beyond_Imagination/images
 $(SolutionDir)/Beyond_Imagination/sound
+$(SolutionDir)/Beyond_Imagination/Logs
 
 //executable directories jannik
 C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Utilities\bin\x86

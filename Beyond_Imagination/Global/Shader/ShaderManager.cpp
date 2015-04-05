@@ -20,7 +20,7 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	if (FAILED(result))
 		MessageBox(0, L"Cant compile Shader", 0, MB_OK);*/
 	
-	std::ifstream fin("Shader.fxo", std::ios::binary);
+	std::ifstream fin("Global/Shader/Shader.fxo", std::ios::binary);
 	fin.seekg(0, std::ios_base::end);
 	int size = (int)fin.tellg();
 	fin.seekg(0, std::ios_base::beg);
@@ -49,28 +49,29 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	m_effectEyePosition = m_effect->GetVariableByName("gEyePosition")->AsVector();
 
 	//initialize light here
-	m_directionalLight.ambient = D3DXVECTOR4(0.2f, 0.5f, 0.2f, 1.0f);
-	m_directionalLight.diffuse = D3DXVECTOR4(0.5f, 0.5f, 0.5f, 1.0f);
-	m_directionalLight.specular = D3DXVECTOR4(0.5f, 0.5f, 0.5f, 1.0f);
-	m_directionalLight.direction = D3DXVECTOR3(0, 0, -1);
+	m_directionalLight.ambient = D3DXVECTOR4(0.2f, 0.5f, 0.2f, 0.2f);
+	m_directionalLight.diffuse = D3DXVECTOR4(0.2f, 0.2f, 0.2f, 0.2f);
+	m_directionalLight.specular = D3DXVECTOR4(0.2f, 0.2f, 0.2f, 0.2f);
+	m_directionalLight.direction = D3DXVECTOR3(0, 1, 1);
 
 	m_pointLight.ambient = D3DXVECTOR4(0.3f, 0.3f, 0.3f, 1.0f);
-	m_pointLight.diffuse = D3DXVECTOR4(0.7f, 0.7f, 0.7f, 1.0f);
-	m_pointLight.specular = D3DXVECTOR4(0.7f, 0.7f, 0.7f, 1.0f);
-	m_pointLight.att = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	m_pointLight.position = D3DXVECTOR3(0.0f, 5.0f, 0.0f);
-	m_pointLight.range = 25.0f;
+	m_pointLight.diffuse = D3DXVECTOR4(0.3f, 0.3f, 0.3f, 1.0f);
+	m_pointLight.specular = D3DXVECTOR4(0.3f, 0.3f, 0.3f, 1.0f);
+	m_pointLight.att = D3DXVECTOR3(0.0f, 0.0001f, 0.0f);
+	m_pointLight.position = D3DXVECTOR3(5.0f, 10, 5.0f);
+	m_pointLight.range = 250;
 
 	m_spotLight.ambient = D3DXVECTOR4(0.0f, 0.0f, 0.0f, 1.0f);
 	m_spotLight.diffuse = D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f);
 	m_spotLight.specular = D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
 	m_spotLight.att = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
+	m_spotLight.position = D3DXVECTOR3(0.0f, 25.0, 0);
 	m_spotLight.spot = 96.0f;
 	m_spotLight.range = 10000.0f;
 
 	//initialize material here
 	m_material.ambient = D3DXVECTOR4(0.9f, 0.9f, 0.9f, 1.0f);
-	m_material.diffuse = D3DXVECTOR4(0.48f, 0.77f, 0.46f, 1.0f);
+	m_material.diffuse = D3DXVECTOR4(0.9f, 0.9f, 0.9f, 1.0f);
 	m_material.specular = D3DXVECTOR4(0.2f, 0.2f, 0.2f, 16.0f);
 	
 	buildInputLayout(device, deviceContext);
@@ -82,11 +83,11 @@ void ShaderManager::render(ID3D11DeviceContext* deviceContext, Camera* camera)
 	m_effectMaterial->SetRawValue(&m_material, 0, sizeof(m_material));
 
 	//cbPerFrame
-	
+	m_effectEyePosition->SetRawValue(camera->getPosition(), 0, sizeof(camera->getPosition().x));
 	m_effectDirectionalLight->SetRawValue(&m_directionalLight, 0, sizeof(m_directionalLight));
 	//m_effectPointLight->SetRawValue(&m_pointLight, 0, sizeof(m_pointLight));
 	//m_effectSpotLight->SetRawValue(&m_spotLight, 0, sizeof(m_spotLight));
-	m_effectEyePosition->SetRawValue(camera->getPosition(), 0, sizeof(camera->getPosition().x));	
+	
 }
 
 void ShaderManager::buildInputLayout(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
@@ -106,12 +107,7 @@ void ShaderManager::buildInputLayout(ID3D11Device* device, ID3D11DeviceContext* 
 
 void ShaderManager::close()
 {
-	// release inputlayout
-	if (m_inputLayout)
-		m_inputLayout->Release();
-
-	//release effect
-	if (m_effect)
-		m_effect->Release();	
+	ReleaseCOM(m_inputLayout);
+	ReleaseCOM(m_effect);
 }
 

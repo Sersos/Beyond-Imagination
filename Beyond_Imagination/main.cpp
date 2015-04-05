@@ -72,7 +72,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	shaderManager->initialize(directxManager->getDevice(),
 		directxManager->getDeviceContext());	
-	object->initialize(directxManager->getDevice(), directxManager->getDeviceContext());			
+	object->initialize("models/skull.txt", directxManager->getDevice(), directxManager->getDeviceContext());			
 	
 	//variables for fps counter
 	unsigned long lastTime = GetTickCount();
@@ -148,6 +148,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//GameManager close here
 	directxManager->close();
 	shaderManager->close();
+	coordinateSystem->close();
 
 	return msg.wParam;
 }

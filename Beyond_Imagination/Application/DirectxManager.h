@@ -29,22 +29,22 @@ public:
 
 private:
 	//important structs d3d11
-	ID3D11Device* device;
-	ID3D11DeviceContext* deviceContext;
-	IDXGISwapChain* swapChain;
-	ID3D11RenderTargetView* renderTargetView;
-	ID3D11Texture2D* depthStencilBuffer;
-	ID3D11DepthStencilState* depthStencilState;
-	ID3D11DepthStencilView* depthStencilView;
-	ID3D11RasterizerState* rasterizerState;
+	ID3D11Device* m_device;
+	ID3D11DeviceContext* m_deviceContext;
+	IDXGISwapChain* m_swapChain;
+	ID3D11RenderTargetView* m_renderTargetView;
+	ID3D11Texture2D* m_depthStencilBuffer;
+	ID3D11DepthStencilState* m_depthStencilState;
+	ID3D11DepthStencilView* m_depthStencilView;
+	ID3D11RasterizerState* m_rasterizerState;
 	ID3D11BlendState* m_blendState;
 
 	//important descs for different functions
-	DXGI_SWAP_CHAIN_DESC swapChainDesc;
-	D3D11_TEXTURE2D_DESC depthBufferDesc;
-	D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
-	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
-	D3D11_RASTERIZER_DESC rasterizerDesc;
+	DXGI_SWAP_CHAIN_DESC m_swapChainDesc;
+	D3D11_TEXTURE2D_DESC m_depthBufferDesc;
+	D3D11_DEPTH_STENCIL_DESC m_depthStencilDesc;
+	D3D11_DEPTH_STENCIL_VIEW_DESC m_depthStencilViewDesc;
+	D3D11_RASTERIZER_DESC m_rasterizerDesc;
 
 };
 

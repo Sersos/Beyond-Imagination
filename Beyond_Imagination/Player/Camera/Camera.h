@@ -31,8 +31,7 @@ private:
 	void move(D3DXVECTOR3& offset);
 
 	D3DXVECTOR3 m_up;
-	D3DXVECTOR3 m_position;
-	
+	D3DXVECTOR3 m_position;	
 
 	D3DXMATRIX	m_viewMatrix;
 	D3DXMATRIX	m_projectionMatrix;
