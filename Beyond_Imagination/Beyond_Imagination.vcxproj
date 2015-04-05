@@ -54,7 +54,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Beyond_Imagination/Logs;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application/GameStateManager/GameState;$(SolutionDir)/Beyond_Imagination/Application/GameStateManager;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/CoordinateSystem;$(SolutionDir)/Beyond_Imagination/Global/ModelLoader;$(SolutionDir)/Beyond_Imagination/Global/Material;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Global/Transform;$(SolutionDir)/Beyond_Imagination/Global/Effect;$(SolutionDir)/Beyond_Imagination/Global/Lighting;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/World;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/sound;$(SolutionDir)/Beyond_Imagination/images;$(SolutionDir)/Beyond_Imagination/models;$(SolutionDir)/Beyond_Imagination/Player/Input;$(SolutionDir)/Beyond_Imagination/Player/Camera;$(SolutionDir)/Beyond_Imagination/Player;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Beyond_Imagination/Logs;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application/ApplicationStateManager/ApplicationState;$(SolutionDir)/Beyond_Imagination/Application/ApplicationStateManager;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/CoordinateSystem;$(SolutionDir)/Beyond_Imagination/Global/ModelLoader;$(SolutionDir)/Beyond_Imagination/Global/Material;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Global/Transform;$(SolutionDir)/Beyond_Imagination/Global/Effect;$(SolutionDir)/Beyond_Imagination/Global/Lighting;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/World;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/sound;$(SolutionDir)/Beyond_Imagination/images;$(SolutionDir)/Beyond_Imagination/models;$(SolutionDir)/Beyond_Imagination/Player/Input;$(SolutionDir)/Beyond_Imagination/Player/Camera;$(SolutionDir)/Beyond_Imagination/Player;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -82,9 +82,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Application\ApplicationStateManager\ApplicationState\SinglePlayerGame.h" />
     <ClInclude Include="Application\DirectxManager.h" />
     <ClInclude Include="Application\ApplicationStateManager\ApplicationManager.h" />
-    <ClInclude Include="Application\ApplicationStateManager\GameState\ApplicationState.h" />
+    <ClInclude Include="Application\ApplicationStateManager\ApplicationState\ApplicationState.h" />
     <ClInclude Include="GameObject\Position\PositionManager.h" />
     <ClInclude Include="GameObject\Rotation\RotationManager.h" />
     <ClInclude Include="GameObject\Scaling\ScaleManager.h" />
@@ -109,6 +110,7 @@
     <ClInclude Include="World\World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Application\ApplicationStateManager\ApplicationState\SinglePlayerGame.cpp" />
     <ClCompile Include="Application\DirectxManager.cpp" />
     <ClCompile Include="Application\ApplicationStateManager\ApplicationManager.cpp" />
     <ClCompile Include="Global\CoordinateSystem\CoordinateSystem.cpp" />

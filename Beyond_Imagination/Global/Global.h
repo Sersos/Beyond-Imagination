@@ -15,10 +15,10 @@
 #define SIZE 500
 #define SPACING 1
 
-
 //function to release com
 #define ReleaseCOM(x) { x->Release(); };
 
+//typedef
 typedef unsigned short uint8;
 typedef unsigned int   uint16;
 typedef unsigned long  uint32;

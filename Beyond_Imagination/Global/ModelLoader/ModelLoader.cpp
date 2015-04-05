@@ -13,13 +13,11 @@ void ModelLoader::loadObject(const char* filename)
 	//std::wifstream file(filename);
 	//wchar_t currentChar;
 	//std::string ignore;
-
-	//int normalcounter = 0;
-
+	
+	//for control input values
 	FileOutputManager* file = new FileOutputManager();
-	file->createFile("Logs/log.txt");
-	std::ifstream fin(filename); //file to load in
-	//std::ofstream fileOut("logs/log.txt"); //file to write in (logfile)
+	file->createFile("Logs/log.txt"); //this file will be create 
+	std::ifstream fin(filename); //file to load in	
 
 	if (!fin)
 		MessageBox(0, L"Cant load file", 0, MB_OK);

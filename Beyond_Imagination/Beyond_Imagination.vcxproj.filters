@@ -132,9 +132,6 @@
     <ClInclude Include="World\World.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Application\ApplicationStateManager\GameState\ApplicationState.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="Application\ApplicationStateManager\ApplicationManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -151,6 +148,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Logs\FileOutputManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\ApplicationStateManager\ApplicationState\ApplicationState.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\ApplicationStateManager\ApplicationState\SinglePlayerGame.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -198,6 +201,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Logs\FileOutputManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\ApplicationStateManager\ApplicationState\SinglePlayerGame.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

@@ -16,22 +16,7 @@ void Object::initialize(const char* filename, ID3D11Device* device, ID3D11Device
 	D3D11_BUFFER_DESC indexBufferDesc;
 	D3D11_SUBRESOURCE_DATA indexData;
 	
-	m_model->loadObject(filename);
-
-	D3DXVECTOR3 normal;
-	
-	//create vertices
-	Vertex vertex[] =
-	{
-		D3DXVECTOR3(-1.0f, -1.0f, -1.0f), *D3DXVec3Normalize(&normal ,&D3DXVECTOR3(-1.0f, -1.0f, -1.0f)),
-		D3DXVECTOR3(-1.0f, +1.0f, -1.0f), *D3DXVec3Normalize(&normal, &D3DXVECTOR3(-1.0f, +1.0f, -1.0f)),
-		D3DXVECTOR3(+1.0f, +1.0f, -1.0f), *D3DXVec3Normalize(&normal, &D3DXVECTOR3(+1.0f, +1.0f, -1.0f)),
-		D3DXVECTOR3(+1.0f, -1.0f, -1.0f), *D3DXVec3Normalize(&normal, &D3DXVECTOR3(+1.0f, -1.0f, -1.0f)),
-		D3DXVECTOR3(-1.0f, -1.0f, +1.0f), *D3DXVec3Normalize(&normal, &D3DXVECTOR3(-1.0f, -1.0f, +1.0f)),
-		D3DXVECTOR3(-1.0f, +1.0f, +1.0f), *D3DXVec3Normalize(&normal, &D3DXVECTOR3(-1.0f, +1.0f, +1.0f)),
-		D3DXVECTOR3(+1.0f, +1.0f, +1.0f), *D3DXVec3Normalize(&normal, &D3DXVECTOR3(+1.0f, +1.0f, +1.0f)),
-		D3DXVECTOR3(+1.0f, -1.0f, +1.0f), *D3DXVec3Normalize(&normal, &D3DXVECTOR3(+1.0f, -1.0f, +1.0f))		
-	};	
+	m_model->loadObject(filename);	
 	
 	//create vertexbuffer desc	
 	ZeroMemory(&vertexBufferDesc, sizeof(vertexBufferDesc));
@@ -43,33 +28,7 @@ void Object::initialize(const char* filename, ID3D11Device* device, ID3D11Device
 	vertexData.pSysMem = &m_model->m_vertices[0];
 
 	//create buffer
-	device->CreateBuffer(&vertexBufferDesc, &vertexData, &m_vertexBuffer);
-	
-	DWORD indices[] = {
-		// front face
-		4, 5, 7,
-		5, 6, 7,
-
-		// back face
-		0, 1, 3,
-		1, 2, 3,
-
-		// left face
-		2, 3, 7,
-		2, 6, 7,
-
-		// right face
-		0, 1, 4,
-		1, 4, 5,
-
-		// top face
-		0, 3, 4,
-		3, 4, 7,
-
-		// bottom face
-		1, 2, 5,
-		2, 5, 6
-	};	
+	device->CreateBuffer(&vertexBufferDesc, &vertexData, &m_vertexBuffer);	
 
 	//create indexbuffer desc
 	ZeroMemory(&indexBufferDesc, sizeof(indexBufferDesc));
@@ -83,6 +42,7 @@ void Object::initialize(const char* filename, ID3D11Device* device, ID3D11Device
 	//create buffer
 	device->CreateBuffer(&indexBufferDesc, &indexData, &m_indexBuffer);	
 	
+	//transform object before first rendering
 	D3DXMatrixIdentity(&m_world);
 	Transform::rotate(&m_rotationMatrix, D3DXVECTOR3(0.0f, 5.0f, 0.0f));
 	Transform::scale(&m_scaleMatrix, D3DXVECTOR3(5.0f, 5.0f, 5.0f));
@@ -100,8 +60,7 @@ void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderMan
 	UINT stride = sizeof(ModelData);
 	UINT offset = 0;
 	deviceContext->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
-	deviceContext->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R32_UINT, 0);
-	
+	deviceContext->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R32_UINT, 0);	
 	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	
 	m_world = m_rotationMatrix * m_scaleMatrix  * m_positionMatrix;

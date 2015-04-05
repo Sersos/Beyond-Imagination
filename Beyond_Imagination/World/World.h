@@ -36,7 +36,7 @@ namespace World
 		uint8 m_width;
 		uint8 m_depth;
 
-		World::WorldObject m_worldObject;
+		//World::WorldObject m_worldObject[5];
 	};
 }
 

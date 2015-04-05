@@ -11,11 +11,16 @@ namespace World
 	public:
 		WorldObject();
 
-		void update(float delta);		
-
-
+		virtual void Initialize(const char* filename, ID3D11Device* device,
+			ID3D11DeviceContext* deviceContext,
+			D3DXVECTOR3& position,
+			D3DXVECTOR3& rotation, D3DXVECTOR3& scale) { };
+		
+		virtual void Update() { };
+		virtual void Render(ID3D11DeviceContext* deviceContext) { };		
 
 	private:
+
 
 
 	};
