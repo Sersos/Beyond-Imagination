@@ -4,6 +4,7 @@
 #include "DirectxManager.h"
 #include "Global.h"
 
+
 class InputManager;
 
 class Camera

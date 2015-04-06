@@ -7,7 +7,28 @@ InputManager::InputManager(HWND* window)
 
 void InputManager::update()
 {
-	GetCursorPos(&cursorPosition);	
+	GetCursorPos(&cursorPosition);
+
+	GetWindowRect(*window, &windowRect);
+
+	//jump 
+	if (cursorPosition.x > windowRect.right)
+	{
+		setMousePosition(windowRect.left + 1, cursorPosition.y);
+	}
+	if (cursorPosition.y > windowRect.bottom)
+	{
+		setMousePosition(cursorPosition.x, windowRect.top + 1);
+	}
+	if (cursorPosition.x <= windowRect.left)
+	{
+		setMousePosition(windowRect.right-1, cursorPosition.y);
+	}
+	if (cursorPosition.y <= windowRect.top)
+	{
+		setMousePosition(cursorPosition.x, windowRect.bottom-1);
+	}
+	
 }
 
 
@@ -36,4 +57,10 @@ D3DXVECTOR2 InputManager::getMousePosition()
 {
 	//return mousePosition x and y from POINT mousePosition
 	return D3DXVECTOR2(cursorPosition.x, cursorPosition.y);
+}
+
+void InputManager::setMousePosition(int x, int y)
+{
+	SetCursorPos(x, y);
+
 }

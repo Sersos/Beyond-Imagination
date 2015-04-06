@@ -44,15 +44,15 @@ void Object::initialize(const char* filename, ID3D11Device* device, ID3D11Device
 	
 	//transform object before first rendering
 	D3DXMatrixIdentity(&m_world);
-	Transform::rotate(&m_rotationMatrix, D3DXVECTOR3(0.0f, 5.0f, 0.0f));
+	/*Transform::rotate(&m_rotationMatrix, D3DXVECTOR3(0.0f, 5.0f, 0.0f));
 	Transform::scale(&m_scaleMatrix, D3DXVECTOR3(5.0f, 5.0f, 5.0f));
-	Transform::translate(&m_positionMatrix, D3DXVECTOR3(1, 1, 1));	
+	Transform::translate(&m_positionMatrix, D3DXVECTOR3(1, 1, 1));	*/
 }
 
 void Object::update()
 {
-	rotation += 0.00005f;
-	Transform::rotate(&m_rotationMatrix, D3DXVECTOR3(rotation, 0.0f, 0.0f));
+	//rotation += 0.00005f;
+	//Transform::rotate(&m_rotationMatrix, D3DXVECTOR3(rotation, 0.0f, 0.0f));
 }
 
 void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderManager, D3DXMATRIX view, D3DXMATRIX projection)

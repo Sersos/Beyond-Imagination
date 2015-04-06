@@ -119,6 +119,7 @@
     </ClCompile>
     <ClCompile Include="Global\ModelLoader\ModelLoader.cpp" />
     <ClCompile Include="Global\Shader\ShaderManager.cpp" />
+    <ClCompile Include="Global\Transform\Transform.cpp" />
     <ClCompile Include="Logs\FileOutputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player\Camera\Camera.cpp" />

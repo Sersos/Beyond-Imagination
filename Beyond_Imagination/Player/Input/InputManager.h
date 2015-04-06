@@ -5,6 +5,7 @@
 #include <windowsx.h>
 #include <DirectxManager.h>
 #include <VirtualKeyCodes.h>
+#include "Global.h"
 
 class InputManager
 {
@@ -18,8 +19,10 @@ public:
 	bool isKeyPressed(int button);
 
 	// return 2Vector with MousePosition in window
-	D3DXVECTOR2 getMousePosition();	
-
+	D3DXVECTOR2 getMousePosition();
+	void setMousePosition(int x, int y);
+	POINT cursorPosition;
+	RECT windowRect;
 private:
 	//true if mouse is in window and window is active
 	bool isCursorInWindow();
@@ -28,8 +31,8 @@ private:
 	bool getKeyState(int button);
 
 	HWND* window;
-	POINT cursorPosition;
-	
+
+
 };
 
 

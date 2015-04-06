@@ -206,6 +206,9 @@
     <ClCompile Include="Application\ApplicationStateManager\ApplicationState\SinglePlayerGame.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Global\Transform\Transform.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TextFiles\Include-Paths.txt">

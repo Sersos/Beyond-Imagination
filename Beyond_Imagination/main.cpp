@@ -9,6 +9,7 @@
 #include <sstream>
 #include "InputManager.h"
 #include "CoordinateSystem.h"
+#include "Transform.h"
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -18,6 +19,7 @@ ShaderManager* shaderManager = NULL;
 Camera* camera = NULL;
 InputManager* inputManager = NULL;
 CoordinateSystem* coordinateSystem = NULL;
+Transform* trans = NULL;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
@@ -30,6 +32,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	camera = new Camera(&window);
 	inputManager = new InputManager(&window);
 	coordinateSystem = new CoordinateSystem();
+	trans = new Transform(D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+
 
 	ZeroMemory(&windowClass, sizeof(WNDCLASSEX));
 
@@ -93,10 +98,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		shaderManager->render(directxManager->getDeviceContext(), camera);
 
-		object->render(directxManager->getDeviceContext(),
-				shaderManager,
-				camera->getViewMatrix(),
-				camera->getProjectionMatrix());			
+		//object->render(directxManager->getDeviceContext(),
+		//		shaderManager,
+		//		camera->getViewMatrix(),
+		//		camera->getProjectionMatrix());			
 		
 		directxManager->presentScene();	
 
