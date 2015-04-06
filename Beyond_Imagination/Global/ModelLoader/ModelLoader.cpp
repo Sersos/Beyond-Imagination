@@ -46,7 +46,7 @@ void ModelLoader::loadObject(const char* filename)
 				in >> x >> y >> z;
 				
 				ModelData modelData;
-				modelData.Position = D3DXVECTOR3(x, y, z * -1.0f);
+				modelData.Position = D3DXVECTOR3((float)x, (float)y, (float)z * -1.0f);
 				
 				m_vertices.push_back(modelData);
 
@@ -75,7 +75,7 @@ void ModelLoader::loadObject(const char* filename)
 
 			if (input == ' ') //next step to indices
 			{
-				int indexArray[9];
+				long indexArray[9];
 
 				in >> indexArray[0] >> input >> indexArray[1] >> input >> indexArray[2]
 					>> indexArray[3] >> input >> indexArray[4] >> input >> indexArray[5]
@@ -99,11 +99,11 @@ void ModelLoader::loadObject(const char* filename)
 		}			
 	}
 
-	out->save("vertexCount: ", (int)m_vertices.size(), true);
-	out->save("indexCount: ", (int)m_indices.size(), true);
+	out->save("vertexCount: ", (long)m_vertices.size(), true);
+	out->save("indexCount: ", (long)m_indices.size(), true);
 
-	m_indexCount = (int) m_indices.size() * 3;
-	m_vertexCount = (int) m_vertices.size();
+	m_indexCount = (long) m_indices.size();
+	m_vertexCount = (long) m_vertices.size();
 
 	in.close();
 	out->close();

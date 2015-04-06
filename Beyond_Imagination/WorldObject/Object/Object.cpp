@@ -33,7 +33,7 @@ void Object::initialize(const char* filename, ID3D11Device* device, ID3D11Device
 	//create indexbuffer desc
 	ZeroMemory(&indexBufferDesc, sizeof(indexBufferDesc));
 	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	indexBufferDesc.ByteWidth = sizeof(int) * m_model->m_indexCount;
+	indexBufferDesc.ByteWidth = sizeof(long) * m_model->m_indexCount;
 	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	indexBufferDesc.CPUAccessFlags = 0;	
 
@@ -46,7 +46,7 @@ void Object::initialize(const char* filename, ID3D11Device* device, ID3D11Device
 	D3DXMatrixIdentity(&m_world);
 
 	*D3DXMatrixTranslation(&m_positionMatrix, 1.0f, 1.0f, 1.0f);
-	*D3DXMatrixRotationYawPitchRoll(&m_rotationMatrix, 5.0f, 5.0, 6);
+	*D3DXMatrixRotationYawPitchRoll(&m_rotationMatrix, 0, 0, 0);
 	*D3DXMatrixScaling(&m_scaleMatrix, 1.0f, 1.0f, 1.0f);
 	/*Transform::rotate(&m_rotationMatrix, D3DXVECTOR3(0.0f, 5.0f, 0.0f));
 	Transform::scale(&m_scaleMatrix, D3DXVECTOR3(5.0f, 5.0f, 5.0f));

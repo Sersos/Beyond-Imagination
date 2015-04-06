@@ -20,10 +20,10 @@ public:
 	void loadObject(const char* filename);	
 
 	std::vector <ModelData> m_vertices;
-	std::vector <int> m_indices;
+	std::vector <long> m_indices;
 
-	int m_indexCount;
-	int m_vertexCount;	
+	long m_indexCount;
+	long m_vertexCount;	
 };
 
 #endif
