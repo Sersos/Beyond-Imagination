@@ -70,14 +70,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	MSG msg;
 
 	//GameManager initialize here
-	directxManager->initialize(window, false);	
+	directxManager->initialize(window, true);	
 	camera->initialize(D3DXVECTOR3(0, 0, 0));
 
 	coordinateSystem->initialize(directxManager->getDevice(), directxManager->getDeviceContext());
 
 	shaderManager->initialize(directxManager->getDevice(),
 		directxManager->getDeviceContext());	
-	object->initialize("models/skull.txt", directxManager->getDevice(), directxManager->getDeviceContext());			
+	object->initialize("models/spaceShipModel.obj", directxManager->getDevice(), directxManager->getDeviceContext());			
 	
 	//variables for fps counter
 	unsigned long lastTime = GetTickCount();
@@ -94,14 +94,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		camera->update();
 		directxManager->beginScene();
 
-		//coordinateSystem->render(directxManager->getDeviceContext(),	camera->getViewMatrix(),camera->getProjectionMatrix());
+		coordinateSystem->render(directxManager->getDeviceContext(), camera->getViewMatrix(), camera->getProjectionMatrix());
 
 		shaderManager->render(directxManager->getDeviceContext(), camera);
 
-		//object->render(directxManager->getDeviceContext(),
-		//		shaderManager,
-		//		camera->getViewMatrix(),
-		//		camera->getProjectionMatrix());			
+		object->render(directxManager->getDeviceContext(),
+				shaderManager,
+				camera->getViewMatrix(),
+				camera->getProjectionMatrix());			
 		
 		directxManager->presentScene();	
 

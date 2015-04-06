@@ -65,8 +65,8 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	m_spotLight.range = 10000.0f;
 
 	//initialize material here
-	m_material.ambient = D3DXVECTOR4(0.2f, 0.2f, 0.2f, 1);
-	m_material.diffuse = D3DXVECTOR4(0.2f, 0.2f, 0.2f, 1);
+	m_material.ambient = D3DXVECTOR4(0.2f, 0.5f, 0.2f, 1);
+	m_material.diffuse = D3DXVECTOR4(0.2f, 0.5f, 0.2f, 1);
 	m_material.specular = D3DXVECTOR4(0.2f, 0.2f, 0.2f, 16.0f);
 	
 	buildInputLayout(device, deviceContext);

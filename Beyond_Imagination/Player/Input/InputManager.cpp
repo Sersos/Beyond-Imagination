@@ -11,6 +11,7 @@ void InputManager::update()
 
 	GetWindowRect(*window, &windowRect);
 
+	/*
 	//jump 
 	if (cursorPosition.x > windowRect.right)
 	{
@@ -27,8 +28,7 @@ void InputManager::update()
 	if (cursorPosition.y <= windowRect.top)
 	{
 		setMousePosition(cursorPosition.x, windowRect.bottom-1);
-	}
-	
+	}*/	
 }
 
 
