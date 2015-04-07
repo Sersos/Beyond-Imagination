@@ -47,6 +47,7 @@ void ModelLoader::loadObject(const char* filename)
 				
 				ModelData modelData;
 				modelData.Position = D3DXVECTOR3((float)x, (float)y, (float)z * -1.0f);
+				modelData.Normal = D3DXVECTOR(0.0f, 0.0f, 0.0f);
 				
 				m_vertices.push_back(modelData);
 
