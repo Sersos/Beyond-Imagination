@@ -156,6 +156,9 @@
     <ClInclude Include="Application\ApplicationStateManager\ApplicationState\SinglePlayerGame.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="QuadTerrain.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -207,6 +210,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Global\Transform\Transform.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTerrain.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
