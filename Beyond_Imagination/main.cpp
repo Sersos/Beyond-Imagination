@@ -77,7 +77,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	shaderManager->initialize(directxManager->getDevice(),
 		directxManager->getDeviceContext());	
-	//object->initialize("models/Shockwave.obj", directxManager->getDevice(), directxManager->getDeviceContext());			
+	object->initialize("models/Shockwave.obj", directxManager->getDevice(), directxManager->getDeviceContext());			
 	
 	//variables for fps counter
 	unsigned long lastTime = GetTickCount();
@@ -98,10 +98,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		shaderManager->render(directxManager->getDeviceContext(), camera);
 
-		/*object->render(directxManager->getDeviceContext(),
+		object->render(directxManager->getDeviceContext(),
 				shaderManager,
 				camera->getViewMatrix(),
-				camera->getProjectionMatrix());	*/
+				camera->getProjectionMatrix());			
 		
 		directxManager->presentScene();	
 
