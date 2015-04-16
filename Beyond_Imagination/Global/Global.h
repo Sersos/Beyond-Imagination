@@ -1,5 +1,5 @@
 //global.h
-#include <string>
+#include "DirectxManager.h"
 
 //camera
 #define CAMERA_MOVEMENT_SPEED 0.005f
@@ -26,4 +26,6 @@ typedef unsigned long  uint32;
 typedef signed short int8;
 typedef signed int   int16;
 typedef signed long  int32;
+
+//structs
 

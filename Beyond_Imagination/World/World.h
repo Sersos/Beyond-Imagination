@@ -1,10 +1,10 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include "DirectxManager.h"
 #include "Global.h"
 #include <vector>
-#include "WorldObject.h"
+
+class WorldObject;
 
 struct Vertex
 {
@@ -36,7 +36,7 @@ namespace World
 		uint8 m_width;
 		uint8 m_depth;
 
-		//World::WorldObject m_worldObject[5];
+		World::WorldObject* m_worldObject[5];
 	};
 }
 

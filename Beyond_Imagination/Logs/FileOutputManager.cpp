@@ -1,4 +1,5 @@
 #include "FileOutputManager.h"
+#include <string>
 
 FileOutputManager::FileOutputManager()
 {

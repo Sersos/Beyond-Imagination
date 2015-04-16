@@ -1,7 +1,6 @@
 #include "Camera.h"
 #include "InputManager.h"
 
-
 Camera::Camera(HWND* window)
 {
 	//initialize inputManager here
