@@ -17,8 +17,7 @@ void ModelLoader::loadObject(const char* filename)
 	in.open(filename);	
 
 	//variables
-	char input, input2 /* for / */;
-	int normalCounter = 0;
+	char input, input2 /* for / */;	
 
 	m_vertices.resize(100);
 	//m_indices.resize(100);
@@ -31,6 +30,78 @@ void ModelLoader::loadObject(const char* filename)
 
 	in.get(input);
 
+	/*------------------------ new --------------------------*/
+	char buffer[256]; //only as buffer
+	std::vector<std::string*> line; //vector filled with each line
+	int normalCounter = 0;
+	
+	while (!in.eof())
+	{
+		in.getline(buffer, 256);
+		line.push_back(new std::string(buffer));
+	}
+
+	//go through all lines
+	for (int i = 0; i < line.size(); i++)
+	{
+		if (line[i]->c_str()[0] /* first letter*/ == '#')
+		{ 
+			continue; //ignore this line
+		}
+		//vertex Position
+		else if (line[i]->c_str()[0] /* first letter*/ == 'v' && line[i]->c_str()[1] == ' ')
+		{
+			float x, y, z;
+			sscanf(line[i]->c_str(), "v %f %f %f", &x, &y, &z); //load in x, y and z value
+
+			//put it in vector
+			ModelData modelData;
+			modelData.Position = D3DXVECTOR3(x, y, z * -1.0f);
+			modelData.Normal = D3DXVECTOR3(0, 0, 0);
+			m_vertices.push_back(modelData);
+
+			out->save("Position x: ", x, false);
+			out->save("y: ", y, false);
+			out->save("z: ", z, true);
+
+		}
+		else if (line[i]->c_str()[0] /* first letter*/ == 'v' && line[i]->c_str()[1] == 'n')
+		{
+			float x, y, z;
+			sscanf(line[i]->c_str(), "vn %f %f %f", &x, &y, &z); //load in x, y and z value
+			
+			//put it in vector
+			m_vertices.at(normalCounter).Normal = D3DXVECTOR3(x, y, z * -1.0f);
+			normalCounter++;
+
+			out->save("normal x: ", x, false);
+			out->save("y: ", y, false);
+			out->save("z: ", z, true);
+		}
+		else if (line[i]->c_str()[0] /* first letter*/ == 'f')
+		{
+			int a, b, c; //3 for triangle
+			int skip;
+			sscanf(line[i]->c_str(), "f %d/%d/%d %d/%d/%d %d/%d/%d", &a, &skip/* texture point */, &skip/* normal point */,
+																	 &b, &skip/* texture point */, &skip/* normal point */,
+																	 &c, &skip/* texture point */, &skip/* normal point */); //load in x, y and z value
+
+			//put it in vector
+			Face face;
+			face.a = a;
+			face.b = b;
+			face.c = c;
+
+			m_indices.push_back(face);
+
+			out->save("i1: ", a, false);
+			out->save("i2: ", b, false);
+			out->save("i3: ", c, true);
+		}	
+	}
+
+	/* old
+	
 	while (!in.eof())
 	{
 		in.get(input);
@@ -53,7 +124,7 @@ void ModelLoader::loadObject(const char* filename)
 
 				out->save("Position x: ", x, false);
 				out->save("y: ", y, false);
-				out->save("z: ", z, true);
+				out->save("z: ", z, true);				
 			}
 
 			if (input == 'n') //it is a normal vector
@@ -72,22 +143,30 @@ void ModelLoader::loadObject(const char* filename)
 
 		if (input == 'f') //for faces
 		{
-			in.get(input);
+			
+			
+			for (int i = 0; i < string->size; i++) //go through all letters
+			{
+				int a, b, c, d, e, f;
+				sscanf(string[i].c_str(), "f %d/%d/%d %d/%d/%d %d/%d/%d", &a, &b, &c, &d, &e, &f);
+			}
+
+			//in.get(input);
 
 			if (input == ' ') //next step to indices
 			{
-				long indexArray[9];
+				long indexArray[3];
 
-				in >> indexArray[0] >> input >> indexArray[1] >> input >> indexArray[2]
-					>> indexArray[3] >> input >> indexArray[4] >> input >> indexArray[5]
-					>> indexArray[6] >> input >> indexArray[7] >> input >> indexArray[8];	
+				in >> indexArray[0] >> input >> input >> input >> input
+					>> indexArray[1] >> input >> input >> input >> input
+					>> indexArray[2] >> input >> input >> input >> input;
 
-				for (int i = 0; i < 9; i++)
+				for (int i = 0; i < 3; i++)
 				{
 					m_indices.push_back(indexArray[i]);
 				}
 
-				for (int i = 0; i < 9; i++)
+				for (int i = 0; i < 3; i++)
 				{
 					out->save("i: ", indexArray[i], true);					
 				}				
@@ -98,13 +177,13 @@ void ModelLoader::loadObject(const char* filename)
 		{
 			in.get(input);			
 		}			
-	}
+	}*/
 
-	out->save("vertexCount: ", (long)m_vertices.size(), true);
-	out->save("indexCount: ", (long)m_indices.size(), true);
+	out->save("vertexCount: ", (int) m_vertices.size(), true);
+	out->save("indexCount: ", (int) m_indices.size() * 3, true);
 
-	m_indexCount = (long) m_indices.size();
-	m_vertexCount = (long) m_vertices.size();
+	m_indexCount = (int) m_indices.size() * 3;
+	m_vertexCount = (int) m_vertices.size();
 
 	in.close();
 	out->close();

@@ -1,0 +1,11 @@
+# Blender MTL File: 'cronos_new.blend'
+# Material Count: 1
+
+newmtl Cronos_Material
+Ns 49.019608
+Ka 0.000000 0.000000 0.000000
+Kd 0.053563 0.125397 0.496842
+Ks 0.124396 0.235991 0.505263
+Ni 1.000000
+d 1.000000
+illum 2

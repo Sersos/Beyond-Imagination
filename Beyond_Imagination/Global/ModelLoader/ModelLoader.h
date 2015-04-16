@@ -12,6 +12,11 @@ struct ModelData
 	D3DXVECTOR3 Normal;
 };
 
+struct Face
+{
+	int a, b, c;
+};
+
 class ModelLoader
 {
 public:
@@ -20,7 +25,7 @@ public:
 	void loadObject(const char* filename);	
 
 	std::vector <ModelData> m_vertices;
-	std::vector <long> m_indices;
+	std::vector <Face> m_indices;
 
 	long m_indexCount;
 	long m_vertexCount;	
