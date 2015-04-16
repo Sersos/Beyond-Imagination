@@ -1,7 +1,6 @@
 #include "DirectxManager.h"
 #include "ShaderManager.h"
 
-
 DirectxManager::DirectxManager()
 {
 	m_device = 0;

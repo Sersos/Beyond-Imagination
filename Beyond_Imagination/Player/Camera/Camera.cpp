@@ -50,11 +50,6 @@ void Camera::selectPerspective(int t)
 }
 void Camera::update()
 {
-
-
-
-
-
 	m_forward = m_target - m_position;
 	D3DXVec3Normalize(&m_forward, &m_forward);
 	controll();
