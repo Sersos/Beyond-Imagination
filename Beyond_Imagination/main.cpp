@@ -34,8 +34,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	coordinateSystem = new CoordinateSystem();
 	trans = new Transform(D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
 
-
-
 	ZeroMemory(&windowClass, sizeof(WNDCLASSEX));
 
 	windowClass.cbSize = sizeof(WNDCLASSEX);
@@ -77,7 +75,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	shaderManager->initialize(directxManager->getDevice(),
 		directxManager->getDeviceContext());	
-	object->initialize("models/Shockwave.obj", directxManager->getDevice(), directxManager->getDeviceContext());			
+	object->initialize("models/cronos_new.obj", directxManager->getDevice(), directxManager->getDeviceContext());			
 	
 	//variables for fps counter
 	unsigned long lastTime = GetTickCount();

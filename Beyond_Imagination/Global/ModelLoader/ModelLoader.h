@@ -22,13 +22,19 @@ class ModelLoader
 public:
 	ModelLoader(); 
 
-	void loadObject(const char* filename);	
+	void loadObject(const char* filename, bool texture);
 
-	std::vector <ModelData> m_vertices;
-	std::vector <Face> m_indices;
+	int getIndexCount();
+	int getVertexCount();
+	int getFaceCount();	
 
-	long m_indexCount;
-	long m_vertexCount;	
+	std::vector<ModelData> m_vertices;
+	std::vector<Face> m_indices;
+
+private:
+	int m_indexCount;
+	int m_vertexCount;
+	int m_faceCount;
 };
 
 #endif

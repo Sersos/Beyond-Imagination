@@ -16,14 +16,10 @@ void FileOutputManager::save(const char* objectInfo, int value, bool addNextLine
 {
 	if (m_isOpen)
 	{
-		if (addNextLine)
-		{
-			m_file << objectInfo << std::to_string(value) << "\n";
-		}
-		else
-		{
-			m_file << objectInfo << std::to_string(value) << " ";
-		}		
+		if (addNextLine)		
+			m_file << objectInfo << std::to_string(value) << "\n";		
+		else		
+			m_file << objectInfo << std::to_string(value) << " ";			
 	}
 }
 
@@ -32,13 +28,9 @@ void FileOutputManager::save(const char* objectInfo, float value, bool addNextLi
 	if (m_isOpen)
 	{
 		if (addNextLine)
-		{
-			m_file << objectInfo << std::to_string(value) << "\n";
-		}
-		else
-		{
-			m_file << objectInfo << std::to_string(value) << " "; 
-		}		
+			m_file << objectInfo << std::to_string(value) << "\n";		
+		else		
+			m_file << objectInfo << std::to_string(value) << " "; 				
 	}
 }
 

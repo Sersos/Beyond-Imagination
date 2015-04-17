@@ -16,12 +16,12 @@ void Object::initialize(const char* filename, ID3D11Device* device, ID3D11Device
 	D3D11_BUFFER_DESC indexBufferDesc;
 	D3D11_SUBRESOURCE_DATA indexData;
 	
-	m_model->loadObject(filename);
+	m_model->loadObject(filename, false);
 	
 	//create vertexbuffer desc	
 	ZeroMemory(&vertexBufferDesc, sizeof(vertexBufferDesc));
 	vertexBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-	vertexBufferDesc.ByteWidth = sizeof(ModelData) * m_model->m_vertexCount;
+	vertexBufferDesc.ByteWidth = sizeof(ModelData) * m_model->getVertexCount();
 	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;	
 	
@@ -33,7 +33,7 @@ void Object::initialize(const char* filename, ID3D11Device* device, ID3D11Device
 	//create indexbuffer desc
 	ZeroMemory(&indexBufferDesc, sizeof(indexBufferDesc));
 	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	indexBufferDesc.ByteWidth = sizeof(Face) * (m_model->m_indexCount / 3);
+	indexBufferDesc.ByteWidth = sizeof(Face) * m_model->getFaceCount();
 	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	indexBufferDesc.CPUAccessFlags = 0;	
 
@@ -81,7 +81,7 @@ void Object::render(ID3D11DeviceContext* deviceContext, ShaderManager* shaderMan
 	for (UINT p = 0; p < techniqueDesc.Passes; ++p)
 	{
 		shaderManager->m_effectTechnique->GetPassByIndex(p)->Apply(0, deviceContext);
-		deviceContext->DrawIndexed(m_model->m_indexCount, 0, 0);
+		deviceContext->DrawIndexed(m_model->getIndexCount(), 0, 0);
 	}
 }
 

@@ -229,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Global\Shader\LightHelper.fx" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Global\Shader\CoordinateSystem.fx" />
