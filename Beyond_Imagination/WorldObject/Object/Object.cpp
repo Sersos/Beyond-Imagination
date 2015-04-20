@@ -16,7 +16,7 @@ void Object::initialize(const char* filename, ID3D11Device* device, ID3D11Device
 	D3D11_BUFFER_DESC indexBufferDesc;
 	D3D11_SUBRESOURCE_DATA indexData;
 	
-	m_model->loadObject(filename, false);
+	m_model->loadObject(filename, true);
 	
 	//create vertexbuffer desc	
 	ZeroMemory(&vertexBufferDesc, sizeof(vertexBufferDesc));

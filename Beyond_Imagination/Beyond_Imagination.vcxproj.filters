@@ -156,6 +156,15 @@
     <ClInclude Include="Application\ApplicationStateManager\ApplicationState\SinglePlayerGame.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="UI\Objects\Button.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\HoverableObject.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UIObject.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -209,6 +218,12 @@
     <ClCompile Include="Global\Transform\Transform.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="UI\HoverableObject.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Objects\Button.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TextFiles\Include-Paths.txt">
@@ -229,7 +244,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Global\Shader\LightHelper.fx" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Global\Shader\CoordinateSystem.fx" />

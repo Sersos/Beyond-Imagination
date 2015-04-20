@@ -15,7 +15,7 @@
 #define SIZE 500
 #define SPACING 1
 
-//function to release com
+//function to release COM
 #define ReleaseCOM(x) { x->Release(); };
 
 //typedef

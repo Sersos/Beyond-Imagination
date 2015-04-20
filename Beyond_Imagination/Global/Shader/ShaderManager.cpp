@@ -53,7 +53,7 @@ void ShaderManager::initialize(ID3D11Device* device, ID3D11DeviceContext* device
 	m_pointLight.diffuse = D3DXVECTOR4(0.3f, 0.3f, 0.3f, 1.0f);
 	m_pointLight.specular = D3DXVECTOR4(0.3f, 0.3f, 0.3f, 1.0f);
 	m_pointLight.att = D3DXVECTOR3(0.0f, 0.0001f, 0.0f);
-	m_pointLight.position = D3DXVECTOR3(5.0f, 10, 5.0f);
+	m_pointLight.position = D3DXVECTOR3(0, 10, 0);
 	m_pointLight.range = 250;
 
 	m_spotLight.ambient = D3DXVECTOR4(0.0f, 0.0f, 0.0f, 1.0f);
@@ -79,8 +79,8 @@ void ShaderManager::render(ID3D11DeviceContext* deviceContext, Camera* camera)
 
 	//cbPerFrame
 	m_effectEyePosition->SetRawValue(camera->getPosition(), 0, sizeof(camera->getPosition().x));
-	m_effectDirectionalLight->SetRawValue(&m_directionalLight, 0, sizeof(m_directionalLight));
-	//m_effectPointLight->SetRawValue(&m_pointLight, 0, sizeof(m_pointLight));
+	//m_effectDirectionalLight->SetRawValue(&m_directionalLight, 0, sizeof(m_directionalLight));
+	m_effectPointLight->SetRawValue(&m_pointLight, 0, sizeof(m_pointLight));
 	//m_effectSpotLight->SetRawValue(&m_spotLight, 0, sizeof(m_spotLight));
 	
 }

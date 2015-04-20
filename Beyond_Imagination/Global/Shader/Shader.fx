@@ -48,7 +48,7 @@ float4 PShader(VertexOut pixelIn) : SV_TARGET
 	//normalize incoming normal vector
 	pixelIn.NormalIn = normalize(pixelIn.NormalIn);
 
-	float toEye = gEyePosition - pixelIn.PositionIn;
+	float3 toEye = gEyePosition - pixelIn.PositionIn;
 
 	float4 ambient = float4(0.0f, 0.0f, 0.0f, 0.0f);
 	float4 diffuse = float4(0.0f, 0.0f, 0.0f, 0.0f);

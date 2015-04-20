@@ -54,7 +54,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Beyond_Imagination/Logs;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application/ApplicationStateManager/ApplicationState;$(SolutionDir)/Beyond_Imagination/Application/ApplicationStateManager;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/CoordinateSystem;$(SolutionDir)/Beyond_Imagination/Global/ModelLoader;$(SolutionDir)/Beyond_Imagination/Global/Material;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Global/Transform;$(SolutionDir)/Beyond_Imagination/Global/Effect;$(SolutionDir)/Beyond_Imagination/Global/Lighting;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/World;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/sound;$(SolutionDir)/Beyond_Imagination/images;$(SolutionDir)/Beyond_Imagination/models;$(SolutionDir)/Beyond_Imagination/Player/Input;$(SolutionDir)/Beyond_Imagination/Player/Camera;$(SolutionDir)/Beyond_Imagination/Player;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Beyond_Imagination/UI/Objects;$(SolutionDir)/Beyond_Imagination/UI;$(SolutionDir)/Beyond_Imagination/Logs;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Samples\C++\Effects11\Inc;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Application/ApplicationStateManager/ApplicationState;$(SolutionDir)/Beyond_Imagination/Application/ApplicationStateManager;$(SolutionDir)/Beyond_Imagination/Application;$(SolutionDir)/Beyond_Imagination/Global/CoordinateSystem;$(SolutionDir)/Beyond_Imagination/Global/ModelLoader;$(SolutionDir)/Beyond_Imagination/Global/Material;D:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(SolutionDir)/Beyond_Imagination/Global/Transform;$(SolutionDir)/Beyond_Imagination/Global/Effect;$(SolutionDir)/Beyond_Imagination/Global/Lighting;$(SolutionDir)/Beyond_Imagination/Global;$(SolutionDir)/Beyond_Imagination/World;$(SolutionDir)/Beyond_Imagination/WorldObject/Unit;$(SolutionDir)/Beyond_Imagination/WorldObject/Object;$(SolutionDir)/Beyond_Imagination/sound;$(SolutionDir)/Beyond_Imagination/images;$(SolutionDir)/Beyond_Imagination/models;$(SolutionDir)/Beyond_Imagination/Player/Input;$(SolutionDir)/Beyond_Imagination/Player/Camera;$(SolutionDir)/Beyond_Imagination/Player;$(SolutionDir)/Beyond_Imagination/Global/Shader;$(SolutionDir)/Beyond_Imagination/WorldObject;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -104,6 +104,9 @@
     <ClInclude Include="Player\Camera\Camera.h" />
     <ClInclude Include="Player\Input\InputManager.h" />
     <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="UI\HoverableObject.h" />
+    <ClInclude Include="UI\Objects\Button.h" />
+    <ClInclude Include="UI\UIObject.h" />
     <ClInclude Include="WorldObject\Object\Object.h" />
     <ClInclude Include="WorldObject\Unit\Unit.h" />
     <ClInclude Include="WorldObject\WorldObject.h" />
@@ -125,6 +128,8 @@
     <ClCompile Include="Player\Camera\Camera.cpp" />
     <ClCompile Include="Player\Input\InputManager.cpp" />
     <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="UI\HoverableObject.cpp" />
+    <ClCompile Include="UI\Objects\Button.cpp" />
     <ClCompile Include="WorldObject\Object\Object.cpp" />
     <ClCompile Include="WorldObject\Unit\Unit.cpp" />
     <ClCompile Include="WorldObject\WorldObject.cpp" />
@@ -148,7 +153,6 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <None Include="Global\Shader\LightHelper.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </ExcludedFromBuild>
