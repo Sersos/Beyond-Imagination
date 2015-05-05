@@ -165,6 +165,12 @@
     <ClInclude Include="UI\UIObject.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="WorldObject\FromBook\Renderable.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\FromBook\Visual.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -222,6 +228,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="UI\Objects\Button.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldObject\FromBook\Renderable.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldObject\FromBook\Visual.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

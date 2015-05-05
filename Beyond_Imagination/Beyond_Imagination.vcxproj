@@ -104,6 +104,8 @@
     <ClInclude Include="Player\Camera\Camera.h" />
     <ClInclude Include="Player\Input\InputManager.h" />
     <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="WorldObject\FromBook\Visual.h" />
+    <ClInclude Include="WorldObject\FromBook\Renderable.h" />
     <ClInclude Include="UI\HoverableObject.h" />
     <ClInclude Include="UI\Objects\Button.h" />
     <ClInclude Include="UI\UIObject.h" />
@@ -128,6 +130,8 @@
     <ClCompile Include="Player\Camera\Camera.cpp" />
     <ClCompile Include="Player\Input\InputManager.cpp" />
     <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="WorldObject\FromBook\Visual.cpp" />
+    <ClCompile Include="WorldObject\FromBook\Renderable.cpp" />
     <ClCompile Include="UI\HoverableObject.cpp" />
     <ClCompile Include="UI\Objects\Button.cpp" />
     <ClCompile Include="WorldObject\Object\Object.cpp" />
